@@ -1,0 +1,58 @@
+/**
+ * Responsive Utility Classes
+ *
+ * Bootstrap-like utility classes for responsive display control
+ */
+
+// Hide on specific breakpoints
+.d-none {
+  display: none !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .d-sm-none {
+    display: none !important;
+  }
+
+  .d-sm-block {
+    display: block !important;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .d-md-none {
+    display: none !important;
+  }
+
+  .d-md-block {
+    display: block !important;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .d-lg-none {
+    display: none !important;
+  }
+
+  .d-lg-block {
+    display: block !important;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .d-xl-none {
+    display: none !important;
+  }
+
+  .d-xl-block {
+    display: block !important;
+  }
+}

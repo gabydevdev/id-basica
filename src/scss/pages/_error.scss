@@ -1,0 +1,78 @@
+/**
+ * Error Pages
+ *
+ * Styles for error pages (404, 403, 500, etc.)
+ */
+
+.error-page {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	text-align: center;
+	padding: var(--spacing-6);
+	background-color: var(--color-background);
+
+	&__code {
+		font-size: 8rem;
+		font-weight: var(--font-weight-bold);
+		color: var(--color-primary);
+		line-height: 1;
+		margin-bottom: var(--spacing-4);
+
+		@media (min-width: 768px) {
+			font-size: 10rem;
+		}
+	}
+
+	&__title {
+		font-size: var(--font-size-2xl);
+		font-weight: var(--font-weight-semibold);
+		color: var(--color-text-primary);
+		margin-bottom: var(--spacing-4);
+
+		@media (min-width: 768px) {
+			font-size: var(--font-size-3xl);
+		}
+	}
+
+	&__message {
+		font-size: var(--font-size-lg);
+		color: var(--color-text-secondary);
+		max-width: 600px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: var(--spacing-6);
+	}
+
+	&__illustration {
+		max-width: 400px;
+		margin-bottom: var(--spacing-6);
+
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+	}
+
+	&__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--spacing-3);
+		justify-content: center;
+	}
+}
+
+// Specific error styles
+.error-403 {
+	.error-page__code {
+		color: var(--color-warning);
+	}
+}
+
+.error-500 {
+	.error-page__code {
+		color: var(--color-error);
+	}
+}

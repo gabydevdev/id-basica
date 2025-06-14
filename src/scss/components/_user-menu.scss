@@ -1,0 +1,98 @@
+/**
+ * User Menu Component
+ *
+ * Styles for the user menu dropdown in the header
+ */
+
+.user-menu {
+  position: relative;
+
+  &-toggle {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    color: var(--color-text-primary);
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: var(--color-gray-100);
+      text-decoration: none;
+    }
+
+    img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      margin-right: var(--spacing-2);
+    }
+
+    .user-name {
+      margin-right: var(--spacing-2);
+      font-weight: var(--font-weight-medium);
+      display: none;
+
+      @media (min-width: 768px) {
+        display: inline-block;
+      }
+    }
+
+    i {
+      color: var(--color-text-tertiary);
+      font-size: var(--font-size-sm);
+    }
+  }
+
+  &-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 200px;
+    background-color: var(--color-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    z-index: var(--z-index-dropdown);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.2s ease;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        margin: 0;
+
+        a {
+          display: flex;
+          align-items: center;
+          padding: var(--spacing-3) var(--spacing-4);
+          color: var(--color-text-primary);
+          text-decoration: none;
+
+          &:hover {
+            background-color: var(--color-gray-50);
+          }
+
+          i {
+            margin-right: var(--spacing-2);
+            width: 16px;
+            color: var(--color-text-tertiary);
+          }
+        }
+      }
+    }
+  }
+
+  &:hover,
+  &:focus-within {
+    .user-menu-dropdown {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

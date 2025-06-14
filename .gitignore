@@ -1,0 +1,48 @@
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE and editor files
+*.code-workspace
+.idea/
+.vscode/
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+
+# Ignore composer and npm files
+node_modules/
+vendor/
+package-lock.json
+composer.lock
+
+# Ignore OS generated files
+*.swp
+*.swo
+
+# Ignore Git files
+.git/
+# .gitignore
+.github/
+
+# Ignore other sensitive files
+.env
+.env.*
+!.env.example
+
+# Build files
+# /assets
+/assets/css/*
+/assets/js/*
+
+# Compiled files
+*.map
+*.css.map
+*.js.map
+
+auth.json
+
+# Ignore ACF Pro files
+acf/advanced-custom-fields-pro
+acf-json/group*

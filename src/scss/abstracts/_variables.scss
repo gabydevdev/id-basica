@@ -1,0 +1,141 @@
+/**
+ * Variables
+ *
+ * This file contains all application-wide SCSS variables.
+ * Using CSS custom properties for runtime access and SCSS variables for compilation.
+ */
+
+// Color Palette with WCAG AA compliance (4.5:1 for normal text, 3:1 for large text)
+:root {
+	/* Brand Colors */
+	--color-primary: #dd2222;
+	/* Red brand color with better accessibility */
+	--color-primary-light: #e33b3b;
+	--color-primary-dark: #cd1d1d;
+
+	/* Neutral Colors */
+	--color-white: #ffffff;
+	--color-gray-100: #fcfcfc;
+	--color-gray-200: #ececed;
+	--color-gray-300: #d2d3d4;
+	--color-gray-400: #c3c4c5;
+	--color-gray-500: #b8b9bb;
+	--color-gray-600: #6b6d6f;
+	/* AA compliant for large text on white */
+	--color-gray-700: #434445;
+	/* AA compliant for normal text on white */
+	--color-gray-800: #343536;
+	--color-gray-900: #202021;
+	--color-black: #020202;
+
+	/* Semantic Colors */
+	--color-text-primary: var(--color-gray-900);
+	--color-text-secondary: var(--color-gray-700);
+	--color-text-tertiary: var(--color-gray-600);
+	--color-text-on-dark: var(--color-white);
+	--color-text-on-primary: var(--color-white);
+
+	/* Background Colors */
+	--color-background: var(--color-white);
+	--color-background-light: var(--color-gray-100);
+	--color-background-card: var(--color-white);
+	--color-background-sidebar: var(--color-primary);
+
+	/* State Colors */
+	--color-success: #28a745;
+	--color-info: #17a2b8;
+	--color-warning: #ffc107;
+	--color-danger: var(--color-primary);
+
+	/* Feedback Colors */
+	--color-error: #dc3545;
+	--color-success-light: #d4edda;
+	--color-warning-light: #fff3cd;
+	--color-error-light: #f8d7da;
+
+	/* Border Colors */
+	--color-border: var(--color-gray-300);
+	--color-border-light: var(--color-gray-200);
+	--color-border-dark: var(--color-gray-400);
+
+	/* Spacing */
+	--spacing-1: 0.25rem; /* 4px */
+	--spacing-2: 0.5rem; /* 8px */
+	--spacing-3: 0.75rem; /* 12px */
+	--spacing-4: 1rem; /* 16px */
+	--spacing-5: 1.25rem; /* 20px */
+	--spacing-6: 1.5rem; /* 24px */
+	--spacing-8: 2rem; /* 32px */
+	--spacing-10: 2.5rem; /* 40px */
+	--spacing-12: 3rem; /* 48px */
+	--spacing-16: 4rem; /* 64px */
+	--spacing-20: 5rem; /* 80px */
+	--spacing-24: 6rem; /* 96px */
+	--spacing-32: 8rem; /* 128px */
+
+	/* Typography */
+	--font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+	--font-family-heading: var(--font-family-base);
+	--font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+	--font-size-base: 1rem; /* 16px */
+	--font-size-xs: 0.75rem; /* 12px */
+	--font-size-sm: 0.875rem; /* 14px */
+	--font-size-md: 1rem; /* 16px */
+	--font-size-lg: 1.125rem; /* 18px */
+	--font-size-xl: 1.25rem; /* 20px */
+	--font-size-2xl: 1.5rem; /* 24px */
+	--font-size-3xl: 1.875rem; /* 30px */
+	--font-size-4xl: 2.25rem; /* 36px */
+
+	--font-weight-light: 300;
+	--font-weight-normal: 400;
+	--font-weight-medium: 500;
+	--font-weight-semibold: 600;
+	--font-weight-bold: 700;
+
+	--line-height-tight: 1.25;
+	--line-height-base: 1.5;
+	--line-height-loose: 1.75;
+
+	/* Border Radius */
+	--border-radius-sm: 0.125rem;
+	--border-radius: 0.25rem;
+	--border-radius-lg: 0.5rem;
+	--border-radius-xl: 1rem;
+	--border-radius-pill: 50rem;
+
+	/* Box Shadow */
+	--box-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+	--box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+	--box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.15);
+
+	/* Dashboard specific */
+	--sidebar-width: 250px;
+	--header-height: 60px;
+	--card-min-height: 100px;
+	--grid-gap: var(--spacing-4);
+	--sidebar-collapsed-width: 70px;
+}
+
+// SCSS Variables (for compilation use)
+$color-primary: var(--color-primary);
+$color-primary-light: var(--color-primary-light);
+$color-primary-dark: var(--color-primary-dark);
+
+$color-white: var(--color-white);
+$color-black: var(--color-black);
+$color-gray-100: var(--color-gray-100);
+$color-gray-900: var(--color-gray-900);
+
+$sidebar-width: var(--sidebar-width);
+$header-height: var(--header-height);
+
+// Breakpoints map for responsive design
+$breakpoints: (
+	'sm': 576px,
+	'md': 768px,
+	'lg': 992px,
+	'xl': 1200px,
+	'xxl': 1400px
+);

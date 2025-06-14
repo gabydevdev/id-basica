@@ -1,0 +1,268 @@
+/**
+ * Widget Components
+ *
+ * Dashboard widget styles for displaying various data
+ */
+
+.widgets-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--spacing-4);
+
+	@media (min-width: 768px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media (min-width: 1200px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+.widget {
+	background-color: var(--color-white);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow-sm);
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+
+	&__header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: var(--spacing-4);
+		border-bottom: 1px solid var(--color-border-light);
+
+		.widget__title {
+			font-size: var(--font-size-lg);
+			font-weight: var(--font-weight-semibold);
+			margin: 0;
+			color: var(--color-text-primary);
+		}
+
+		.widget__actions {
+			display: flex;
+			gap: var(--spacing-2);
+		}
+	}
+
+	&__content {
+		padding: var(--spacing-4);
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__footer {
+		padding: var(--spacing-3) var(--spacing-4);
+		border-top: 1px solid var(--color-border-light);
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		font-size: var(--font-size-sm);
+		color: var(--color-text-tertiary);
+	}
+
+	// Widget types
+	&--chart {
+		.chart-container {
+			width: 100%;
+			height: 250px;
+			margin-top: var(--spacing-2);
+		}
+	}
+
+	&--stats {
+		.stats-grid {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: var(--spacing-4);
+
+			@media (min-width: 992px) {
+				grid-template-columns: repeat(4, 1fr);
+			}
+		}
+
+		.stat-item {
+			text-align: center;
+
+			.stat-value {
+				font-size: var(--font-size-2xl);
+				font-weight: var(--font-weight-bold);
+				color: var(--color-text-primary);
+				margin-bottom: var(--spacing-1);
+			}
+
+			.stat-label {
+				font-size: var(--font-size-sm);
+				color: var(--color-text-tertiary);
+			}
+		}
+	}
+
+	&--list {
+		.widget-list {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+
+			&__item {
+				padding: var(--spacing-3) 0;
+				border-bottom: 1px solid var(--color-border-light);
+
+				&:last-child {
+					border-bottom: none;
+				}
+			}
+		}
+	}
+
+	&--activity {
+		.activity-list {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+	}
+
+	&--calendar {
+		.calendar-header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin-bottom: var(--spacing-3);
+
+			.calendar-title {
+				font-weight: var(--font-weight-semibold);
+				font-size: var(--font-size-lg);
+			}
+
+			.calendar-nav {
+				display: flex;
+				gap: var(--spacing-2);
+			}
+		}
+
+		.calendar-grid {
+			display: grid;
+			grid-template-columns: repeat(7, 1fr);
+			gap: 1px;
+			background-color: var(--color-border-light);
+
+			.calendar-day-name {
+				background-color: var(--color-gray-100);
+				text-align: center;
+				padding: var(--spacing-2);
+				font-size: var(--font-size-sm);
+				font-weight: var(--font-weight-medium);
+			}
+
+			.calendar-day {
+				background-color: var(--color-white);
+				aspect-ratio: 1 / 1;
+				padding: var(--spacing-1);
+				display: flex;
+				flex-direction: column;
+
+				.day-number {
+					font-size: var(--font-size-sm);
+					margin-bottom: var(--spacing-1);
+				}
+
+				.day-events {
+					font-size: var(--font-size-xs);
+					overflow: hidden;
+
+					.event-dot {
+						width: 8px;
+						height: 8px;
+						border-radius: 50%;
+						display: inline-block;
+						margin-right: var(--spacing-1);
+					}
+				}
+
+				&.today {
+					background-color: rgba(var(--color-primary), 0.05);
+
+					.day-number {
+						font-weight: var(--font-weight-bold);
+						color: var(--color-primary);
+					}
+				}
+
+				&.other-month {
+					opacity: 0.5;
+				}
+			}
+		}
+	}
+
+	// Progress widget
+	&--progress {
+		.progress-container {
+			margin-bottom: var(--spacing-3);
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			.progress-header {
+				display: flex;
+				justify-content: space-between;
+				margin-bottom: var(--spacing-2);
+
+				.progress-title {
+					font-weight: var(--font-weight-medium);
+					color: var(--color-text-primary);
+				}
+
+				.progress-value {
+					font-weight: var(--font-weight-semibold);
+				}
+			}
+
+			.progress-bar {
+				height: 8px;
+				background-color: var(--color-gray-200);
+				border-radius: var(--border-radius-pill);
+				overflow: hidden;
+
+				.progress-fill {
+					height: 100%;
+					background-color: var(--color-primary);
+					border-radius: var(--border-radius-pill);
+					transition: width 0.3s ease;
+
+					&.success {
+						background-color: var(--color-success);
+					}
+
+					&.warning {
+						background-color: var(--color-warning);
+					}
+
+					&.danger {
+						background-color: var(--color-error);
+					}
+				}
+			}
+		}
+	}
+}
+
+// Widget grid layout for dashboard widgets
+.widget-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--spacing-6);
+	margin-bottom: var(--spacing-6);
+
+	@media (min-width: 768px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media (min-width: 1200px) {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}

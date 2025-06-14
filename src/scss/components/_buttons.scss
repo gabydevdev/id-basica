@@ -1,0 +1,225 @@
+/**
+ * Button Components
+ *
+ * Accessible button styles for various actions
+ */
+
+@use '../abstracts/mixins' as mx;
+
+.button,
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: var(--spacing-2) var(--spacing-4);
+	font-weight: var(--font-weight-medium);
+	border-radius: var(--border-radius);
+	transition: all 0.2s ease;
+	cursor: pointer;
+	border: 1px solid transparent;
+	font-size: var(--font-size-base);
+	line-height: 1.5;
+	text-align: center;
+	text-decoration: none;
+	vertical-align: middle;
+	user-select: none;
+
+	&:focus {
+		outline: 0;
+		box-shadow: 0 0 0 3px rgba(var(--color-primary), 0.25);
+	}
+
+	&:disabled,
+	&.disabled {
+		opacity: 0.65;
+		pointer-events: none;
+	}
+
+	// Icon within button
+	.icon {
+		display: inline-flex;
+
+		&:first-child:not(:last-child) {
+			margin-right: var(--spacing-2);
+		}
+
+		&:last-child:not(:first-child) {
+			margin-left: var(--spacing-2);
+		}
+	}
+
+	// Variants
+	&--primary {
+		background-color: var(--color-primary);
+		color: var(--color-white);
+		border-color: var(--color-primary);
+
+		&:hover,
+		&:focus {
+			background-color: var(--color-primary-dark);
+			border-color: var(--color-primary-dark);
+			color: var(--color-white);
+			text-decoration: none;
+		}
+	}
+
+	&--secondary {
+		background-color: var(--color-gray-200);
+		color: var(--color-gray-800);
+		border-color: var(--color-gray-300);
+
+		&:hover,
+		&:focus {
+			background-color: var(--color-gray-300);
+			color: var(--color-gray-900);
+			text-decoration: none;
+		}
+	}
+
+	&--outline-primary {
+		background-color: transparent;
+		color: var(--color-primary);
+		border-color: var(--color-primary);
+
+		&:hover,
+		&:focus {
+			background-color: var(--color-primary);
+			color: var(--color-white);
+			text-decoration: none;
+		}
+	}
+
+	&--outline-secondary {
+		background-color: transparent;
+		color: var(--color-gray-700);
+		border-color: var(--color-gray-400);
+
+		&:hover,
+		&:focus {
+			background-color: var(--color-gray-100);
+			color: var(--color-gray-900);
+			text-decoration: none;
+		}
+	}
+
+	&--text {
+		background-color: transparent;
+		color: var(--color-primary);
+		border-color: transparent;
+		padding-left: var(--spacing-2);
+		padding-right: var(--spacing-2);
+
+		&:hover,
+		&:focus {
+			background-color: rgba(var(--color-primary), 0.1);
+			color: var(--color-primary-dark);
+			text-decoration: none;
+		}
+	}
+
+	&--link {
+		background-color: transparent;
+		color: var(--color-primary);
+		border-color: transparent;
+		padding: 0;
+		font-weight: var(--font-weight-normal);
+
+		&:hover,
+		&:focus {
+			color: var(--color-primary-dark);
+			text-decoration: underline;
+			background-color: transparent;
+		}
+	}
+
+	&--success {
+		background-color: var(--color-success);
+		color: var(--color-white);
+		border-color: var(--color-success);
+
+		&:hover,
+		&:focus {
+			@include mx.color-darken(background-color, '--color-success', 10);
+			@include mx.color-darken(border-color, '--color-success', 10);
+			color: var(--color-white);
+			text-decoration: none;
+		}
+	}
+
+	&--danger {
+		background-color: var(--color-error);
+		color: var(--color-white);
+		border-color: var(--color-error);
+
+		&:hover,
+		&:focus {
+			@include mx.color-darken(background-color, '--color-error', 10);
+			@include mx.color-darken(border-color, '--color-error', 10);
+			color: var(--color-white);
+			text-decoration: none;
+		}
+	}
+
+	// Sizes
+	&--sm {
+		padding: var(--spacing-1) var(--spacing-2);
+		font-size: var(--font-size-sm);
+	}
+
+	&--lg {
+		padding: var(--spacing-3) var(--spacing-5);
+		font-size: var(--font-size-lg);
+	}
+
+	// Icon only button
+	&--icon {
+		width: 36px;
+		height: 36px;
+		padding: 0;
+		border-radius: var(--border-radius);
+
+		&.button--sm {
+			width: 28px;
+			height: 28px;
+		}
+
+		&.button--lg {
+			width: 44px;
+			height: 44px;
+		}
+	}
+
+	// Full width button
+	&--block {
+		display: flex;
+		width: 100%;
+	}
+}
+
+// Button groups
+.button-group {
+	display: inline-flex;
+	position: relative;
+	vertical-align: middle;
+
+	>.button {
+		position: relative;
+		flex: 1 1 auto;
+
+		&:not(:first-child) {
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+			margin-left: -1px;
+		}
+
+		&:not(:last-child) {
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+
+		&:hover,
+		&:focus {
+			z-index: 1;
+		}
+	}
+}

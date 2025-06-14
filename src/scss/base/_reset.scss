@@ -1,0 +1,136 @@
+/**
+ * Reset & Base Styles
+ *
+ * Modern CSS reset with accessibility improvements
+ */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* Remove default margin and padding */
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd,
+ul,
+ol {
+	margin: 0;
+	padding: 0;
+}
+
+/* Set core root defaults */
+html {
+	scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+	min-height: 100vh;
+	font-family: var(--font-family-base);
+	font-size: var(--font-size-base);
+	line-height: var(--line-height-base);
+	color: var(--color-text-primary);
+	background-color: var(--color-background);
+	text-rendering: optimizeSpeed;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Make images responsive */
+img,
+picture {
+	max-width: 100%;
+	display: block;
+	height: auto;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+/* Remove list styles on ul, ol elements with a class attribute */
+ul[class],
+ol[class] {
+	list-style: none;
+}
+
+/* Tables */
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+/* Improve default focus styles */
+:focus-visible {
+	outline: 3px solid var(--color-primary);
+	outline-offset: 2px;
+}
+
+/* Remove default button styles */
+button {
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+}
+
+/* WordPress specific resets */
+.wp-block-image img {
+	height: auto;
+}
+
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+	clip: auto !important;
+	clip-path: none;
+	display: block;
+	height: auto;
+	left: 5px;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000;
+}

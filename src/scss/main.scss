@@ -1,0 +1,45 @@
+/**
+ * Main Stylesheet for IDBasica Theme
+ *
+ * This file uses all the necessary SCSS partials using the 7-1 pattern.
+ * Using the modern @use directive instead of the deprecated @import.
+ */
+
+// 1. Abstracts (variables, functions, mixins)
+@use 'abstracts/variables';
+@use 'abstracts/mixins';
+
+// 2. Base styles
+@use 'base/reset';
+@use 'base/typography';
+@use 'base/utilities';
+@use 'base/responsive-utilities';
+
+// 3. Layout
+@use 'layout/container';
+@use 'layout/dashboard';
+@use 'layout/sidebar';
+@use 'layout/header';
+@use 'layout/content';
+@use 'layout/footer';
+
+// 4. Components
+@use 'components/buttons';
+@use 'components/cards';
+@use 'components/forms';
+@use 'components/navigation';
+@use 'components/search-form';
+@use 'components/sidebar-menu';
+@use 'components/tables';
+@use 'components/user-menu';
+@use 'components/widgets';
+@use 'components/activity';
+@use 'components/events';
+@use 'components/tasks';
+@use 'components/tooltips';
+
+// 5. Pages
+@use 'pages/error';
+
+// 6. Responsive utilities
+@use 'responsive/mobile';

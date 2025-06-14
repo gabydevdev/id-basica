@@ -1,0 +1,312 @@
+/**
+ * Form Components
+ *
+ * Accessible form controls and layouts
+ */
+
+.form {
+	&__group {
+		margin-bottom: var(--spacing-4);
+	}
+
+	&__label {
+		display: block;
+		margin-bottom: var(--spacing-2);
+		font-weight: var(--font-weight-medium);
+		color: var(--color-text-primary);
+
+		&.required::after {
+			content: "*";
+			color: var(--color-error);
+			margin-left: var(--spacing-1);
+		}
+	}
+
+	&__control {
+		display: block;
+		width: 100%;
+		padding: var(--spacing-2) var(--spacing-3);
+		font-size: var(--font-size-base);
+		line-height: 1.5;
+		color: var(--color-text-primary);
+		background-color: var(--color-white);
+		background-clip: padding-box;
+		border: 1px solid var(--color-border);
+		border-radius: var(--border-radius);
+		transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+		&:focus {
+			color: var(--color-text-primary);
+			background-color: var(--color-white);
+			border-color: var(--color-primary-light);
+			outline: 0;
+			box-shadow: 0 0 0 3px rgba(var(--color-primary), 0.25);
+		}
+
+		&:disabled,
+		&[readonly] {
+			background-color: var(--color-gray-100);
+			opacity: 1;
+		}
+
+		&.is-invalid {
+			border-color: var(--color-error);
+
+			&:focus {
+				box-shadow: 0 0 0 3px rgba(var(--color-error), 0.25);
+			}
+		}
+	}
+
+	&__select {
+		appearance: none;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-position: right var(--spacing-3) center;
+		background-size: 16px;
+		padding-right: var(--spacing-8);
+	}
+
+	&__textarea {
+		min-height: 100px;
+		resize: vertical;
+	}
+
+	&__text {
+		font-size: var(--font-size-sm);
+		margin-top: var(--spacing-1);
+
+		&--muted {
+			color: var(--color-text-tertiary);
+		}
+
+		&--error {
+			color: var(--color-error);
+		}
+	}
+
+	&__check {
+		display: flex;
+		align-items: flex-start;
+		margin-bottom: var(--spacing-3);
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		input[type="checkbox"],
+		input[type="radio"] {
+			flex-shrink: 0;
+			width: 16px;
+			height: 16px;
+			margin-top: 3px;
+			margin-right: var(--spacing-2);
+		}
+
+		label {
+			margin-bottom: 0;
+			font-weight: var(--font-weight-normal);
+		}
+	}
+
+	&__check-inline {
+		display: inline-flex;
+		align-items: center;
+		margin-right: var(--spacing-4);
+	}
+
+	&__switch {
+		position: relative;
+		display: inline-block;
+		width: 40px;
+		height: 24px;
+
+		input {
+			opacity: 0;
+			width: 0;
+			height: 0;
+
+			&:checked+.form__switch-slider {
+				background-color: var(--color-primary);
+
+				&:before {
+					transform: translateX(16px);
+				}
+			}
+
+			&:focus+.form__switch-slider {
+				box-shadow: 0 0 0 3px rgba(var(--color-primary), 0.25);
+			}
+
+			&:disabled+.form__switch-slider {
+				background-color: var(--color-gray-300);
+				cursor: not-allowed;
+			}
+		}
+
+		&-slider {
+			position: absolute;
+			cursor: pointer;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: var(--color-gray-400);
+			transition: 0.4s;
+			border-radius: 24px;
+
+			&:before {
+				position: absolute;
+				content: "";
+				height: 18px;
+				width: 18px;
+				left: 3px;
+				bottom: 3px;
+				background-color: var(--color-white);
+				transition: 0.4s;
+				border-radius: 50%;
+			}
+		}
+	}
+
+	&__row {
+		display: flex;
+		flex-wrap: wrap;
+		margin-right: calc(var(--spacing-3) * -1);
+		margin-left: calc(var(--spacing-3) * -1);
+
+		>.form__group {
+			padding-left: var(--spacing-3);
+			padding-right: var(--spacing-3);
+			flex: 1;
+		}
+	}
+
+	// Form validation
+	&__feedback {
+		display: none;
+		width: 100%;
+		margin-top: var(--spacing-1);
+		font-size: var(--font-size-sm);
+
+		&--invalid {
+			display: block;
+			color: var(--color-error);
+		}
+
+		&--valid {
+			display: block;
+			color: var(--color-success);
+		}
+	}
+
+	// Search form
+	&__search {
+		position: relative;
+
+		.form__control {
+			padding-left: var(--spacing-10);
+		}
+
+		.search-icon {
+			position: absolute;
+			left: var(--spacing-3);
+			top: 50%;
+			transform: translateY(-50%);
+			color: var(--color-gray-500);
+			pointer-events: none;
+		}
+	}
+
+	// Input with icon
+	&__input-group {
+		position: relative;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: stretch;
+		width: 100%;
+
+		.form__control {
+			position: relative;
+			flex: 1 1 auto;
+			width: 1%;
+			min-width: 0;
+		}
+
+		&-text {
+			display: flex;
+			align-items: center;
+			padding: var(--spacing-2) var(--spacing-3);
+			font-size: var(--font-size-base);
+			font-weight: var(--font-weight-normal);
+			line-height: 1.5;
+			color: var(--color-text-secondary);
+			text-align: center;
+			white-space: nowrap;
+			background-color: var(--color-gray-100);
+			border: 1px solid var(--color-border);
+
+			&:first-child {
+				border-top-right-radius: 0;
+				border-bottom-right-radius: 0;
+				border-right: 0;
+			}
+
+			&:last-child {
+				border-top-left-radius: 0;
+				border-bottom-left-radius: 0;
+				border-left: 0;
+			}
+		}
+
+		.form__control:not(:first-child) {
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+		}
+
+		.form__control:not(:last-child) {
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+	}
+}
+
+// Search form specifically for the header
+.search-form {
+	display: flex;
+	max-width: 300px;
+	position: relative;
+
+	input[type="search"] {
+		width: 100%;
+		padding: var(--spacing-2) var(--spacing-3);
+		padding-right: var(--spacing-10);
+		font-size: var(--font-size-sm);
+		border: 1px solid var(--color-border);
+		border-radius: var(--border-radius);
+		background-color: var(--color-background-light);
+
+		&:focus {
+			outline: none;
+			border-color: var(--color-primary-light);
+			box-shadow: 0 0 0 3px rgba(var(--color-primary), 0.1);
+			background-color: var(--color-white);
+		}
+	}
+
+	button[type="submit"] {
+		position: absolute;
+		right: var(--spacing-3);
+		top: 50%;
+		transform: translateY(-50%);
+		background: transparent;
+		border: none;
+		padding: 0;
+		color: var(--color-text-tertiary);
+		cursor: pointer;
+
+		&:hover {
+			color: var(--color-primary);
+		}
+	}
+}

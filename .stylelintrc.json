@@ -1,0 +1,55 @@
+{
+	"extends": ["@wordpress/stylelint-config/scss-stylistic"],
+	"customSyntax": "postcss-scss",
+	"rules": {
+		"selector-class-pattern": null,
+		"custom-property-pattern": null,
+		"at-rule-empty-line-before": null,
+		"selector-id-pattern": null,
+		"at-rule-no-unknown": [
+			true,
+			{
+				"ignoreAtRules": [
+					"extend",
+					"at-root",
+					"debug",
+					"warn",
+					"error",
+					"if",
+					"else",
+					"for",
+					"each",
+					"while",
+					"mixin",
+					"include",
+					"content",
+					"return",
+					"function",
+					"use",
+					"forward"
+				]
+			}
+		],
+		"no-descending-specificity": null,
+		"no-invalid-double-slash-comments": null,
+		"value-keyword-case": [
+			"lower",
+			{
+				"camelCaseSvgKeywords": true,
+				"ignoreProperties": ["currentColor"]
+			}
+		],
+		"rule-empty-line-before": [
+			"always-multi-line",
+			{
+				"except": ["first-nested"],
+				"ignore": ["after-comment"]
+			}
+		],
+		"font-weight-notation": null
+	},
+	"ignoreFiles": [
+		"assets/**/*.css",
+		"node_modules/**/*.css"
+	]
+}
