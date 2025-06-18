@@ -74,7 +74,7 @@ function idbasica_custom_feed_links() {
 }
 
 require_once IDBASICA_THEME_DIR . '/inc/helpers.php';
-require_once IDBASICA_THEME_DIR . '/inc/acf.php';
+require_once IDBASICA_THEME_DIR . '/acf/init.php';
 require_once IDBASICA_THEME_DIR . '/inc/admin/init.php';
 
 /**

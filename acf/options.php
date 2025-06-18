@@ -326,4 +326,4 @@ function idbasica_register_acf_fields() {
 add_action( 'acf/init', 'idbasica_register_acf_fields' );
 
 // Include custom ACF field groups
-require_once IDBASICA_THEME_DIR . '/inc/acf/group-fields.php';
+require_once IDBASICA_THEME_DIR . '/acf/group-fields.php';
