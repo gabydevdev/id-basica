@@ -12,8 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-		</div><!-- .content -->
-
 		<!-- Dashboard Footer -->
 		<footer class="footer">
 			<div class="container">

@@ -81,7 +81,7 @@ require_once ID_BASICA_THEME_DIR . '/inc/admin/init.php';
  * Enqueue scripts and styles.
  */
 function id_basica_styles() {
-	$main_css_asset_file = include( ID_BASICA_THEME_DIR . '/assets/css/main.asset.php' );
+	$main_css_asset_file = include( ID_BASICA_THEME_DIR . '/build/css/main.asset.php' );
 
 	// Enqueue Font Awesome for icons
 	wp_enqueue_style(
@@ -94,7 +94,7 @@ function id_basica_styles() {
 	// Enqueue main stylesheet
 	wp_enqueue_style(
 		'id-basica-style',
-		ID_BASICA_THEME_URI . '/assets/css/main.css',
+		ID_BASICA_THEME_URI . '/build/css/main.css',
 		$main_css_asset_file['dependencies'],
 		$main_css_asset_file['version']
 	);
@@ -105,12 +105,12 @@ add_action( 'wp_enqueue_scripts', 'id_basica_styles' );
  * Enqueue scripts and styles.
  */
 function id_basica_scripts() {
-	$main_js_asset_file = include( ID_BASICA_THEME_DIR . '/assets/js/main.asset.php' );
+	$main_js_asset_file = include( ID_BASICA_THEME_DIR . '/build/js/main.asset.php' );
 
 	// Enqueue main script
 	wp_enqueue_script(
 		'id-basica-script',
-		ID_BASICA_THEME_URI . '/assets/js/main.js',
+		ID_BASICA_THEME_URI . '/build/js/main.js',
 		$main_js_asset_file['dependencies'],
 		$main_js_asset_file['version']
 	);
@@ -126,9 +126,9 @@ require_once ID_BASICA_THEME_DIR . '/inc/post-types.php';
 function id_basica_widgets_init() {
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Dashboard Widgets', 'id-basica' ),
-			'id'            => 'dashboard-widgets',
-			'description'   => esc_html__( 'Add widgets here to appear in the dashboard.', 'id-basica' ),
+			'name'          => esc_html__( 'Dashboard Sidebar', 'id-basica' ),
+			'id'            => 'dashboard-sidebar',
+			'description'   => esc_html__( 'Add widgets here to appear in the sidebar.', 'id-basica' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</div>',
 			'before_title'  => '<div class="widget__header"><h3>',

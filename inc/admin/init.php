@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function id_basica_admin_styles() {
 	wp_enqueue_style(
-		'id-basicaadmin-styles',
+		'id-basica-admin-styles',
 		ID_BASICA_THEME_URI . '/inc/admin/assets/css/admin.css',
 		array(),
 		ID_BASICA_VERSION
@@ -28,7 +28,7 @@ add_action( 'admin_enqueue_scripts', 'id_basica_admin_styles' );
  */
 function id_basica_admin_scripts() {
 	wp_enqueue_script(
-		'id-basicaadmin-scripts',
+		'id-basica-admin-scripts',
 		ID_BASICA_THEME_URI . '/inc/admin/assets/js/admin.js',
 		array( 'jquery' ),
 		ID_BASICA_VERSION,
@@ -41,7 +41,7 @@ add_action( 'admin_enqueue_scripts', 'id_basica_admin_scripts' );
  * Customize admin footer text
  */
 function id_basica_admin_footer_text() {
-	echo 'Powered by <a href="https://wordpress.org">WordPress</a> | <a href="https://github.com/gabydevdev/idbasica">ID Basica</a>';
+	echo 'Powered by <a href="https://wordpress.org">WordPress</a> | <a href="https://github.com/gabydevdev/id-basica">ID Basica</a>';
 }
 add_filter( 'admin_footer_text', 'id_basica_admin_footer_text' );
 
@@ -205,4 +205,92 @@ function id_basica_hide_posts() {
     }, 999);
 }
 add_action( 'after_setup_theme', 'id_basica_hide_posts' );
+
+/**
+ * Disable Gutenberg editor for selected pages and post types
+ */
+function id_basica_disable_gutenberg( $can_edit, $post_type ) {
+    // Specify post types where Gutenberg should be disabled
+    $disabled_post_types = array( 'application' ); // Replace with your post types
+
+    // Disable Gutenberg for specific post types
+    if ( in_array( $post_type, $disabled_post_types, true ) ) {
+        return false;
+    }
+
+    // Disable Gutenberg for specific pages by ID
+    if ( isset( $_GET['post'] ) ) {
+        $disabled_pages = array( 42, 123 ); // Replace with your page IDs
+        if ( in_array( (int) $_GET['post'], $disabled_pages, true ) ) {
+            return false;
+        }
+    }
+
+    return $can_edit;
+}
+add_filter( 'use_block_editor_for_post_type', 'id_basica_disable_gutenberg', 10, 2 );
+
+/**
+ * Enable classic widgets dashboard
+ */
+function id_basica_enable_classic_widgets() {
+	add_filter( 'use_widgets_block_editor', '__return_false' );
+}
+add_action( 'after_setup_theme', 'id_basica_enable_classic_widgets' );
+
+/**
+ * Add custom columns (ID, Slug, Template) to the Pages list in the admin area
+ */
+function id_basica_add_custom_columns( $columns ) {
+    $new_columns = array();
+
+    foreach ( $columns as $key => $value ) {
+        if ( 'title' === $key ) {
+            $new_columns['title'] = $value;
+            $new_columns['slug'] = 'Slug';
+            $new_columns['template'] = 'Template';
+        } elseif ( 'author' === $key ) {
+            $new_columns['author'] = $value;
+        } elseif ( 'date' === $key ) {
+            $new_columns['id'] = 'ID';
+            $new_columns['date'] = $value;
+        } else {
+            $new_columns[$key] = $value;
+        }
+    }
+
+    return $new_columns;
+}
+add_filter( 'manage_pages_columns', 'id_basica_add_custom_columns' );
+
+/**
+ * Populate custom columns (ID, Slug, Template) with data
+ */
+function id_basica_populate_custom_columns( $column, $post_id ) {
+    if ( 'id' === $column ) {
+        echo $post_id;
+    }
+    if ( 'slug' === $column ) {
+        $post = get_post( $post_id );
+        echo $post->post_name;
+    }
+    if ( 'template' === $column ) {
+        $template = get_page_template_slug( $post_id );
+        echo $template ? $template : 'Default';
+    }
+}
+add_action( 'manage_pages_custom_column', 'id_basica_populate_custom_columns', 10, 2 );
+
+/**
+ * Add custom styles for columns (ID, Slug, Template)
+ */
+function id_basica_custom_column_styles() {
+    echo '<style>
+        .column-slug { width: 15%; }
+        .column-id { width: 5%; }
+        .column-template { width: 15%; }
+    </style>';
+}
+add_action( 'admin_head', 'id_basica_custom_column_styles' );
+
 

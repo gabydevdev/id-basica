@@ -7,6 +7,9 @@
 .sidebar {
 	background-color: var(--color-background-sidebar);
 	color: var(--color-text-on-dark);
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
 	width: 100%;
 	z-index: var(--z-index-fixed);
 	transition: width 0.3s ease;
@@ -47,8 +50,8 @@
 
 	&__logo {
 		display: flex;
-		align-items: center;
-		text-align: center;
+		align-items: flex-start;
+		text-align: left;
 
 		a {
 			display: block;
@@ -63,8 +66,7 @@
 		img,
 		svg,
 		span {
-			display: flex;
-			align-items: center;
+			display: block;
 		}
 
 		img,
