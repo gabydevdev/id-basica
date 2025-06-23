@@ -1,23 +1,23 @@
 {
 	"version": "1.0.0",
 	"scripts": {
-		"start": "wp-scripts start --webpack-src-dir=src --output-path=assets",
-		"build": "set NODE_ENV=development && wp-scripts build --webpack-src-dir=src --output-path=assets",
-		"format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+		"start": "set NODE_ENV=development && wp-scripts start",
+		"build": "set NODE_ENV=development && wp-scripts build",
 		"format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-		"lint:css": "stylelint \"src/**/*.{css,scss}\"",
-		"lint:css:fix": "stylelint \"src/**/*.{css,scss}\" --fix",
-		"lint:php": "composer run-script lint",
-		"lint:php:fix": "composer run-script format"
+		"format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+		"style:lint": "stylelint \"src/**/*.{css,scss}\"",
+		"style:fix": "stylelint \"src/**/*.{css,scss}\" --fix",
+		"php:lint": "composer run-script lint",
+		"php:fix": "composer run-script format"
 	},
 	"devDependencies": {
-		"@wordpress/browserslist-config": "^6.24.0",
-		"@wordpress/scripts": "^30.17.0",
-		"@wordpress/stylelint-config": "^23.16.0",
+		"@wordpress/browserslist-config": "^6.25.0",
+		"@wordpress/scripts": "^30.18.0",
+		"@wordpress/stylelint-config": "^23.17.0",
 		"browserslist": "^4.25.0",
 		"path": "^0.12.7",
-		"prettier": "^3.5.3",
-		"stylelint": "^16.20.0",
+		"prettier": "^3.6.0",
+		"stylelint": "^16.21.0",
 		"webpack-remove-empty-scripts": "^1.1.1"
 	}
 }
