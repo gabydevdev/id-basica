@@ -20,7 +20,7 @@ get_header();
 <div class="container">
 	<div class="content__header">
 		<h1 class="title">
-			<?php esc_html_e( 'Dashboard', 'idbasica' ); ?>
+			<?php esc_html_e( 'Dashboard', 'id-basica' ); ?>
 		</h1>
 	</div>
 
@@ -30,25 +30,25 @@ get_header();
 			<!-- Quick Stats Widget -->
 			<div class="widget">
 				<div class="widget__header">
-					<h3 class="widget__title"><i class="fas fa-chart-line"></i> <?php esc_html_e( 'Quick Stats', 'idbasica' ); ?></h3>
+					<h3 class="widget__title"><i class="fas fa-chart-line"></i> <?php esc_html_e( 'Quick Stats', 'id-basica' ); ?></h3>
 				</div>
 				<div class="widget__content">
 					<div class="stats-grid">
 						<div class="stat-item">
 							<span class="stat-value">12</span>
-							<span class="stat-label"><?php esc_html_e( 'New Messages', 'idbasica' ); ?></span>
+							<span class="stat-label"><?php esc_html_e( 'New Messages', 'id-basica' ); ?></span>
 						</div>
 						<div class="stat-item">
 							<span class="stat-value">5</span>
-							<span class="stat-label"><?php esc_html_e( 'Tasks', 'idbasica' ); ?></span>
+							<span class="stat-label"><?php esc_html_e( 'Tasks', 'id-basica' ); ?></span>
 						</div>
 						<div class="stat-item">
 							<span class="stat-value">3</span>
-							<span class="stat-label"><?php esc_html_e( 'Events Today', 'idbasica' ); ?></span>
+							<span class="stat-label"><?php esc_html_e( 'Events Today', 'id-basica' ); ?></span>
 						</div>
 						<div class="stat-item">
 							<span class="stat-value">28</span>
-							<span class="stat-label"><?php esc_html_e( 'New Documents', 'idbasica' ); ?></span>
+							<span class="stat-label"><?php esc_html_e( 'New Documents', 'id-basica' ); ?></span>
 						</div>
 					</div>
 				</div>
@@ -57,29 +57,29 @@ get_header();
 			<!-- Recent Activity Widget -->
 			<div class="widget">
 				<div class="widget__header">
-					<h3><i class="fas fa-history"></i> <?php esc_html_e( 'Recent Activity', 'idbasica' ); ?></h3>
+					<h3><i class="fas fa-history"></i> <?php esc_html_e( 'Recent Activity', 'id-basica' ); ?></h3>
 				</div>
 				<div class="widget__content">
 					<ul class="activity-list">
 						<li class="activity-item">
 							<div class="activity-icon"><i class="fas fa-file-alt"></i></div>
 							<div class="activity-content">
-								<div class="activity-title"><?php esc_html_e( 'New Document Added', 'idbasica' ); ?></div>
-								<div class="activity-meta"><?php esc_html_e( '2 hours ago', 'idbasica' ); ?></div>
+								<div class="activity-title"><?php esc_html_e( 'New Document Added', 'id-basica' ); ?></div>
+								<div class="activity-meta"><?php esc_html_e( '2 hours ago', 'id-basica' ); ?></div>
 							</div>
 						</li>
 						<li class="activity-item">
 							<div class="activity-icon"><i class="fas fa-user"></i></div>
 							<div class="activity-content">
-								<div class="activity-title"><?php esc_html_e( 'Profile Updated', 'idbasica' ); ?></div>
-								<div class="activity-meta"><?php esc_html_e( 'Yesterday', 'idbasica' ); ?></div>
+								<div class="activity-title"><?php esc_html_e( 'Profile Updated', 'id-basica' ); ?></div>
+								<div class="activity-meta"><?php esc_html_e( 'Yesterday', 'id-basica' ); ?></div>
 							</div>
 						</li>
 						<li class="activity-item">
 							<div class="activity-icon"><i class="fas fa-comment"></i></div>
 							<div class="activity-content">
-								<div class="activity-title"><?php esc_html_e( 'New Comment', 'idbasica' ); ?></div>
-								<div class="activity-meta"><?php esc_html_e( '3 days ago', 'idbasica' ); ?></div>
+								<div class="activity-title"><?php esc_html_e( 'New Comment', 'id-basica' ); ?></div>
+								<div class="activity-meta"><?php esc_html_e( '3 days ago', 'id-basica' ); ?></div>
 							</div>
 						</li>
 					</ul>
@@ -89,37 +89,37 @@ get_header();
 			<!-- Calendar Widget -->
 			<div class="widget">
 				<div class="widget__header">
-					<h3><i class="fas fa-calendar-alt"></i> <?php esc_html_e( 'Upcoming Events', 'idbasica' ); ?></h3>
+					<h3><i class="fas fa-calendar-alt"></i> <?php esc_html_e( 'Upcoming Events', 'id-basica' ); ?></h3>
 				</div>
 				<div class="widget__content">
 					<ul class="event-list">
 						<li class="event-item">
 							<div class="event-date">
-								<span class="event-month"><?php esc_html_e( 'JUN', 'idbasica' ); ?></span>
+								<span class="event-month"><?php esc_html_e( 'JUN', 'id-basica' ); ?></span>
 								<span class="event-day">5</span>
 							</div>
 							<div class="event-content">
-								<div class="event-title"><?php esc_html_e( 'Team Meeting', 'idbasica' ); ?></div>
+								<div class="event-title"><?php esc_html_e( 'Team Meeting', 'id-basica' ); ?></div>
 								<div class="event-meta"><i class="fas fa-clock"></i> 10:00 AM</div>
 							</div>
 						</li>
 						<li class="event-item">
 							<div class="event-date">
-								<span class="event-month"><?php esc_html_e( 'JUN', 'idbasica' ); ?></span>
+								<span class="event-month"><?php esc_html_e( 'JUN', 'id-basica' ); ?></span>
 								<span class="event-day">10</span>
 							</div>
 							<div class="event-content">
-								<div class="event-title"><?php esc_html_e( 'Project Deadline', 'idbasica' ); ?></div>
+								<div class="event-title"><?php esc_html_e( 'Project Deadline', 'id-basica' ); ?></div>
 								<div class="event-meta"><i class="fas fa-clock"></i> 5:00 PM</div>
 							</div>
 						</li>
 						<li class="event-item">
 							<div class="event-date">
-								<span class="event-month"><?php esc_html_e( 'JUN', 'idbasica' ); ?></span>
+								<span class="event-month"><?php esc_html_e( 'JUN', 'id-basica' ); ?></span>
 								<span class="event-day">15</span>
 							</div>
 							<div class="event-content">
-								<div class="event-title"><?php esc_html_e( 'Client Presentation', 'idbasica' ); ?></div>
+								<div class="event-title"><?php esc_html_e( 'Client Presentation', 'id-basica' ); ?></div>
 								<div class="event-meta"><i class="fas fa-clock"></i> 2:30 PM</div>
 							</div>
 						</li>
@@ -130,25 +130,25 @@ get_header();
 			<!-- Quick Actions Widget -->
 			<div class="widget">
 				<div class="widget__header">
-					<h3><i class="fas fa-bolt"></i> <?php esc_html_e( 'Quick Actions', 'idbasica' ); ?></h3>
+					<h3><i class="fas fa-bolt"></i> <?php esc_html_e( 'Quick Actions', 'id-basica' ); ?></h3>
 				</div>
 				<div class="widget__content">
 					<div class="quick-actions">
 						<a href="#" class="quick-action-item">
 							<i class="fas fa-file-alt"></i>
-							<span><?php esc_html_e( 'New Document', 'idbasica' ); ?></span>
+							<span><?php esc_html_e( 'New Document', 'id-basica' ); ?></span>
 						</a>
 						<a href="#" class="quick-action-item">
 							<i class="fas fa-calendar-plus"></i>
-							<span><?php esc_html_e( 'Add Event', 'idbasica' ); ?></span>
+							<span><?php esc_html_e( 'Add Event', 'id-basica' ); ?></span>
 						</a>
 						<a href="#" class="quick-action-item">
 							<i class="fas fa-user-plus"></i>
-							<span><?php esc_html_e( 'Add User', 'idbasica' ); ?></span>
+							<span><?php esc_html_e( 'Add User', 'id-basica' ); ?></span>
 						</a>
 						<a href="#" class="quick-action-item">
 							<i class="fas fa-envelope"></i>
-							<span><?php esc_html_e( 'Send Message', 'idbasica' ); ?></span>
+							<span><?php esc_html_e( 'Send Message', 'id-basica' ); ?></span>
 						</a>
 					</div>
 				</div>
@@ -163,29 +163,29 @@ get_header();
 			<table>
 				<thead>
 					<tr>
-						<th><?php esc_html_e( 'Document', 'idbasica' ); ?></th>
-						<th><?php esc_html_e( 'Category', 'idbasica' ); ?></th>
-						<th><?php esc_html_e( 'Author', 'idbasica' ); ?></th>
-						<th><?php esc_html_e( 'Date', 'idbasica' ); ?></th>
-						<th><?php esc_html_e( 'Actions', 'idbasica' ); ?></th>
+						<th><?php esc_html_e( 'Document', 'id-basica' ); ?></th>
+						<th><?php esc_html_e( 'Category', 'id-basica' ); ?></th>
+						<th><?php esc_html_e( 'Author', 'id-basica' ); ?></th>
+						<th><?php esc_html_e( 'Date', 'id-basica' ); ?></th>
+						<th><?php esc_html_e( 'Actions', 'id-basica' ); ?></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<td>
 							<a href="#" class="document-link">
-								<i class="fas fa-file-pdf"></i> <?php esc_html_e( 'Company Policy', 'idbasica' ); ?>
+								<i class="fas fa-file-pdf"></i> <?php esc_html_e( 'Company Policy', 'id-basica' ); ?>
 							</a>
 						</td>
-						<td><?php esc_html_e( 'HR', 'idbasica' ); ?></td>
-						<td><?php esc_html_e( 'Admin', 'idbasica' ); ?></td>
-						<td><?php esc_html_e( 'Jun 1, 2025', 'idbasica' ); ?></td>
+						<td><?php esc_html_e( 'HR', 'id-basica' ); ?></td>
+						<td><?php esc_html_e( 'Admin', 'id-basica' ); ?></td>
+						<td><?php esc_html_e( 'Jun 1, 2025', 'id-basica' ); ?></td>
 						<td>
 							<div class="table-actions">
-								<a href="#" class="action-link" data-tooltip="<?php esc_attr_e( 'View', 'idbasica' ); ?>">
+								<a href="#" class="action-link" data-tooltip="<?php esc_attr_e( 'View', 'id-basica' ); ?>">
 									<i class="fas fa-eye"></i>
 								</a>
-								<a href="#" class="action-link" data-tooltip="<?php esc_attr_e( 'Download', 'idbasica' ); ?>">
+								<a href="#" class="action-link" data-tooltip="<?php esc_attr_e( 'Download', 'id-basica' ); ?>">
 									<i class="fas fa-download"></i>
 								</a>
 							</div>
@@ -194,18 +194,18 @@ get_header();
 					<tr>
 						<td>
 							<a href="#" class="document-link">
-								<i class="fas fa-file-word"></i> <?php esc_html_e( 'Project Proposal', 'idbasica' ); ?>
+								<i class="fas fa-file-word"></i> <?php esc_html_e( 'Project Proposal', 'id-basica' ); ?>
 							</a>
 						</td>
-						<td><?php esc_html_e( 'Projects', 'idbasica' ); ?></td>
-						<td><?php esc_html_e( 'John Doe', 'idbasica' ); ?></td>
-						<td><?php esc_html_e( 'May 28, 2025', 'idbasica' ); ?></td>
+						<td><?php esc_html_e( 'Projects', 'id-basica' ); ?></td>
+						<td><?php esc_html_e( 'John Doe', 'id-basica' ); ?></td>
+						<td><?php esc_html_e( 'May 28, 2025', 'id-basica' ); ?></td>
 						<td>
 							<div class="table-actions">
-								<a href="#" class="action-link" data-tooltip="<?php esc_attr_e( 'View', 'idbasica' ); ?>">
+								<a href="#" class="action-link" data-tooltip="<?php esc_attr_e( 'View', 'id-basica' ); ?>">
 									<i class="fas fa-eye"></i>
 								</a>
-								<a href="#" class="action-link" data-tooltip="<?php esc_attr_e( 'Download', 'idbasica' ); ?>">
+								<a href="#" class="action-link" data-tooltip="<?php esc_attr_e( 'Download', 'id-basica' ); ?>">
 									<i class="fas fa-download"></i>
 								</a>
 							</div>
@@ -214,18 +214,18 @@ get_header();
 					<tr>
 						<td>
 							<a href="#" class="document-link">
-								<i class="fas fa-file-excel"></i> <?php esc_html_e( 'Monthly Report', 'idbasica' ); ?>
+								<i class="fas fa-file-excel"></i> <?php esc_html_e( 'Monthly Report', 'id-basica' ); ?>
 							</a>
 						</td>
-						<td><?php esc_html_e( 'Finance', 'idbasica' ); ?></td>
-						<td><?php esc_html_e( 'Jane Smith', 'idbasica' ); ?></td>
-						<td><?php esc_html_e( 'May 15, 2025', 'idbasica' ); ?></td>
+						<td><?php esc_html_e( 'Finance', 'id-basica' ); ?></td>
+						<td><?php esc_html_e( 'Jane Smith', 'id-basica' ); ?></td>
+						<td><?php esc_html_e( 'May 15, 2025', 'id-basica' ); ?></td>
 						<td>
 							<div class="table-actions">
-								<a href="#" class="action-link" data-tooltip="<?php esc_attr_e( 'View', 'idbasica' ); ?>">
+								<a href="#" class="action-link" data-tooltip="<?php esc_attr_e( 'View', 'id-basica' ); ?>">
 									<i class="fas fa-eye"></i>
 								</a>
-								<a href="#" class="action-link" data-tooltip="<?php esc_attr_e( 'Download', 'idbasica' ); ?>">
+								<a href="#" class="action-link" data-tooltip="<?php esc_attr_e( 'Download', 'id-basica' ); ?>">
 									<i class="fas fa-download"></i>
 								</a>
 							</div>
@@ -237,10 +237,10 @@ get_header();
 		<?php
 		$card_content = ob_get_clean();
 
-		$card_footer = '<a href="#" class="btn btn--primary">' . esc_html__( 'View All Documents', 'idbasica' ) . '</a>';
+		$card_footer = '<a href="#" class="btn btn--primary">' . esc_html__( 'View All Documents', 'id-basica' ) . '</a>';
 
-		idbasica_card(
-			esc_html__( 'Recent Documents', 'idbasica' ),
+		id_basica_card(
+			esc_html__( 'Recent Documents', 'id-basica' ),
 			$card_content,
 			array(
 				'footer' => $card_footer,
@@ -260,17 +260,17 @@ get_header();
 					<label for="task1"></label>
 				</div>
 				<div class="task-content">
-					<div class="task-title"><?php esc_html_e( 'Complete project proposal', 'idbasica' ); ?></div>
+					<div class="task-title"><?php esc_html_e( 'Complete project proposal', 'id-basica' ); ?></div>
 					<div class="task-meta">
-						<span class="task-due"><i class="fas fa-calendar"></i> <?php esc_html_e( 'Due: Jun 5, 2025', 'idbasica' ); ?></span>
-						<span class="task-priority task-priority--high"><?php esc_html_e( 'High', 'idbasica' ); ?></span>
+						<span class="task-due"><i class="fas fa-calendar"></i> <?php esc_html_e( 'Due: Jun 5, 2025', 'id-basica' ); ?></span>
+						<span class="task-priority task-priority--high"><?php esc_html_e( 'High', 'id-basica' ); ?></span>
 					</div>
 				</div>
 				<div class="task-actions">
-					<a href="#" class="action-link" data-tooltip="<?php esc_attr_e( 'Edit', 'idbasica' ); ?>">
+					<a href="#" class="action-link" data-tooltip="<?php esc_attr_e( 'Edit', 'id-basica' ); ?>">
 						<i class="fas fa-edit"></i>
 					</a>
-					<a href="#" class="action-link" data-tooltip="<?php esc_attr_e( 'Delete', 'idbasica' ); ?>">
+					<a href="#" class="action-link" data-tooltip="<?php esc_attr_e( 'Delete', 'id-basica' ); ?>">
 						<i class="fas fa-trash"></i>
 					</a>
 				</div>
@@ -281,17 +281,17 @@ get_header();
 					<label for="task2"></label>
 				</div>
 				<div class="task-content">
-					<div class="task-title"><?php esc_html_e( 'Schedule team meeting', 'idbasica' ); ?></div>
+					<div class="task-title"><?php esc_html_e( 'Schedule team meeting', 'id-basica' ); ?></div>
 					<div class="task-meta">
-						<span class="task-due"><i class="fas fa-calendar"></i> <?php esc_html_e( 'Due: Jun 7, 2025', 'idbasica' ); ?></span>
-						<span class="task-priority task-priority--medium"><?php esc_html_e( 'Medium', 'idbasica' ); ?></span>
+						<span class="task-due"><i class="fas fa-calendar"></i> <?php esc_html_e( 'Due: Jun 7, 2025', 'id-basica' ); ?></span>
+						<span class="task-priority task-priority--medium"><?php esc_html_e( 'Medium', 'id-basica' ); ?></span>
 					</div>
 				</div>
 				<div class="task-actions">
-					<a href="#" class="action-link" data-tooltip="<?php esc_attr_e( 'Edit', 'idbasica' ); ?>">
+					<a href="#" class="action-link" data-tooltip="<?php esc_attr_e( 'Edit', 'id-basica' ); ?>">
 						<i class="fas fa-edit"></i>
 					</a>
-					<a href="#" class="action-link" data-tooltip="<?php esc_attr_e( 'Delete', 'idbasica' ); ?>">
+					<a href="#" class="action-link" data-tooltip="<?php esc_attr_e( 'Delete', 'id-basica' ); ?>">
 						<i class="fas fa-trash"></i>
 					</a>
 				</div>
@@ -302,17 +302,17 @@ get_header();
 					<label for="task3"></label>
 				</div>
 				<div class="task-content">
-					<div class="task-title"><?php esc_html_e( 'Review monthly reports', 'idbasica' ); ?></div>
+					<div class="task-title"><?php esc_html_e( 'Review monthly reports', 'id-basica' ); ?></div>
 					<div class="task-meta">
-						<span class="task-due"><i class="fas fa-calendar"></i> <?php esc_html_e( 'Due: Jun 12, 2025', 'idbasica' ); ?></span>
-						<span class="task-priority task-priority--low"><?php esc_html_e( 'Low', 'idbasica' ); ?></span>
+						<span class="task-due"><i class="fas fa-calendar"></i> <?php esc_html_e( 'Due: Jun 12, 2025', 'id-basica' ); ?></span>
+						<span class="task-priority task-priority--low"><?php esc_html_e( 'Low', 'id-basica' ); ?></span>
 					</div>
 				</div>
 				<div class="task-actions">
-					<a href="#" class="action-link" data-tooltip="<?php esc_attr_e( 'Edit', 'idbasica' ); ?>">
+					<a href="#" class="action-link" data-tooltip="<?php esc_attr_e( 'Edit', 'id-basica' ); ?>">
 						<i class="fas fa-edit"></i>
 					</a>
-					<a href="#" class="action-link" data-tooltip="<?php esc_attr_e( 'Delete', 'idbasica' ); ?>">
+					<a href="#" class="action-link" data-tooltip="<?php esc_attr_e( 'Delete', 'id-basica' ); ?>">
 						<i class="fas fa-trash"></i>
 					</a>
 				</div>
@@ -321,10 +321,10 @@ get_header();
 		<?php
 		$card_content = ob_get_clean();
 
-		$card_footer = '<a href="#" class="btn btn--primary">' . esc_html__( 'View All Tasks', 'idbasica' ) . '</a>';
+		$card_footer = '<a href="#" class="btn btn--primary">' . esc_html__( 'View All Tasks', 'id-basica' ) . '</a>';
 
-		idbasica_card(
-			esc_html__( 'Tasks Overview', 'idbasica' ),
+		id_basica_card(
+			esc_html__( 'Tasks Overview', 'id-basica' ),
 			$card_content,
 			array(
 				'footer' => $card_footer,

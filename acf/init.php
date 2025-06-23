@@ -26,8 +26,8 @@ if ( defined( 'MY_ACF_PATH' ) ) {
 }
 
 // Define path and URL to the ACF plugin.
-define( 'MY_ACF_PATH', IDBASICA_THEME_DIR . '/acf/advanced-custom-fields-pro/' );
-define( 'MY_ACF_URL', IDBASICA_THEME_URI . '/acf/advanced-custom-fields-pro/' );
+define( 'MY_ACF_PATH', ID_BASICA_THEME_DIR . '/acf/advanced-custom-fields-pro/' );
+define( 'MY_ACF_URL', ID_BASICA_THEME_URI . '/acf/advanced-custom-fields-pro/' );
 
 // Include the ACF plugin.
 include_once( MY_ACF_PATH . 'acf.php' );
@@ -87,4 +87,4 @@ if ( is_plugin_active( 'advanced-custom-fields/acf.php' ) ) {
 	}
 }
 
-require_once IDBASICA_THEME_DIR . '/acf/options.php';
+require_once ID_BASICA_THEME_DIR . '/acf/options.php';

@@ -15,12 +15,12 @@ get_header();
 
 <div class="error-page">
 	<h1 class="error-page__code">404</h1>
-	<h2 class="error-page__title"><?php esc_html_e( 'Page Not Found', 'idbasica' ); ?></h2>
+	<h2 class="error-page__title"><?php esc_html_e( 'Page Not Found', 'id-basica' ); ?></h2>
 	<p class="error-page__message">
-		<?php esc_html_e( 'The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.', 'idbasica' ); ?>
+		<?php esc_html_e( 'The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.', 'id-basica' ); ?>
 	</p>
 	<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="btn btn--primary">
-		<i class="fas fa-home"></i> <?php esc_html_e( 'Back to Dashboard', 'idbasica' ); ?>
+		<i class="fas fa-home"></i> <?php esc_html_e( 'Back to Dashboard', 'id-basica' ); ?>
 	</a>
 </div>
 

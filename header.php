@@ -47,7 +47,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</button>
 
 		<!-- Dashboard Navigation -->
-		<?php idbasica_dashboard_menu(); ?>
+		<?php id_basica_dashboard_menu(); ?>
 	</aside>
 
 	<!-- Main Content -->
@@ -64,14 +64,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<div class="header__actions">
 					<!-- Search Form -->
 					<form class="header__search-form" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-						<input type="search" class="search-field" placeholder="<?php esc_attr_e( 'Search', 'idbasica' ); ?>" value="<?php echo get_search_query(); ?>" name="s" />
+						<input type="search" class="search-field" placeholder="<?php esc_attr_e( 'Search', 'id-basica' ); ?>" value="<?php echo get_search_query(); ?>" name="s" />
 						<button type="submit" class="search-submit">
 							<i class="fas fa-search"></i>
 						</button>
 					</form>
 
 					<!-- User Menu -->
-					<?php idbasica_user_menu(); ?>
+					<?php id_basica_user_menu(); ?>
 				</div>
 			</div>
 		</header>

@@ -11,17 +11,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define theme constants
-define( 'IDBASICA_VERSION', '1.0.0' );
-define( 'IDBASICA_THEME_DIR', get_template_directory() );
-define( 'IDBASICA_THEME_URI', get_template_directory_uri() );
+define( 'ID_BASICA_VERSION', '1.0.0' );
+define( 'ID_BASICA_THEME_DIR', get_template_directory() );
+define( 'ID_BASICA_THEME_URI', get_template_directory_uri() );
 
 /**
  * Theme setup function
  */
-function idbasica_setup() {
+function id_basica_setup() {
 	// Add default posts feed links to head (comments feed links are removed)
 	// We're using a custom implementation to remove comment feeds
-	add_action( 'wp_head', 'idbasica_custom_feed_links', 3 );
+	add_action( 'wp_head', 'id_basica_custom_feed_links', 3 );
 
 	// Let WordPress manage the document title.
 	add_theme_support( 'title-tag' );
@@ -42,8 +42,8 @@ function idbasica_setup() {
 	// Register navigation menus
 	register_nav_menus(
 		array(
-			'dashboard-menu' => esc_html__( 'Dashboard Menu', 'idbasica' ),
-			'user-menu'      => esc_html__( 'User Menu', 'idbasica' ),
+			'dashboard-menu' => esc_html__( 'Dashboard Menu', 'id-basica' ),
+			'user-menu'      => esc_html__( 'User Menu', 'id-basica' ),
 		)
 	);
 
@@ -63,25 +63,25 @@ function idbasica_setup() {
 		$content_width = 1200;
 	}
 }
-add_action( 'after_setup_theme', 'idbasica_setup' );
+add_action( 'after_setup_theme', 'id_basica_setup' );
 
 /**
  * Custom feed links without comments
  */
-function idbasica_custom_feed_links() {
+function id_basica_custom_feed_links() {
 	// Only add the posts feed, skip comments feed
 	echo '<link rel="alternate" type="' . feed_content_type() . '" title="' . esc_attr( get_bloginfo( 'name' ) ) . ' &raquo; Feed" href="' . esc_url( get_feed_link() ) . "\" />\n";
 }
 
-require_once IDBASICA_THEME_DIR . '/inc/helpers.php';
-require_once IDBASICA_THEME_DIR . '/acf/init.php';
-require_once IDBASICA_THEME_DIR . '/inc/admin/init.php';
+require_once ID_BASICA_THEME_DIR . '/inc/helpers.php';
+require_once ID_BASICA_THEME_DIR . '/acf/init.php';
+require_once ID_BASICA_THEME_DIR . '/inc/admin/init.php';
 
 /**
  * Enqueue scripts and styles.
  */
-function idbasica_styles() {
-	$main_css_asset_file = include( IDBASICA_THEME_DIR . '/assets/css/main.asset.php' );
+function id_basica_styles() {
+	$main_css_asset_file = include( ID_BASICA_THEME_DIR . '/assets/css/main.asset.php' );
 
 	// Enqueue Font Awesome for icons
 	wp_enqueue_style(
@@ -93,42 +93,42 @@ function idbasica_styles() {
 
 	// Enqueue main stylesheet
 	wp_enqueue_style(
-		'idbasica-style',
-		IDBASICA_THEME_URI . '/assets/css/main.css',
+		'id-basica-style',
+		ID_BASICA_THEME_URI . '/assets/css/main.css',
 		$main_css_asset_file['dependencies'],
 		$main_css_asset_file['version']
 	);
 }
-add_action( 'wp_enqueue_scripts', 'idbasica_styles' );
+add_action( 'wp_enqueue_scripts', 'id_basica_styles' );
 
 /**
  * Enqueue scripts and styles.
  */
-function idbasica_scripts() {
-	$main_js_asset_file = include( IDBASICA_THEME_DIR . '/assets/js/main.asset.php' );
+function id_basica_scripts() {
+	$main_js_asset_file = include( ID_BASICA_THEME_DIR . '/assets/js/main.asset.php' );
 
 	// Enqueue main script
 	wp_enqueue_script(
-		'idbasica-script',
-		IDBASICA_THEME_URI . '/assets/js/main.js',
+		'id-basica-script',
+		ID_BASICA_THEME_URI . '/assets/js/main.js',
 		$main_js_asset_file['dependencies'],
 		$main_js_asset_file['version']
 	);
 }
-add_action( 'wp_enqueue_scripts', 'idbasica_scripts' );
+add_action( 'wp_enqueue_scripts', 'id_basica_scripts' );
 
 // Include custom post types
-require_once IDBASICA_THEME_DIR . '/inc/post-types.php';
+require_once ID_BASICA_THEME_DIR . '/inc/post-types.php';
 
 /**
  * Register widget areas
  */
-function idbasica_widgets_init() {
+function id_basica_widgets_init() {
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Dashboard Widgets', 'idbasica' ),
+			'name'          => esc_html__( 'Dashboard Widgets', 'id-basica' ),
 			'id'            => 'dashboard-widgets',
-			'description'   => esc_html__( 'Add widgets here to appear in the dashboard.', 'idbasica' ),
+			'description'   => esc_html__( 'Add widgets here to appear in the dashboard.', 'id-basica' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</div>',
 			'before_title'  => '<div class="widget__header"><h3>',
@@ -136,12 +136,12 @@ function idbasica_widgets_init() {
 		)
 	);
 }
-add_action( 'widgets_init', 'idbasica_widgets_init' );
+add_action( 'widgets_init', 'id_basica_widgets_init' );
 
 /**
  * Dashboard functions
  */
-function idbasica_is_dashboard_user() {
+function id_basica_is_dashboard_user() {
 	// By default, only check if user is logged in
 	// You can add more specific role checks here if needed
 	return is_user_logged_in();
@@ -150,7 +150,7 @@ function idbasica_is_dashboard_user() {
 /**
  * Redirect non-admin users to the dashboard
  */
-function idbasica_redirect_to_dashboard() {
+function id_basica_redirect_to_dashboard() {
 	// Only apply to non-admin users who are logged in
 	if ( is_user_logged_in() && ! current_user_can( 'manage_options' ) && ! is_admin() ) {
 		// Don't redirect on the dashboard page itself or on logout
@@ -172,4 +172,4 @@ function idbasica_redirect_to_dashboard() {
 		}
 	}
 }
-add_action( 'template_redirect', 'idbasica_redirect_to_dashboard' );
+add_action( 'template_redirect', 'id_basica_redirect_to_dashboard' );

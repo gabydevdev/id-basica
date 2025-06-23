@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function id_basica_admin_styles() {
 	wp_enqueue_style(
-		'idbasica-admin-styles',
+		'id-basicaadmin-styles',
 		ID_BASICA_THEME_URI . '/inc/admin/assets/css/admin.css',
 		array(),
 		ID_BASICA_VERSION
@@ -28,7 +28,7 @@ add_action( 'admin_enqueue_scripts', 'id_basica_admin_styles' );
  */
 function id_basica_admin_scripts() {
 	wp_enqueue_script(
-		'idbasica-admin-scripts',
+		'id-basicaadmin-scripts',
 		ID_BASICA_THEME_URI . '/inc/admin/assets/js/admin.js',
 		array( 'jquery' ),
 		ID_BASICA_VERSION,
