@@ -13,54 +13,54 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Custom admin styles
  */
-function idbasica_admin_styles() {
+function id_basica_admin_styles() {
 	wp_enqueue_style(
 		'idbasica-admin-styles',
-		IDBASICA_THEME_URI . '/inc/admin/assets/css/admin.css',
+		ID_BASICA_THEME_URI . '/inc/admin/assets/css/admin.css',
 		array(),
-		IDBASICA_VERSION
+		ID_BASICA_VERSION
 	);
 }
-add_action( 'admin_enqueue_scripts', 'idbasica_admin_styles' );
+add_action( 'admin_enqueue_scripts', 'id_basica_admin_styles' );
 
 /**
  * Custom admin scripts
  */
-function idbasica_admin_scripts() {
+function id_basica_admin_scripts() {
 	wp_enqueue_script(
 		'idbasica-admin-scripts',
-		IDBASICA_THEME_URI . '/inc/admin/assets/js/admin.js',
+		ID_BASICA_THEME_URI . '/inc/admin/assets/js/admin.js',
 		array( 'jquery' ),
-		IDBASICA_VERSION,
+		ID_BASICA_VERSION,
 		true
 	);
 }
-add_action( 'admin_enqueue_scripts', 'idbasica_admin_scripts' );
+add_action( 'admin_enqueue_scripts', 'id_basica_admin_scripts' );
 
 /**
  * Customize admin footer text
  */
-function idbasica_admin_footer_text() {
+function id_basica_admin_footer_text() {
 	echo 'Powered by <a href="https://wordpress.org">WordPress</a> | <a href="https://github.com/gabydevdev/idbasica">ID Basica</a>';
 }
-add_filter( 'admin_footer_text', 'idbasica_admin_footer_text' );
+add_filter( 'admin_footer_text', 'id_basica_admin_footer_text' );
 
 /**
  * Add custom dashboard widget
  */
-function idbasica_add_dashboard_widgets() {
+function id_basica_add_dashboard_widgets() {
 	wp_add_dashboard_widget(
-		'idbasica_dashboard_widget',
+		'id_basica_dashboard_widget',
 		'ID Basica Theme Information',
-		'idbasica_dashboard_widget_callback'
+		'id_basica_dashboard_widget_callback'
 	);
 }
-add_action( 'wp_dashboard_setup', 'idbasica_add_dashboard_widgets' );
+add_action( 'wp_dashboard_setup', 'id_basica_add_dashboard_widgets' );
 
 /**
  * Custom dashboard widget callback
  */
-function idbasica_dashboard_widget_callback() {
+function id_basica_dashboard_widget_callback() {
 	echo '<p><strong>Welcome to ID Basica!</strong></p>';
 	echo '<ul>';
 	echo '<li><a href="https://wordpress.org/documentation/">WordPress Documentation</a></li>';
@@ -72,7 +72,7 @@ function idbasica_dashboard_widget_callback() {
 /**
  * Remove all comment-related functionality
  */
-function idbasica_remove_comments() {
+function id_basica_remove_comments() {
 	// Remove comments menu
 	add_action( 'admin_menu', function() {
 		remove_menu_page( 'edit-comments.php' );
@@ -133,18 +133,18 @@ function idbasica_remove_comments() {
 		return $columns;
 	});
 }
-add_action( 'after_setup_theme', 'idbasica_remove_comments' );
+add_action( 'after_setup_theme', 'id_basica_remove_comments' );
 
 /**
  * Remove comment-related widgets
  */
-function idbasica_remove_comment_widgets() {
+function id_basica_remove_comment_widgets() {
 	// Unregister default WordPress widgets
 	add_action( 'widgets_init', function() {
 		unregister_widget( 'WP_Widget_Recent_Comments' );
 	}, 20 );
 }
-add_action( 'after_setup_theme', 'idbasica_remove_comment_widgets' );
+add_action( 'after_setup_theme', 'id_basica_remove_comment_widgets' );
 
 /**
  * Temporarily hide posts from WordPress dashboard
@@ -152,7 +152,7 @@ add_action( 'after_setup_theme', 'idbasica_remove_comment_widgets' );
  * This function removes the 'Posts' menu item and related functionality from the WordPress admin.
  * To restore posts, simply comment out or remove this function.
  */
-function idbasica_hide_posts() {
+function id_basica_hide_posts() {
     // Remove 'Posts' menu from admin menu
     add_action( 'admin_menu', function() {
         remove_menu_page( 'edit.php' );
@@ -204,5 +204,5 @@ function idbasica_hide_posts() {
         $wp_admin_bar->remove_node( 'new-post' );
     }, 999);
 }
-add_action( 'after_setup_theme', 'idbasica_hide_posts' );
+add_action( 'after_setup_theme', 'id_basica_hide_posts' );
 

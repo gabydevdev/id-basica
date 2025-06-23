@@ -13,23 +13,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Register custom post types
  */
-function idbasica_register_post_types() {
+function id_basica_register_post_types() {
 	// Application post type
 	$labels = array(
-		'name'               => _x( 'Applications', 'Post type general name', 'idbasica' ),
-		'singular_name'      => _x( 'Application', 'Post type singular name', 'idbasica' ),
-		'menu_name'          => _x( 'Applications', 'Admin Menu text', 'idbasica' ),
-		'name_admin_bar'     => _x( 'Application', 'Add New on Toolbar', 'idbasica' ),
-		'add_new'            => __( 'Add New', 'idbasica' ),
-		'add_new_item'       => __( 'Add New Application', 'idbasica' ),
-		'new_item'           => __( 'New Application', 'idbasica' ),
-		'edit_item'          => __( 'Edit Application', 'idbasica' ),
-		'view_item'          => __( 'View Application', 'idbasica' ),
-		'all_items'          => __( 'All Applications', 'idbasica' ),
-		'search_items'       => __( 'Search Applications', 'idbasica' ),
-		'not_found'          => __( 'No applications found.', 'idbasica' ),
-		'not_found_in_trash' => __( 'No applications found in Trash.', 'idbasica' ),
-		'archives'           => _x( 'Application archives', 'The post type archive label used in nav menus', 'idbasica' ),
+		'name'               => _x( 'Applications', 'Post type general name', 'id-basica' ),
+		'singular_name'      => _x( 'Application', 'Post type singular name', 'id-basica' ),
+		'menu_name'          => _x( 'Applications', 'Admin Menu text', 'id-basica' ),
+		'name_admin_bar'     => _x( 'Application', 'Add New on Toolbar', 'id-basica' ),
+		'add_new'            => __( 'Add New', 'id-basica' ),
+		'add_new_item'       => __( 'Add New Application', 'id-basica' ),
+		'new_item'           => __( 'New Application', 'id-basica' ),
+		'edit_item'          => __( 'Edit Application', 'id-basica' ),
+		'view_item'          => __( 'View Application', 'id-basica' ),
+		'all_items'          => __( 'All Applications', 'id-basica' ),
+		'search_items'       => __( 'Search Applications', 'id-basica' ),
+		'not_found'          => __( 'No applications found.', 'id-basica' ),
+		'not_found_in_trash' => __( 'No applications found in Trash.', 'id-basica' ),
+		'archives'           => _x( 'Application archives', 'The post type archive label used in nav menus', 'id-basica' ),
 	);
 
 	$args = array(
@@ -51,4 +51,4 @@ function idbasica_register_post_types() {
 
 	register_post_type( 'application', $args );
 }
-add_action( 'init', 'idbasica_register_post_types' );
+add_action( 'init', 'id_basica_register_post_types' );

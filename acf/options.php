@@ -18,14 +18,14 @@ if ( ! class_exists( 'ACF' ) ) {
 /**
  * Register ACF Options Pages
  */
-function idbasica_register_acf_options_pages() {
+function id_basica_register_acf_options_pages() {
 	// Check if function exists
 	if ( function_exists( 'acf_add_options_page' ) ) {
 		// Add parent options page
 		acf_add_options_page(
 			array(
-				'page_title' => __( 'Intranet Setup', 'idbasica' ),
-				'menu_title' => __( 'Intranet Setup', 'idbasica' ),
+				'page_title' => __( 'Intranet Setup', 'id-basica' ),
+				'menu_title' => __( 'Intranet Setup', 'id-basica' ),
 				'menu_slug'  => 'intranet-settings',
 				'capability' => 'manage_options',
 				'redirect'   => true,
@@ -37,8 +37,8 @@ function idbasica_register_acf_options_pages() {
 		// Add sub options pages
 		acf_add_options_sub_page(
 			array(
-				'page_title'  => __( 'General Settings', 'idbasica' ),
-				'menu_title'  => __( 'General Settings', 'idbasica' ),
+				'page_title'  => __( 'General Settings', 'id-basica' ),
+				'menu_title'  => __( 'General Settings', 'id-basica' ),
 				'parent_slug' => 'intranet-settings',
 				'menu_slug'   => 'intranet-general-settings',
 			)
@@ -46,8 +46,8 @@ function idbasica_register_acf_options_pages() {
 
 		acf_add_options_sub_page(
 			array(
-				'page_title'  => __( 'Layout Settings', 'idbasica' ),
-				'menu_title'  => __( 'Layout Settings', 'idbasica' ),
+				'page_title'  => __( 'Layout Settings', 'id-basica' ),
+				'menu_title'  => __( 'Layout Settings', 'id-basica' ),
 				'parent_slug' => 'intranet-settings',
 				'menu_slug'   => 'intranet-layout-settings',
 			)
@@ -55,20 +55,20 @@ function idbasica_register_acf_options_pages() {
 
 		acf_add_options_sub_page(
 			array(
-				'page_title'  => __( 'Widget Settings', 'idbasica' ),
-				'menu_title'  => __( 'Widget Settings', 'idbasica' ),
+				'page_title'  => __( 'Widget Settings', 'id-basica' ),
+				'menu_title'  => __( 'Widget Settings', 'id-basica' ),
 				'parent_slug' => 'intranet-settings',
 				'menu_slug'   => 'intranet-widget-settings',
 			)
 		);
 	}
 }
-add_action( 'acf/init', 'idbasica_register_acf_options_pages' );
+add_action( 'acf/init', 'id_basica_register_acf_options_pages' );
 
 /**
  * Register custom ACF fields
  */
-function idbasica_register_acf_fields() {
+function id_basica_register_acf_fields() {
 	// Check if function exists
 	if ( function_exists( 'acf_add_local_field_group' ) ) {
 
@@ -323,7 +323,7 @@ function idbasica_register_acf_fields() {
 		);
 	}
 }
-add_action( 'acf/init', 'idbasica_register_acf_fields' );
+add_action( 'acf/init', 'id_basica_register_acf_fields' );
 
 // Include custom ACF field groups
 require_once IDBASICA_THEME_DIR . '/acf/group-fields.php';

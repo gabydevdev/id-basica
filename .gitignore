@@ -32,7 +32,7 @@ composer.lock
 !.env.example
 
 # Build files
-# /assets
+/build
 /assets/css/*
 /assets/js/*
 

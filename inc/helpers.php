@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @return string User's name
  */
-function idbasica_get_user_name() {
+function id_basica_get_user_name() {
 	$current_user = wp_get_current_user();
 
 	if ( ! $current_user->exists() ) {
@@ -36,7 +36,7 @@ function idbasica_get_user_name() {
  * @param string $default Default avatar URL
  * @return string Avatar HTML
  */
-function idbasica_get_user_avatar( $size = 40, $default = '' ) {
+function id_basica_get_user_avatar( $size = 40, $default = '' ) {
 	$current_user = wp_get_current_user();
 
 	if ( ! $current_user->exists() ) {
@@ -52,7 +52,7 @@ function idbasica_get_user_avatar( $size = 40, $default = '' ) {
  * @param string $capability Capability to check
  * @return bool True if user has capability, false otherwise
  */
-function idbasica_user_can( $capability ) {
+function id_basica_user_can( $capability ) {
 	$current_user = wp_get_current_user();
 
 	if ( ! $current_user->exists() ) {
@@ -67,7 +67,7 @@ function idbasica_user_can( $capability ) {
  *
  * @return string HTML markup for the dashboard navigation
  */
-function idbasica_dashboard_menu() {
+function id_basica_dashboard_menu() {
 	// Check if menu exists
 	if ( has_nav_menu( 'dashboard-menu' ) ) {
 		wp_nav_menu(
@@ -75,55 +75,55 @@ function idbasica_dashboard_menu() {
 				'theme_location' => 'dashboard-menu',
 				'menu_class'     => 'sidebar__menu',
 				'container'      => false,
-				'fallback_cb'    => 'idbasica_default_menu',
+				'fallback_cb'    => 'id_basica_default_menu',
 				'items_wrap'     => '<ul class="%2$s">%3$s</ul>',
 			)
 		);
 	} else {
 		// If no menu is set, display default menu
-		idbasica_default_menu();
+		id_basica_default_menu();
 	}
 }
 
 /**
  * Default dashboard menu items when no menu is set
  */
-function idbasica_default_menu() {
+function id_basica_default_menu() {
 	?>
 	<ul class="sidebar__menu">
 		<li>
 			<a href="<?php echo esc_url( home_url( '/dashboard/' ) ); ?>" class="<?php echo is_front_page() ? 'active' : ''; ?>">
-				<span class="sidebar__menu-text"><?php esc_html_e( 'Dashboard', 'idbasica' ); ?></span>
+				<span class="sidebar__menu-text"><?php esc_html_e( 'Dashboard', 'id-basica' ); ?></span>
 			</a>
 		</li>
 		<li>
 			<a href="<?php echo esc_url( home_url( '/profile/' ) ); ?>">
-				<span class="sidebar__menu-text"><?php esc_html_e( 'Profile', 'idbasica' ); ?></span>
+				<span class="sidebar__menu-text"><?php esc_html_e( 'Profile', 'id-basica' ); ?></span>
 			</a>
 		</li>
 		<li>
 			<a href="<?php echo esc_url( home_url( '/documents/' ) ); ?>">
-				<span class="sidebar__menu-text"><?php esc_html_e( 'Documents', 'idbasica' ); ?></span>
+				<span class="sidebar__menu-text"><?php esc_html_e( 'Documents', 'id-basica' ); ?></span>
 			</a>
 		</li>
 		<li>
 			<a href="<?php echo esc_url( home_url( '/messages/' ) ); ?>">
-				<span class="sidebar__menu-text"><?php esc_html_e( 'Messages', 'idbasica' ); ?></span>
+				<span class="sidebar__menu-text"><?php esc_html_e( 'Messages', 'id-basica' ); ?></span>
 			</a>
 		</li>
 		<li>
 			<a href="<?php echo esc_url( home_url( '/calendar/' ) ); ?>">
-				<span class="sidebar__menu-text"><?php esc_html_e( 'Calendar', 'idbasica' ); ?></span>
+				<span class="sidebar__menu-text"><?php esc_html_e( 'Calendar', 'id-basica' ); ?></span>
 			</a>
 		</li>
 		<li>
 			<a href="<?php echo esc_url( home_url( '/settings/' ) ); ?>">
-				<span class="sidebar__menu-text"><?php esc_html_e( 'Settings', 'idbasica' ); ?></span>
+				<span class="sidebar__menu-text"><?php esc_html_e( 'Settings', 'id-basica' ); ?></span>
 			</a>
 		</li>
 		<li>
 			<a href="<?php echo esc_url( wp_logout_url( home_url() ) ); ?>">
-				<span class="sidebar__menu-text"><?php esc_html_e( 'Logout', 'idbasica' ); ?></span>
+				<span class="sidebar__menu-text"><?php esc_html_e( 'Logout', 'id-basica' ); ?></span>
 			</a>
 		</li>
 	</ul>
@@ -133,7 +133,7 @@ function idbasica_default_menu() {
 /**
  * Generate user menu for the dashboard header
  */
-function idbasica_user_menu() {
+function id_basica_user_menu() {
 	// Get current user info
 	$current_user = wp_get_current_user();
 
@@ -144,25 +144,25 @@ function idbasica_user_menu() {
 	?>
 	<div class="user-menu">
 		<a href="#" class="user-menu-toggle">
-			<?php echo idbasica_get_user_avatar(); ?>
-			<span class="user-name"><?php echo esc_html( idbasica_get_user_name() ); ?></span>
+			<?php echo id_basica_get_user_avatar(); ?>
+			<span class="user-name"><?php echo esc_html( id_basica_get_user_name() ); ?></span>
 			<i class="fa fa-chevron-down"></i>
 		</a>
 		<div class="user-menu-dropdown">
 			<ul>
 				<li>
 					<a href="<?php echo esc_url( home_url( '/profile/' ) ); ?>">
-						<i class="fa fa-user"></i> <?php esc_html_e( 'Profile', 'idbasica' ); ?>
+						<i class="fa fa-user"></i> <?php esc_html_e( 'Profile', 'id-basica' ); ?>
 					</a>
 				</li>
 				<li>
 					<a href="<?php echo esc_url( home_url( '/settings/' ) ); ?>">
-						<i class="fa fa-cog"></i> <?php esc_html_e( 'Settings', 'idbasica' ); ?>
+						<i class="fa fa-cog"></i> <?php esc_html_e( 'Settings', 'id-basica' ); ?>
 					</a>
 				</li>
 				<li>
 					<a href="<?php echo esc_url( wp_logout_url( home_url() ) ); ?>">
-						<i class="fa fa-sign-out-alt"></i> <?php esc_html_e( 'Logout', 'idbasica' ); ?>
+						<i class="fa fa-sign-out-alt"></i> <?php esc_html_e( 'Logout', 'id-basica' ); ?>
 					</a>
 				</li>
 			</ul>
@@ -176,7 +176,7 @@ function idbasica_user_menu() {
  *
  * @return bool True if on dashboard, false otherwise
  */
-function idbasica_is_dashboard() {
+function id_basica_is_dashboard() {
 	global $post;
 
 	if ( ! $post ) {
@@ -186,7 +186,7 @@ function idbasica_is_dashboard() {
 	// Check if current page has dashboard in the slug or title
 	return strpos( $post->post_name, 'dashboard' ) !== false ||
 		   strpos( $post->post_title, 'Dashboard' ) !== false ||
-		   has_shortcode( $post->post_content, 'idbasica_dashboard' );
+		   has_shortcode( $post->post_content, 'id_basica_dashboard' );
 }
 
 /**
@@ -194,7 +194,7 @@ function idbasica_is_dashboard() {
  *
  * @return string Page title
  */
-function idbasica_get_page_title() {
+function id_basica_get_page_title() {
 	global $post;
 
 	if ( ! $post ) {
@@ -211,7 +211,7 @@ function idbasica_get_page_title() {
  * @param string $content Card content
  * @param array  $args Additional arguments
  */
-function idbasica_card( $title, $content, $args = array() ) {
+function id_basica_card( $title, $content, $args = array() ) {
 	// Default arguments
 	$defaults = array(
 		'footer'      => '',

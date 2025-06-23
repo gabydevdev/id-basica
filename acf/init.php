@@ -33,10 +33,10 @@ define( 'MY_ACF_URL', IDBASICA_THEME_URI . '/acf/advanced-custom-fields-pro/' );
 include_once( MY_ACF_PATH . 'acf.php' );
 
 // Customize the URL setting to fix incorrect asset URLs.
-function idbasica_acf_settings_url( $url ) {
+function id_basica_acf_settings_url( $url ) {
 	return MY_ACF_URL;
 }
-add_filter( 'acf/settings/url', 'idbasica_acf_settings_url' );
+add_filter( 'acf/settings/url', 'id_basica_acf_settings_url' );
 
 /**
  * Define the path where ACF field groups will be saved as JSON files.
@@ -44,11 +44,11 @@ add_filter( 'acf/settings/url', 'idbasica_acf_settings_url' );
  * @param string $path The default save path.
  * @return string The custom save path.
  */
-function idbasica_acf_json_save_point( $path ) {
-	$save_path = IDBASICA_THEME_DIR . '/acf-json';
+function id_basica_acf_json_save_point( $path ) {
+	$save_path = ID_BASICA_THEME_DIR . '/acf-json';
 	return $save_path;
 }
-add_filter( 'acf/settings/save_json', 'idbasica_acf_json_save_point' );
+add_filter( 'acf/settings/save_json', 'id_basica_acf_json_save_point' );
 
 /**
  * Define where ACF should look for JSON files to import.
@@ -56,11 +56,11 @@ add_filter( 'acf/settings/save_json', 'idbasica_acf_json_save_point' );
  * @param array $paths Array of load paths.
  * @return array Modified array of load paths.
  */
-function idbasica_acf_json_load_point( $paths ) {
-	$paths[] = IDBASICA_THEME_DIR . '/acf-json';
+function id_basica_acf_json_load_point( $paths ) {
+	$paths[] = ID_BASICA_THEME_DIR . '/acf-json';
 	return $paths;
 }
-add_filter( 'acf/settings/load_json', 'idbasica_acf_json_load_point' );
+add_filter( 'acf/settings/load_json', 'id_basica_acf_json_load_point' );
 
 // Optionally hide ACF menu in production
 if ( ! WP_DEBUG && defined( 'WP_ENVIRONMENT_TYPE' ) && WP_ENVIRONMENT_TYPE === 'production' ) {
