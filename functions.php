@@ -73,6 +73,8 @@ function id_basica_custom_feed_links() {
 	echo '<link rel="alternate" type="' . feed_content_type() . '" title="' . esc_attr( get_bloginfo( 'name' ) ) . ' &raquo; Feed" href="' . esc_url( get_feed_link() ) . "\" />\n";
 }
 
+// Load theme helpers and ACF initialization
+require_once ID_BASICA_THEME_DIR . '/inc/dev-helpers.php';
 require_once ID_BASICA_THEME_DIR . '/inc/helpers.php';
 require_once ID_BASICA_THEME_DIR . '/acf/init.php';
 require_once ID_BASICA_THEME_DIR . '/inc/admin/init.php';

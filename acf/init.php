@@ -14,29 +14,24 @@ if ( ! function_exists( 'is_plugin_active' ) ) {
 	include_once ABSPATH . 'wp-admin/includes/plugin.php';
 }
 
-// Check if ACF PRO is active
-if ( is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
-	// Abort all bundling, ACF PRO plugin takes priority
-	return;
+if ( ! is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) || ! defined( 'MY_ACF_PATH' ) ) {
+
+	// Define path and URL to the ACF plugin.
+	define( 'MY_ACF_PATH', ID_BASICA_THEME_DIR . '/acf/advanced-custom-fields-pro/' );
+	define( 'MY_ACF_URL', ID_BASICA_THEME_URI . '/acf/advanced-custom-fields-pro/' );
+
+	// Include the ACF plugin.
+	include_once( MY_ACF_PATH . 'acf.php' );
+
+	// Customize the URL setting to fix incorrect asset URLs.
+	function id_basica_acf_settings_url( $url ) {
+		return MY_ACF_URL;
+	}
+	add_filter( 'acf/settings/url', 'id_basica_acf_settings_url' );
 }
 
-// Check if another plugin or theme has bundled ACF
-if ( defined( 'MY_ACF_PATH' ) ) {
-	return;
-}
-
-// Define path and URL to the ACF plugin.
-define( 'MY_ACF_PATH', ID_BASICA_THEME_DIR . '/acf/advanced-custom-fields-pro/' );
-define( 'MY_ACF_URL', ID_BASICA_THEME_URI . '/acf/advanced-custom-fields-pro/' );
-
-// Include the ACF plugin.
-include_once( MY_ACF_PATH . 'acf.php' );
-
-// Customize the URL setting to fix incorrect asset URLs.
-function id_basica_acf_settings_url( $url ) {
-	return MY_ACF_URL;
-}
-add_filter( 'acf/settings/url', 'id_basica_acf_settings_url' );
+require_once ID_BASICA_THEME_DIR . '/acf/options.php';
+require_once ID_BASICA_THEME_DIR . '/acf/group-fields.php';
 
 /**
  * Define the path where ACF field groups will be saved as JSON files.
@@ -86,6 +81,3 @@ if ( is_plugin_active( 'advanced-custom-fields/acf.php' ) ) {
 		error_log( 'Failed to deactivate ACF plugin: ' . $e->getMessage() );
 	}
 }
-
-require_once ID_BASICA_THEME_DIR . '/acf/options.php';
-require_once ID_BASICA_THEME_DIR . '/acf/group-fields.php';
