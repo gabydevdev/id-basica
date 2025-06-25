@@ -42,7 +42,7 @@ add_filter( 'acf/prepare_field/name=fecha_de_formato', function ($field) {
 
 	// Set default value to current date if not already set
 	if ( empty( $field['value'] ) ) {
-		$field['value'] = date('Y-m-d');
+		$field['value'] = date('d/m/Y');
 	}
 
 	return $field;
@@ -109,26 +109,6 @@ add_filter( 'acf/load_field/name=departamento', function ($field) {
 		}
 	}
 
-	return $field;
-} );
-
-add_filter( 'acf/prepare_field/name=form_name', function ($field) {
-	// Set the value to the current form's name (post title if available)
-	if ( isset( $_GET['post'] ) ) {
-		$post_id = intval( $_GET['post'] );
-		$post    = get_post( $post_id );
-		if ( $post ) {
-			$field['value'] = $post->post_title;
-		}
-	} elseif ( isset( $_POST['post_id'] ) ) {
-		$post_id = intval( $_POST['post_id'] );
-		$post    = get_post( $post_id );
-		if ( $post ) {
-			$field['value'] = $post->post_title;
-		}
-	} else {
-		$field['value'] = '';
-	}
 	return $field;
 } );
 

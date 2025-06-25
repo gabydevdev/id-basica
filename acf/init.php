@@ -9,14 +9,15 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
 if ( ! function_exists( 'is_plugin_active' ) ) {
     include_once ABSPATH . 'wp-admin/includes/plugin.php';
 }
 
 // Check ACF Pro plugin status
 $acf_pro_plugin_path = 'advanced-custom-fields-pro/acf.php';
-$acf_pro_installed = file_exists( WP_PLUGIN_DIR . '/' . $acf_pro_plugin_path );
-$acf_pro_active = is_plugin_active( $acf_pro_plugin_path );
+$acf_pro_installed   = file_exists( WP_PLUGIN_DIR . '/' . $acf_pro_plugin_path );
+$acf_pro_active      = is_plugin_active( $acf_pro_plugin_path );
 
 if ( $acf_pro_installed && ! $acf_pro_active ) {
     // ACF Pro is installed but not active - show activation notice
@@ -92,6 +93,15 @@ function id_basica_acf_json_load_point( $paths ) {
 	return $paths;
 }
 add_filter( 'acf/settings/load_json', 'id_basica_acf_json_load_point' );
+
+function id_basica_acfe_modules() {
+
+	if (ID_BASICA\DEV\is_dev()) {
+		acfe_update_setting('dev', true); // enable developer mode
+	}
+
+}
+add_action('acfe/init', 'id_basica_acfe_modules');
 
 // Optionally hide ACF menu in production
 if ( ! WP_DEBUG && defined( 'WP_ENVIRONMENT_TYPE' ) && WP_ENVIRONMENT_TYPE === 'production' ) {

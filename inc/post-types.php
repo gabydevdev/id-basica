@@ -33,20 +33,18 @@ function id_basica_register_post_types() {
 	);
 
 	$args = array(
-		'labels'             => $labels,
-		'public'             => true,
-		'publicly_queryable' => true,
-		'show_ui'            => true,
-		'show_in_menu'       => true,
-		'query_var'          => true,
-		'rewrite'            => array( 'slug' => 'application' ),
-		'capability_type'    => 'post',
-		'has_archive'        => true,
-		'hierarchical'       => false,
-		'menu_position'      => 5,
-		'menu_icon'          => 'dashicons-clipboard',
-		'supports'           => array( 'title', 'author', 'custom-fields' ),
-		'show_in_rest'       => false,
+		'labels'            => $labels,
+		'public'            => true,
+		'show_ui'           => true,
+		'menu_position'     => 20,
+		'menu_icon'         => 'dashicons-clipboard',
+		'capability_type'   => 'post',
+		'hierarchical'      => false,
+		'supports'          => array( 'title', 'author', 'custom-fields' ),
+		'has_archive'       => true,
+		'rewrite'           => array( 'slug' => 'application' ),
+		'query_var'         => true,
+		'show_in_rest'      => false,
 	);
 
 	register_post_type( 'application', $args );
