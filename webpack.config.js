@@ -19,8 +19,9 @@ const filteredPlugins = defaultConfig.plugins.filter(
 module.exports = {
 	...defaultConfig,
 	entry: {
-		'css/main': path.resolve( process.cwd(), 'src/scss', 'main.scss' ),
 		'js/main': path.resolve(process.cwd(), 'src/js/main.js'),
+		'css/main': path.resolve(process.cwd(), 'src/scss/main.scss'),
+		'css/acf-fields': path.resolve(process.cwd(), 'src/scss/acf-fields.scss'),
 	},
 	output: {
 		...defaultConfig.output,
