@@ -4,8 +4,8 @@
  * Bootstrap-like utility classes for display, spacing, and alignment
  */
 
-@use '../abstracts/variables' as *;
-@use '../abstracts/mixins' as *;
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
 
 // Display utilities
 .d-none {
@@ -33,7 +33,7 @@
 }
 
 // Responsive display utilities
-@include breakpoint-up('sm') {
+@include breakpoint-up("sm") {
 	.d-sm-none {
 		display: none;
 	}
@@ -47,7 +47,7 @@
 	}
 }
 
-@include breakpoint-up('md') {
+@include breakpoint-up("md") {
 	.d-md-none {
 		display: none;
 	}
@@ -61,7 +61,7 @@
 	}
 }
 
-@include breakpoint-up('lg') {
+@include breakpoint-up("lg") {
 	.d-lg-none {
 		display: none;
 	}

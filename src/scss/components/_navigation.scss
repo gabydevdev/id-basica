@@ -5,24 +5,24 @@
  */
 
 .menu-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: none;
-  background-color: transparent;
-  color: var(--color-text-secondary);
-  cursor: pointer;
-  border-radius: var(--border-radius);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border: none;
+	background-color: transparent;
+	color: var(--color-text-secondary);
+	cursor: pointer;
+	border-radius: var(--border-radius);
 
-  &:hover {
-    background-color: var(--color-gray-100);
-    color: var(--color-text-primary);
-  }
+	&:hover {
+		background-color: var(--color-gray-100);
+		color: var(--color-text-primary);
+	}
 
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px var(--color-primary-light);
-  }
+	&:focus {
+		outline: none;
+		box-shadow: 0 0 0 2px var(--color-primary-light);
+	}
 }

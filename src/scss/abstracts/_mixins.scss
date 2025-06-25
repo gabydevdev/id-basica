@@ -4,10 +4,10 @@
  * This file contains SCSS mixins used throughout the theme.
  */
 
-@use 'sass:color';
-@use 'sass:map';
+@use "sass:color";
+@use "sass:map";
 
-@use 'variables' as *;
+@use "variables" as *;
 
 // Media Query Breakpoints using the breakpoints map from _variables.scss
 @mixin breakpoint-up($breakpoint) {
@@ -15,9 +15,7 @@
 		@media (min-width: map.get($breakpoints, $breakpoint)) {
 			@content;
 		}
-	}
-
-	@else {
+	} @else {
 		@error "Unknown breakpoint `#{$breakpoint}`. Available breakpoints are: #{map.keys($breakpoints)}";
 	}
 }
@@ -30,9 +28,7 @@
 		@media (max-width: $max-width) {
 			@content;
 		}
-	}
-
-	@else {
+	} @else {
 		@error "Unknown breakpoint `#{$breakpoint}`. Available breakpoints are: #{map.keys($breakpoints)}";
 	}
 }
@@ -46,9 +42,7 @@
 		@media (min-width: $min-width) and (max-width: $max-width) {
 			@content;
 		}
-	}
-
-	@else {
+	} @else {
 		@error "Unknown breakpoint: `#{$lower}` or `#{$upper}`. Available breakpoints are: #{map.keys($breakpoints)}";
 	}
 }
@@ -65,16 +59,12 @@
 			@include breakpoint-between($breakpoint, $next-breakpoint) {
 				@content;
 			}
-		}
-
-		@else {
+		} @else {
 			@include breakpoint-up($breakpoint) {
 				@content;
 			}
 		}
-	}
-
-	@else {
+	} @else {
 		@error "Unknown breakpoint `#{$breakpoint}`. Available breakpoints are: #{map.keys($breakpoints)}";
 	}
 }
@@ -160,12 +150,12 @@
 @mixin color-darken($property, $color-var, $amount) {
 	// Define fallback colors for common variables
 	$fallback-colors: (
-		'--color-success': #28a745,
-		'--color-error': #dc3545,
-		'--color-primary': #4361ee,
-		'--color-secondary': #6c757d,
-		'--color-warning': #ffc107,
-		'--color-info': #17a2b8
+		"--color-success": #28a745,
+		"--color-error": #dc3545,
+		"--color-primary": #4361ee,
+		"--color-secondary": #6c757d,
+		"--color-warning": #ffc107,
+		"--color-info": #17a2b8
 	);
 
 	@if map.has-key($fallback-colors, $color-var) {
@@ -182,12 +172,12 @@
 @mixin color-lighten($property, $color-var, $amount) {
 	// Define fallback colors for common variables
 	$fallback-colors: (
-		'--color-success': #28a745,
-		'--color-error': #dc3545,
-		'--color-primary': #4361ee,
-		'--color-secondary': #6c757d,
-		'--color-warning': #ffc107,
-		'--color-info': #17a2b8
+		"--color-success": #28a745,
+		"--color-error": #dc3545,
+		"--color-primary": #4361ee,
+		"--color-secondary": #6c757d,
+		"--color-warning": #ffc107,
+		"--color-info": #17a2b8
 	);
 
 	@if map.has-key($fallback-colors, $color-var) {

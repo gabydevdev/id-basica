@@ -4,7 +4,7 @@
  * Accessible button styles for various actions
  */
 
-@use '../abstracts/mixins' as mx;
+@use "../abstracts/mixins" as mx;
 
 .button,
 .btn {
@@ -139,8 +139,8 @@
 
 		&:hover,
 		&:focus {
-			@include mx.color-darken(background-color, '--color-success', 10);
-			@include mx.color-darken(border-color, '--color-success', 10);
+			@include mx.color-darken(background-color, "--color-success", 10);
+			@include mx.color-darken(border-color, "--color-success", 10);
 			color: var(--color-white);
 			text-decoration: none;
 		}
@@ -153,8 +153,8 @@
 
 		&:hover,
 		&:focus {
-			@include mx.color-darken(background-color, '--color-error', 10);
-			@include mx.color-darken(border-color, '--color-error', 10);
+			@include mx.color-darken(background-color, "--color-error", 10);
+			@include mx.color-darken(border-color, "--color-error", 10);
 			color: var(--color-white);
 			text-decoration: none;
 		}

@@ -16,19 +16,19 @@
 .post-comments-wrap,
 .fixed .column-comments,
 .fixed .comments {
-    display: none !important;
+	display: none !important;
 }
 
 /* Hide Discussion meta box if it somehow appears */
 #discussion-settings,
 #commentsdiv,
 #commentstatusdiv {
-    display: none !important;
+	display: none !important;
 }
 
 /* Hide Discussion from Settings menu */
 #menu-settings a[href="options-discussion.php"] {
-    display: none !important;
+	display: none !important;
 }
 
 /* Temporarily hide post-related UI elements */
@@ -41,15 +41,15 @@ li.wp-has-submenu.wp-not-current-submenu.menu-top.menu-icon-post,
 .post-state-format,
 #welcome-panel .welcome-write-blog,
 .welcome-panel-column:has(h3:contains("Write your first blog post")) {
-    display: none !important;
+	display: none !important;
 }
 
 /* Hide Posts from activity widget */
 #dashboard_activity li[class*="publish-post"] {
-    display: none !important;
+	display: none !important;
 }
 
 /* Hide Posts related quick actions */
 .welcome-panel-column ul li a[href*="post-new.php"]:not([href*="post_type="]) {
-    display: none !important;
+	display: none !important;
 }

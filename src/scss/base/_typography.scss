@@ -5,8 +5,8 @@
  */
 
 // Import mixins with namespace
-@use '../abstracts/variables' as *;
-@use '../abstracts/mixins' as *;
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
 
 /* Headings */
 h1,
@@ -25,7 +25,7 @@ h6 {
 h1 {
 	font-size: var(--font-size-3xl);
 
-	@include breakpoint-up('md') {
+	@include breakpoint-up("md") {
 		font-size: var(--font-size-4xl);
 	}
 }
@@ -33,7 +33,7 @@ h1 {
 h2 {
 	font-size: var(--font-size-2xl);
 
-	@include breakpoint-up('md') {
+	@include breakpoint-up("md") {
 		font-size: var(--font-size-3xl);
 	}
 }
@@ -41,7 +41,7 @@ h2 {
 h3 {
 	font-size: var(--font-size-xl);
 
-	@include breakpoint-up('md') {
+	@include breakpoint-up("md") {
 		font-size: var(--font-size-2xl);
 	}
 }
@@ -62,6 +62,7 @@ h6 {
 p {
 	margin-bottom: var(--spacing-4);
 	max-width: 70ch;
+
 	/* For better readability */
 }
 
@@ -135,7 +136,7 @@ small {
 	font-weight: var(--font-weight-bold);
 	margin-bottom: var(--spacing-4);
 
-	@include breakpoint-up('md') {
+	@include breakpoint-up("md") {
 		font-size: var(--font-size-2xl);
 	}
 }
@@ -154,7 +155,7 @@ small {
 	padding-bottom: var(--spacing-2);
 	border-bottom: 1px solid var(--color-border);
 
-	@include breakpoint-up('md') {
+	@include breakpoint-up("md") {
 		font-size: var(--font-size-xl);
 	}
 }
@@ -164,7 +165,7 @@ small {
 	font-weight: var(--font-weight-bold);
 	color: var(--color-primary);
 
-	@include breakpoint-up('md') {
+	@include breakpoint-up("md") {
 		font-size: var(--font-size-3xl);
 	}
 }
