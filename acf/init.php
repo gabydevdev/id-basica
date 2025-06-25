@@ -88,3 +88,4 @@ if ( is_plugin_active( 'advanced-custom-fields/acf.php' ) ) {
 }
 
 require_once ID_BASICA_THEME_DIR . '/acf/options.php';
+require_once ID_BASICA_THEME_DIR . '/acf/group-fields.php';
