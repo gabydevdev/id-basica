@@ -9,25 +9,61 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
 if ( ! function_exists( 'is_plugin_active' ) ) {
-	include_once ABSPATH . 'wp-admin/includes/plugin.php';
+    include_once ABSPATH . 'wp-admin/includes/plugin.php';
 }
 
-if ( ! is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) || ! defined( 'MY_ACF_PATH' ) ) {
+// Check ACF Pro plugin status
+$acf_pro_plugin_path = 'advanced-custom-fields-pro/acf.php';
+$acf_pro_installed = file_exists( WP_PLUGIN_DIR . '/' . $acf_pro_plugin_path );
+$acf_pro_active = is_plugin_active( $acf_pro_plugin_path );
 
-	// Define path and URL to the ACF plugin.
-	define( 'MY_ACF_PATH', ID_BASICA_THEME_DIR . '/acf/advanced-custom-fields-pro/' );
-	define( 'MY_ACF_URL', ID_BASICA_THEME_URI . '/acf/advanced-custom-fields-pro/' );
+if ( $acf_pro_installed && ! $acf_pro_active ) {
+    // ACF Pro is installed but not active - show activation notice
+    add_action( 'admin_notices', function() {
+        ?>
+        <div class="notice notice-error is-dismissible">
+            <p><strong>ID Basica Theme:</strong> Advanced Custom Fields Pro is installed but not active. Please <a href="<?php echo admin_url('plugins.php'); ?>">activate it</a> for full theme functionality.</p>
+        </div>
+        <?php
+    });
+} elseif ( ! $acf_pro_active && ! defined( 'MY_ACF_PATH' ) ) {
+    // ACF Pro not active (either not installed or deactivated) - use bundled version
+    $bundled_acf_path = ID_BASICA_THEME_DIR . '/acf/advanced-custom-fields-pro/';
+    $bundled_acf_file = $bundled_acf_path . 'acf.php';
+    
+    if ( file_exists( $bundled_acf_file ) ) {
+        // Define path and URL to the bundled ACF plugin.
+        define( 'MY_ACF_PATH', $bundled_acf_path );
+        define( 'MY_ACF_URL', ID_BASICA_THEME_URI . '/acf/advanced-custom-fields-pro/' );
 
-	// Include the ACF plugin.
-	include_once( MY_ACF_PATH . 'acf.php' );
+        // Include the ACF plugin.
+        include_once( $bundled_acf_file );
 
-	// Customize the URL setting to fix incorrect asset URLs.
-	function id_basica_acf_settings_url( $url ) {
-		return MY_ACF_URL;
-	}
-	add_filter( 'acf/settings/url', 'id_basica_acf_settings_url' );
+        // Customize the URL setting to fix incorrect asset URLs.
+        function id_basica_acf_settings_url( $url ) {
+            return MY_ACF_URL;
+        }
+        add_filter( 'acf/settings/url', 'id_basica_acf_settings_url' );
+        
+        // Show notice that bundled version is being used
+        add_action( 'admin_notices', function() {
+            ?>
+            <div class="notice notice-info is-dismissible">
+                <p><strong>ID Basica Theme:</strong> Using bundled ACF Pro. Consider installing the plugin version for easier updates.</p>
+            </div>
+            <?php
+        });
+    } else {
+        // Neither plugin nor bundled version available
+        add_action( 'admin_notices', function() {
+            ?>
+            <div class="notice notice-error">
+                <p><strong>ID Basica Theme:</strong> Advanced Custom Fields Pro is required but not found. Please install the plugin or contact theme support.</p>
+            </div>
+            <?php
+        });
+    }
 }
 
 require_once ID_BASICA_THEME_DIR . '/acf/options.php';
