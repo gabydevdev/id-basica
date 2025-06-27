@@ -17,33 +17,20 @@ function id_basica_forcelogin_bypass( $bypass, $visited_url ) {
 add_filter( 'v_forcelogin_bypass', 'id_basica_forcelogin_bypass', 10, 2 );
 
 /**
- * Redirect default login page to custom login page
+ * Additional login redirect handling for Force Login and other plugins
  */
-function id_basica_custom_login_page() {
-	$login_page = home_url( '/login/' ); // Adjust URL to match your page slug
-	$page       = basename( $_SERVER['REQUEST_URI'] );
-
-	if ( $page == "wp-login.php" && $_SERVER['REQUEST_METHOD'] == 'GET' ) {
-		// Preserve the redirect_to parameter if it exists
-		$redirect_to = '';
-		if ( isset( $_GET['redirect_to'] ) ) {
-			$redirect_to = '?redirect_to=' . urlencode( $_GET['redirect_to'] );
-		}
-		
-		wp_redirect( $login_page . $redirect_to );
-		exit;
+function id_basica_login_url_filter( $login_url, $redirect, $force_reauth ) {
+	// Always redirect to our custom login page
+	$custom_login_url = home_url( '/login/' );
+	
+	// Add redirect parameter if it exists
+	if ( ! empty( $redirect ) ) {
+		$custom_login_url = add_query_arg( 'redirect_to', urlencode( $redirect ), $custom_login_url );
 	}
+	
+	return $custom_login_url;
 }
-add_action( 'init', 'id_basica_custom_login_page' );
-
-/**
- * Redirect after logout
- */
-function id_basica_redirect_after_logout() {
-	wp_redirect( home_url( '/login/' ) );
-	exit;
-}
-add_action( 'wp_logout', 'id_basica_redirect_after_logout' );
+add_filter( 'login_url', 'id_basica_login_url_filter', 10, 3 );
 
 /**
  * Redirect users to homepage after successful login
@@ -88,34 +75,10 @@ function id_basica_redirect_after_login( $redirect_to, $request, $user ) {
 add_filter( 'login_redirect', 'id_basica_redirect_after_login', 10, 3 );
 
 /**
- * Force users to login with email only (disable username login)
+ * Redirect after logout
  */
-function id_basica_email_login_only( $user, $username, $password ) {
-	// If username is provided and it's not an email, prevent login
-	if ( ! empty( $username ) && ! is_email( $username ) ) {
-		return new WP_Error( 'invalid_email', __( 'Por favor, usa tu dirección de correo electrónico para iniciar sesión.' ) );
-	}
-	
-	return $user;
+function id_basica_redirect_after_logout() {
+	wp_redirect( home_url( '/login/' ) );
+	exit;
 }
-add_filter( 'wp_authenticate_user', 'id_basica_email_login_only', 10, 3 );
-
-/**
- * Remove username from login form and force email input type
- */
-function id_basica_customize_login_form() {
-	?>
-	<script type="text/javascript">
-		document.addEventListener('DOMContentLoaded', function() {
-			// Find the username field and change its type to email
-			var usernameField = document.querySelector('#loginform-custom input[name="log"]');
-			if (usernameField) {
-				usernameField.type = 'email';
-				usernameField.setAttribute('placeholder', 'correo@ejemplo.com');
-				usernameField.setAttribute('required', 'required');
-			}
-		});
-	</script>
-	<?php
-}
-add_action( 'wp_footer', 'id_basica_customize_login_form' );
+add_action( 'wp_logout', 'id_basica_redirect_after_logout' );
