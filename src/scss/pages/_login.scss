@@ -1,0 +1,233 @@
+@use "../abstracts/mixins" as *;
+
+.login {
+	@include size(100%, 100vh);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-image: var(--bg-image);
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	min-height: 100vh;
+
+	&__container {
+		display: flex;
+		flex-direction: column;
+		border-radius: 12px;
+		overflow: hidden;
+		box-shadow: 0 20px 40px rgba(var(--color-black-rgb), 0.3);
+
+		@include breakpoint-up(md) {
+			flex-direction: row;
+			flex-wrap: wrap;
+			min-height: 600px;
+		}
+	}
+
+	&__form-section {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding: 2rem 1.5rem;
+		color: var(--color-white);
+		background-color: rgba(var(--color-black-rgb), 0.6);
+		backdrop-filter: blur(10px);
+		order: 1;
+
+		@include breakpoint-up(md) {
+			padding: 3rem 2.5rem;
+			order: 0;
+		}
+	}
+
+	&__header {
+		margin-bottom: 2rem;
+	}
+
+	&__title {
+		font-size: 2rem;
+		font-weight: 700;
+		margin: 0 0 0.5rem 0;
+		color: var(--color-primary-light);
+		line-height: 1.2;
+
+		@include breakpoint-down(md) {
+			font-size: 1.75rem;
+		}
+	}
+
+	&__subtitle {
+		font-size: 1.1rem;
+		margin: 0;
+		color: var(--color-white);
+		opacity: 0.9;
+		line-height: 1.4;
+	}
+
+	&__branding-section {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: var(--color-primary);
+		position: relative;
+		order: 0;
+
+		@include breakpoint-up(md) {
+			order: 1;
+		}
+	}
+
+	&__branding-wrapper {
+		text-align: center;
+		padding: 2rem;
+		max-width: 350px;
+	}
+
+	&__logo {
+		@include breakpoint-up(md) {
+			margin-bottom: 2rem;
+		}
+	}
+
+	&__logo-img {
+		max-width: 180px;
+		height: auto;
+		filter: brightness(0) invert(1);
+
+		@include breakpoint-down(md) {
+			max-width: 200px;
+		}
+	}
+
+	&__branding-title {
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: var(--color-white);
+		line-height: 1.4;
+		margin: 0;
+
+		@include breakpoint-down(md) {
+			font-size: 1.1rem;
+		}
+	}
+}
+
+// Custom WordPress login form styles
+#loginform-custom {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+
+	.login-username,
+	.login-password {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	label {
+		font-size: 0.9rem;
+		font-weight: 500;
+		color: var(--color-white);
+		margin-bottom: 0.25rem;
+	}
+
+	input[type="text"],
+	input[type="password"] {
+		padding: 0.875rem 1rem;
+		border: 2px solid var(--color-white);
+		border-radius: 6px;
+		background-color: var(--color-white);
+		color: var(--color-text-primary);
+		font-size: 1rem;
+		transition: all 0.3s ease;
+		backdrop-filter: blur(5px);
+
+		&::placeholder {
+			color: rgba(var(--color-white), 0.6);
+		}
+
+		&:focus {
+			outline: none;
+			border-color: var(--color-border-dark);
+			box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.2);
+		}
+	}
+
+	.login-remember {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		margin: 0.5rem 0;
+
+		input[type="checkbox"] {
+			accent-color: var(--color-primary);
+		}
+
+		label {
+			font-size: 0.875rem;
+			margin: 0;
+			cursor: pointer;
+		}
+	}
+
+	.login-submit {
+		margin-top: 1rem;
+
+		input[type="submit"] {
+			width: 100%;
+			padding: 0.875rem 1.5rem;
+			background-color: var(--color-primary);
+			color: var(--color-white);
+			border: none;
+			border-radius: 6px;
+			font-size: 1rem;
+			font-weight: 600;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			text-transform: none;
+
+			&:hover {
+				background-color: var(--color-primary-dark);
+				transform: translateY(-1px);
+				box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.3);
+			}
+
+			&:active {
+				transform: translateY(0);
+			}
+		}
+	}
+
+	.forgetmenot {
+		order: -1;
+	}
+}
+
+// Forgot password link styling
+.login a {
+	color: var(--color-primary-light);
+	text-decoration: underline;
+	font-size: 0.875rem;
+	transition: color 0.3s ease;
+
+	&:hover {
+		color: var(--color-primary-light);
+		text-decoration: underline;
+	}
+}
+
+// Forgot password container
+.login__forgot-password {
+	display: none;
+}
+
+// Body overrides for login page
+body.bg-primary {
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+}

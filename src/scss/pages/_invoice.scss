@@ -1,0 +1,85 @@
+@use "../../../node_modules/sprucecss/scss/spruce" as s;
+@use "../abstracts/mixins" as *;
+
+@page {
+	margin: 0;
+	size: a4 portrait;
+}
+
+.invoice {
+	width: 960px;
+	aspect-ratio: 8 / 10;
+	background-color: var(--color-white);
+	box-shadow: 0 0 2.5rem hsl(0deg 0% 0% / 2.5%);
+	display: flex;
+	flex-direction: column;
+	gap: s.spacer("m");
+	padding: s.spacer-clamp("m", "l");
+	margin: auto;
+
+	@media print {
+		height: 29.7cm;
+		width: 21cm;
+		padding: 1.25cm;
+		box-shadow: none;
+		-webkit-print-color-adjust: exact;
+	}
+
+	&__header {
+		align-items: center;
+		display: flex;
+		flex-wrap: wrap;
+		gap: s.spacer("s") s.spacer("m");
+		justify-content: space-between;
+	}
+
+	&__logo {
+		@include size(188px,44px);
+	}
+
+	&__title {
+		align-items: flex-end;
+		display: flex;
+		flex-direction: column;
+		gap: s.spacer("xs");
+		line-height: 1;
+		margin-block: 0;
+	}
+
+	&__actions {
+		width: 100%;
+		justify-content: flex-end;
+		display: flex;
+		flex-wrap: wrap;
+		gap: s.spacer("xs");
+		margin-block: 0;
+	}
+
+	&__footer {
+		align-items: center;
+		border-block-start: 1px solid var(--color-border);
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		gap: s.spacer("xs") s.spacer("m");
+		justify-content: space-between;
+		margin-block-start: auto;
+		padding-block-start: s.spacer("m");
+
+		@include s.breakpoint("xs") {
+			flex-direction: row;
+		}
+
+		&-logo {
+			// --size: 2rem;
+			// block-size: var(--size);
+			// inline-size: var(--size);
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+
+	}
+}

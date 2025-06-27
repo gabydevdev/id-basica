@@ -32,6 +32,11 @@
 	--color-gray-900: #202021;
 	--color-black: #020202;
 
+	/* RGB versions for use with rgba() */
+	--color-black-rgb: 2, 2, 2;
+	--color-gray-900-rgb: 32, 32, 33;
+	--color-primary-rgb: 221, 34, 34;
+
 	/* Semantic Colors */
 	--color-text-primary: var(--color-gray-900);
 	--color-text-secondary: var(--color-gray-700);
@@ -120,6 +125,11 @@
 	--card-min-height: 100px;
 	--grid-gap: var(--spacing-4);
 	--sidebar-collapsed-width: 70px;
+
+	/* Container Widths */
+	--container-max-width: 1200px;
+	--container-narrow: 768px;
+	--container-wide: 1400px;
 
 	/* Z-Index Variables */
 	--z-index-sticky: 2000;

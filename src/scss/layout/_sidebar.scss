@@ -14,6 +14,10 @@
 	z-index: var(--z-index-fixed);
 	transition: width 0.3s ease;
 
+	@media print {
+		display: none;
+	}
+
 	@media (min-width: 992px) {
 		position: fixed;
 		top: var(--wp-admin--admin-bar--height, 0);

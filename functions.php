@@ -11,14 +11,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define theme constants
+define( 'ID_BASICA_DOMAIN', 'id-basica' );
 define( 'ID_BASICA_VERSION', '1.0.0' );
-define( 'ID_BASICA_THEME_DIR', get_template_directory() );
-define( 'ID_BASICA_THEME_URI', get_template_directory_uri() );
+define( 'ID_BASICA_DIR', get_template_directory() );
+define( 'ID_BASICA_URI', get_template_directory_uri() );
 
 /**
  * Theme setup function
  */
-function id_basica_setup() {
+function id_basica_theme_setup() {
 	// Add default posts feed links to head (comments feed links are removed)
 	// We're using a custom implementation to remove comment feeds
 	add_action( 'wp_head', 'id_basica_custom_feed_links', 3 );
@@ -42,8 +43,8 @@ function id_basica_setup() {
 	// Register navigation menus
 	register_nav_menus(
 		array(
-			'dashboard-menu' => esc_html__( 'Dashboard Menu', 'id-basica' ),
-			'user-menu'      => esc_html__( 'User Menu', 'id-basica' ),
+			'dashboard-menu' => esc_html__( 'Dashboard Menu', ID_BASICA_DOMAIN ),
+			'user-menu'      => esc_html__( 'User Menu', ID_BASICA_DOMAIN ),
 		)
 	);
 
@@ -63,7 +64,7 @@ function id_basica_setup() {
 		$content_width = 1200;
 	}
 }
-add_action( 'after_setup_theme', 'id_basica_setup' );
+add_action( 'after_setup_theme', 'id_basica_theme_setup' );
 
 /**
  * Custom feed links without comments
@@ -74,16 +75,17 @@ function id_basica_custom_feed_links() {
 }
 
 // Load theme helpers and ACF initialization
-require_once ID_BASICA_THEME_DIR . '/inc/dev-helpers.php';
-require_once ID_BASICA_THEME_DIR . '/inc/helpers.php';
-require_once ID_BASICA_THEME_DIR . '/acf/init.php';
-require_once ID_BASICA_THEME_DIR . '/inc/admin/init.php';
+require_once ID_BASICA_DIR . '/inc/dev-helpers.php';
+require_once ID_BASICA_DIR . '/inc/helpers.php';
+require_once ID_BASICA_DIR . '/acf/init.php';
+require_once ID_BASICA_DIR . '/acf/helpers.php';
+require_once ID_BASICA_DIR . '/inc/admin/init.php';
 
 /**
  * Enqueue scripts and styles.
  */
 function id_basica_styles() {
-	$main_css_asset_file = include( ID_BASICA_THEME_DIR . '/build/css/main.asset.php' );
+	$main_css_asset_file = include ID_BASICA_DIR . '/build/css/main.asset.php';
 
 	// Enqueue Font Awesome for icons
 	wp_enqueue_style(
@@ -96,31 +98,31 @@ function id_basica_styles() {
 	// Enqueue main stylesheet
 	wp_enqueue_style(
 		'id-basica-style',
-		ID_BASICA_THEME_URI . '/build/css/main.css',
+		ID_BASICA_URI . '/build/css/main.css',
 		$main_css_asset_file['dependencies'],
 		$main_css_asset_file['version']
 	);
 }
-add_action( 'wp_enqueue_scripts', 'id_basica_styles' );
+add_action( 'wp_enqueue_scripts', 'id_basica_styles', 9998 );
 
 /**
  * Enqueue scripts and styles.
  */
 function id_basica_scripts() {
-	$main_js_asset_file = include( ID_BASICA_THEME_DIR . '/build/js/main.asset.php' );
+	$main_js_asset_file = include ID_BASICA_DIR . '/build/js/main.asset.php';
 
 	// Enqueue main script
 	wp_enqueue_script(
 		'id-basica-script',
-		ID_BASICA_THEME_URI . '/build/js/main.js',
+		ID_BASICA_URI . '/build/js/main.js',
 		$main_js_asset_file['dependencies'],
 		$main_js_asset_file['version']
 	);
 }
-add_action( 'wp_enqueue_scripts', 'id_basica_scripts' );
+add_action( 'wp_enqueue_scripts', 'id_basica_scripts', 9998 );
 
 // Include custom post types
-require_once ID_BASICA_THEME_DIR . '/inc/post-types.php';
+require_once ID_BASICA_DIR . '/inc/post-types.php';
 
 /**
  * Register widget areas
@@ -128,9 +130,9 @@ require_once ID_BASICA_THEME_DIR . '/inc/post-types.php';
 function id_basica_widgets_init() {
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Dashboard Sidebar', 'id-basica' ),
+			'name'          => esc_html__( 'Dashboard Sidebar', ID_BASICA_DOMAIN ),
 			'id'            => 'dashboard-sidebar',
-			'description'   => esc_html__( 'Add widgets here to appear in the sidebar.', 'id-basica' ),
+			'description'   => esc_html__( 'Add widgets here to appear in the sidebar.', ID_BASICA_DOMAIN ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</div>',
 			'before_title'  => '<div class="widget__header"><h3>',

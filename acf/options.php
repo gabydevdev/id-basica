@@ -24,8 +24,8 @@ function id_basica_register_acf_options_pages() {
 		// Add parent options page
 		acf_add_options_page(
 			array(
-				'page_title' => __( 'Intranet Setup', 'id-basica' ),
-				'menu_title' => __( 'Intranet Setup', 'id-basica' ),
+				'page_title' => __( 'Intranet Setup', ID_BASICA_DOMAIN ),
+				'menu_title' => __( 'Intranet Setup', ID_BASICA_DOMAIN ),
 				'menu_slug'  => 'intranet-settings',
 				'capability' => 'manage_options',
 				'redirect'   => true,
@@ -37,8 +37,8 @@ function id_basica_register_acf_options_pages() {
 		// Add sub options pages
 		acf_add_options_sub_page(
 			array(
-				'page_title'  => __( 'General Settings', 'id-basica' ),
-				'menu_title'  => __( 'General Settings', 'id-basica' ),
+				'page_title'  => __( 'General Settings', ID_BASICA_DOMAIN ),
+				'menu_title'  => __( 'General Settings', ID_BASICA_DOMAIN ),
 				'parent_slug' => 'intranet-settings',
 				'menu_slug'   => 'intranet-general-settings',
 			)
@@ -46,8 +46,8 @@ function id_basica_register_acf_options_pages() {
 
 		acf_add_options_sub_page(
 			array(
-				'page_title'  => __( 'Layout Settings', 'id-basica' ),
-				'menu_title'  => __( 'Layout Settings', 'id-basica' ),
+				'page_title'  => __( 'Layout Settings', ID_BASICA_DOMAIN ),
+				'menu_title'  => __( 'Layout Settings', ID_BASICA_DOMAIN ),
 				'parent_slug' => 'intranet-settings',
 				'menu_slug'   => 'intranet-layout-settings',
 			)
@@ -55,8 +55,8 @@ function id_basica_register_acf_options_pages() {
 
 		acf_add_options_sub_page(
 			array(
-				'page_title'  => __( 'Widget Settings', 'id-basica' ),
-				'menu_title'  => __( 'Widget Settings', 'id-basica' ),
+				'page_title'  => __( 'Widget Settings', ID_BASICA_DOMAIN ),
+				'menu_title'  => __( 'Widget Settings', ID_BASICA_DOMAIN ),
 				'parent_slug' => 'intranet-settings',
 				'menu_slug'   => 'intranet-widget-settings',
 			)
@@ -105,7 +105,7 @@ function id_basica_register_acf_fields() {
 						'type'          => 'text',
 						'instructions'  => 'Enter the text that will appear in the footer.',
 						'required'      => 0,
-						'default_value' => '© ' . date('Y') . ' Company Name. All rights reserved.',
+						'default_value' => '© ' . date( 'Y' ) . ' Company Name. All rights reserved.',
 					),
 					array(
 						'key'           => 'field_primary_color',
@@ -145,23 +145,23 @@ function id_basica_register_acf_fields() {
 				'title'    => 'Layout Settings',
 				'fields'   => array(
 					array(
-						'key'          => 'field_show_welcome_widget',
-						'label'        => 'Show Welcome Widget',
-						'name'         => 'show_welcome_widget',
-						'type'         => 'true_false',
-						'instructions' => 'Toggle the welcome widget on the dashboard.',
-						'required'     => 0,
+						'key'           => 'field_show_welcome_widget',
+						'label'         => 'Show Welcome Widget',
+						'name'          => 'show_welcome_widget',
+						'type'          => 'true_false',
+						'instructions'  => 'Toggle the welcome widget on the dashboard.',
+						'required'      => 0,
 						'default_value' => 1,
-						'ui'           => 1,
+						'ui'            => 1,
 					),
 					array(
-						'key'          => 'field_welcome_message',
-						'label'        => 'Welcome Message',
-						'name'         => 'welcome_message',
-						'type'         => 'textarea',
-						'instructions' => 'Enter the welcome message for the dashboard.',
-						'required'     => 0,
-						'default_value' => 'Welcome to the Company Intranet Intranet. Here you can find all the resources you need.',
+						'key'               => 'field_welcome_message',
+						'label'             => 'Welcome Message',
+						'name'              => 'welcome_message',
+						'type'              => 'textarea',
+						'instructions'      => 'Enter the welcome message for the dashboard.',
+						'required'          => 0,
+						'default_value'     => 'Welcome to the Company Intranet Intranet. Here you can find all the resources you need.',
 						'conditional_logic' => array(
 							array(
 								array(
@@ -173,13 +173,13 @@ function id_basica_register_acf_fields() {
 						),
 					),
 					array(
-						'key'          => 'field_intranet_layout',
-						'label'        => 'Intranet Layout',
-						'name'         => 'intranet_layout',
-						'type'         => 'select',
-						'instructions' => 'Select the layout for the dashboard.',
-						'required'     => 0,
-						'choices'      => array(
+						'key'           => 'field_intranet_layout',
+						'label'         => 'Intranet Layout',
+						'name'          => 'intranet_layout',
+						'type'          => 'select',
+						'instructions'  => 'Select the layout for the dashboard.',
+						'required'      => 0,
+						'choices'       => array(
 							'default' => 'Default (Widgets Grid)',
 							'columns' => 'Two Columns',
 							'masonry' => 'Masonry Grid',
@@ -187,13 +187,13 @@ function id_basica_register_acf_fields() {
 						'default_value' => 'default',
 					),
 					array(
-						'key'          => 'field_sidebar_position',
-						'label'        => 'Sidebar Position',
-						'name'         => 'sidebar_position',
-						'type'         => 'select',
-						'instructions' => 'Select the position for the sidebar.',
-						'required'     => 0,
-						'choices'      => array(
+						'key'           => 'field_sidebar_position',
+						'label'         => 'Sidebar Position',
+						'name'          => 'sidebar_position',
+						'type'          => 'select',
+						'instructions'  => 'Select the position for the sidebar.',
+						'required'      => 0,
+						'choices'       => array(
 							'left'  => 'Left',
 							'right' => 'Right',
 						),
@@ -231,13 +231,13 @@ function id_basica_register_acf_fields() {
 						'button_label' => 'Add Widget',
 						'sub_fields'   => array(
 							array(
-								'key'          => 'field_widget_type',
-								'label'        => 'Widget Type',
-								'name'         => 'widget_type',
-								'type'         => 'select',
-								'instructions' => '',
-								'required'     => 0,
-								'choices'      => array(
+								'key'           => 'field_widget_type',
+								'label'         => 'Widget Type',
+								'name'          => 'widget_type',
+								'type'          => 'select',
+								'instructions'  => '',
+								'required'      => 0,
+								'choices'       => array(
 									'stats'     => 'Quick Stats',
 									'activity'  => 'Recent Activity',
 									'events'    => 'Upcoming Events',
@@ -256,14 +256,14 @@ function id_basica_register_acf_fields() {
 								'required'     => 0,
 							),
 							array(
-								'key'          => 'field_widget_enabled',
-								'label'        => 'Enabled',
-								'name'         => 'widget_enabled',
-								'type'         => 'true_false',
-								'instructions' => '',
-								'required'     => 0,
+								'key'           => 'field_widget_enabled',
+								'label'         => 'Enabled',
+								'name'          => 'widget_enabled',
+								'type'          => 'true_false',
+								'instructions'  => '',
+								'required'      => 0,
 								'default_value' => 1,
-								'ui'           => 1,
+								'ui'            => 1,
 							),
 						),
 					),
@@ -288,12 +288,12 @@ function id_basica_register_acf_fields() {
 								'required'     => 1,
 							),
 							array(
-								'key'          => 'field_custom_widget_icon',
-								'label'        => 'Widget Icon',
-								'name'         => 'custom_widget_icon',
-								'type'         => 'text',
-								'instructions' => 'Enter a Font Awesome icon class (e.g., fas fa-chart-bar).',
-								'required'     => 0,
+								'key'           => 'field_custom_widget_icon',
+								'label'         => 'Widget Icon',
+								'name'          => 'custom_widget_icon',
+								'type'          => 'text',
+								'instructions'  => 'Enter a Font Awesome icon class (e.g., fas fa-chart-bar).',
+								'required'      => 0,
 								'default_value' => 'fas fa-chart-bar',
 							),
 							array(

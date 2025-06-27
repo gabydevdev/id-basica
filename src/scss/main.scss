@@ -1,4 +1,5 @@
 /**
+/**
  * Main Stylesheet for IDBasica Theme
  *
  * This file uses all the necessary SCSS partials using the 7-1 pattern.
@@ -40,6 +41,8 @@
 
 // 5. Pages
 @use "pages/error";
+@use "pages/invoice";
+@use "pages/login";
 
 // 7. Responsive utilities
 @use "responsive/mobile";

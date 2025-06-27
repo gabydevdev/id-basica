@@ -6,8 +6,43 @@
 
 @use "sass:color";
 @use "sass:map";
+@use "sass:list";
+@use "sass:math";
+@use "sass:meta";
 
 @use "variables" as *;
+
+// Function to validate CSS size values
+@function is-valid-size($value) {
+	@if $value == null {
+		@return true;
+	}
+
+	// Check for keyword values
+	$keywords: auto, inherit, initial, unset, revert, max-content, min-content, fit-content, available, fill-available;
+	@if list.index($keywords, $value) {
+		@return true;
+	}
+
+	// Check if it's a number with valid unit or unitless 0
+	@if meta.type-of($value) == number {
+		@if $value == 0 {
+			@return true;
+		}
+
+		$valid-units: px, em, rem, "%", vh, vw, vmin, vmax, ch, ex, cm, mm, in, pt, pc, fr;
+		@if list.index($valid-units, math.unit($value)) {
+			@return true;
+		}
+	}
+
+	// Check for calc() functions (string that starts with calc)
+	@if meta.type-of($value) == string and str-index($value, "calc(") == 1 {
+		@return true;
+	}
+
+	@return false;
+}
 
 // Media Query Breakpoints using the breakpoints map from _variables.scss
 @mixin breakpoint-up($breakpoint) {
@@ -142,7 +177,32 @@
 
 // Sidebar transitions
 @mixin sidebar-transition {
-	transition: width 0.3s ease, transform 0.3s ease, margin-left 0.3s ease;
+	transition:
+		width 0.3s ease,
+		transform 0.3s ease,
+		margin-left 0.3s ease;
+}
+
+// Size utility
+@mixin size($width, $height: $width) {
+	// Validate width parameter
+	@if $width != null and not is-valid-size($width) {
+		@error "Invalid width value: `#{$width}`. Must be a valid CSS size unit, keyword, or calc() function.";
+	}
+
+	// Validate height parameter
+	@if $height != null and not is-valid-size($height) {
+		@error "Invalid height value: `#{$height}`. Must be a valid CSS size unit, keyword, or calc() function.";
+	}
+
+	@if $width != null and $height != null {
+		width: $width;
+		height: $height;
+	} @else if $width != null and $height == null {
+		width: $width;
+	} @else if $width == null and $height != null {
+		height: $height;
+	}
 }
 
 // CSS Variable Color Utilities
@@ -155,7 +215,7 @@
 		"--color-primary": #4361ee,
 		"--color-secondary": #6c757d,
 		"--color-warning": #ffc107,
-		"--color-info": #17a2b8
+		"--color-info": #17a2b8,
 	);
 
 	@if map.has-key($fallback-colors, $color-var) {
@@ -177,7 +237,7 @@
 		"--color-primary": #4361ee,
 		"--color-secondary": #6c757d,
 		"--color-warning": #ffc107,
-		"--color-info": #17a2b8
+		"--color-info": #17a2b8,
 	);
 
 	@if map.has-key($fallback-colors, $color-var) {

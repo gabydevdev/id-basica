@@ -16,6 +16,10 @@
 	z-index: var(--z-index-sticky);
 	box-shadow: var(--box-shadow-sm);
 
+	@media print {
+		display: none;
+	}
+
 	&__left {
 		display: flex;
 		align-items: center;

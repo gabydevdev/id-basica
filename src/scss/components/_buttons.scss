@@ -11,9 +11,9 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	padding: var(--spacing-2) var(--spacing-4);
+	padding: var(--spacing-2) var(--spacing-6);
 	font-weight: var(--font-weight-medium);
-	border-radius: var(--border-radius-md);
+	border-radius: var(--border-radius-pill);
 	transition: all 0.2s ease;
 	cursor: pointer;
 	border: 1px solid transparent;

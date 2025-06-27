@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<div class="container">
 				<p class="footer__copyright">
 					&copy; <?php echo date( 'Y' ); ?> <?php bloginfo( 'name' ); ?>.
-					<?php esc_html_e( 'All rights reserved.', 'id-basica' ); ?>
+					<?php esc_html_e( 'All rights reserved.', ID_BASICA_DOMAIN ); ?>
 				</p>
 			</div>
 		</footer>

@@ -19,10 +19,10 @@ const filteredPlugins = defaultConfig.plugins.filter(
 module.exports = {
 	...defaultConfig,
 	entry: {
-		'js/main': path.resolve(process.cwd(), 'src/js/main.js'),
-		'js/acf-fields': path.resolve(process.cwd(), 'src/js/acf-fields.js'),
-		'css/main': path.resolve(process.cwd(), 'src/scss/main.scss'),
-		'css/acf-fields': path.resolve(process.cwd(), 'src/scss/acf-fields.scss'),
+		'js/main': path.resolve( process.cwd(), 'src/js/main.js' ),
+		'js/acf-fields': path.resolve( process.cwd(), 'src/js/acf-fields.js' ),
+		'css/main': path.resolve( process.cwd(), 'src/scss/main.scss' ),
+		'css/acf-fields': path.resolve( process.cwd(), 'src/scss/acf-fields.scss' ),
 	},
 	output: {
 		...defaultConfig.output,
@@ -42,12 +42,14 @@ module.exports = {
 	},
 	plugins: [
 		...filteredPlugins,
-		new RemoveEmptyScriptsPlugin({
-			stage: RemoveEmptyScriptsPlugin.STAGE_AFTER_PROCESS_PLUGINS,
-		}),
+		new RemoveEmptyScriptsPlugin(
+			{
+				stage: RemoveEmptyScriptsPlugin.STAGE_AFTER_PROCESS_PLUGINS,
+			}
+		),
 	],
-	performance: {
-		maxEntrypointSize: 512000,
-		maxAssetSize: 512000,
+performance: {
+	maxEntrypointSize: 512000,
+	maxAssetSize: 512000,
 	},
 };

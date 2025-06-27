@@ -7,19 +7,19 @@
 @use "abstracts/mixins" as *;
 
 .acf-field {
-	input[type=text],
-	input[type=password],
-	input[type=date],
-	input[type=datetime],
-	input[type=datetime-local],
-	input[type=email],
-	input[type=month],
-	input[type=number],
-	input[type=search],
-	input[type=tel],
-	input[type=time],
-	input[type=url],
-	input[type=week],
+	input[type="text"],
+	input[type="password"],
+	input[type="date"],
+	input[type="datetime"],
+	input[type="datetime-local"],
+	input[type="email"],
+	input[type="month"],
+	input[type="number"],
+	input[type="search"],
+	input[type="tel"],
+	input[type="time"],
+	input[type="url"],
+	input[type="week"],
 	textarea,
 	select {
 		padding: 0.25rem;
@@ -31,26 +31,26 @@
 
 	.acf-input {
 		&:has(.acf-input-append) {
-				display: flex;
-				flex-flow: row wrap;
+			display: flex;
+			flex-flow: row wrap;
 
-				.acf-input-wrap {
-					flex: 1;
+			.acf-input-wrap {
+				flex: 1;
 
-					.acf-is-appended {
-						border-radius: var(--border-radius-sm) 0 0 var(--border-radius-sm) !important;
-					}
-				}
-
-				.acf-input-append {
-					display: flex;
-					flex-flow: row wrap;
-					justify-content: center;
-					align-items: center;
-					border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0 ;
-					order: 5;
+				.acf-is-appended {
+					border-radius: var(--border-radius-sm) 0 0 var(--border-radius-sm) !important;
 				}
 			}
+
+			.acf-input-append {
+				display: flex;
+				flex-flow: row wrap;
+				justify-content: center;
+				align-items: center;
+				border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+				order: 5;
+			}
+		}
 	}
 
 	.acf-label {
@@ -90,8 +90,8 @@ ul.acf-checkbox-list {
 
 		}
 
-		input[type=checkbox],
-		input[type=radio] {
+		input[type="checkbox"],
+		input[type="radio"] {
 			display: block;
 			border: 1px solid var(--color-border);
 			border-radius: var(--border-radius-sm);
@@ -115,7 +115,7 @@ ul.acf-checkbox-list {
 			}
 		}
 
-		input[type=text] {
+		input[type="text"] {
 			flex: 1 1 100%;
 			width: 100%;
 			padding-inline: 0.25rem;
@@ -149,13 +149,23 @@ ul.acf-checkbox-list {
 	}
 }
 
+.acf-form-submit {
+	margin-top: var(--spacing-8);
+}
+
 .acf-field-message {
 	.acf-label {
 		display: none;
 	}
+
+	.acf-input:has(h4) {
+		border-top: 1px solid var(--color-border);
+		padding-top: 1rem;
+		margin-top: 1rem;
+	}
 }
 
-.acf-field-signature-pad {
+.acf-field-signature {
 	[data-action="clear"] {
 		float: right;
 	}
@@ -163,10 +173,6 @@ ul.acf-checkbox-list {
 	p.description {
 		margin-top: -1.5rem;
 	}
-}
-
-.acf-form-submit {
-	margin-top: var(--spacing-8);
 }
 
 .acf-field {
@@ -200,5 +206,10 @@ ul.acf-checkbox-list {
 
 	&[data-name="fecha_de_formato"] {
 		margin-right: calc((100%/4) * 3);
+	}
+
+	&:has(+ [data-name="firma_de_jefe_inmediato"]) {
+		// border-bottom: 1px solid var(--color-border);
+		margin-top: var(--spacing-10);
 	}
 }

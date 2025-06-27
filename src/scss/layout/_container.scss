@@ -6,10 +6,8 @@
 
 .container {
 	width: 100%;
-	padding-right: var(--spacing-4);
-	padding-left: var(--spacing-4);
-	margin-right: auto;
-	margin-left: auto;
+	padding-inline: var(--spacing-4);
+	margin-inline: auto;
 	max-width: var(--container-max-width);
 
 	&--narrow {

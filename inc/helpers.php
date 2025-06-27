@@ -93,37 +93,37 @@ function id_basica_default_menu() {
 	<ul class="sidebar__menu">
 		<li>
 			<a href="<?php echo esc_url( home_url( '/dashboard/' ) ); ?>" class="<?php echo is_front_page() ? 'active' : ''; ?>">
-				<span class="sidebar__menu-text"><?php esc_html_e( 'Dashboard', 'id-basica' ); ?></span>
+				<span class="sidebar__menu-text"><?php esc_html_e( 'Dashboard', ID_BASICA_DOMAIN ); ?></span>
 			</a>
 		</li>
 		<li>
 			<a href="<?php echo esc_url( home_url( '/profile/' ) ); ?>">
-				<span class="sidebar__menu-text"><?php esc_html_e( 'Profile', 'id-basica' ); ?></span>
+				<span class="sidebar__menu-text"><?php esc_html_e( 'Profile', ID_BASICA_DOMAIN ); ?></span>
 			</a>
 		</li>
 		<li>
 			<a href="<?php echo esc_url( home_url( '/documents/' ) ); ?>">
-				<span class="sidebar__menu-text"><?php esc_html_e( 'Documents', 'id-basica' ); ?></span>
+				<span class="sidebar__menu-text"><?php esc_html_e( 'Documents', ID_BASICA_DOMAIN ); ?></span>
 			</a>
 		</li>
 		<li>
 			<a href="<?php echo esc_url( home_url( '/messages/' ) ); ?>">
-				<span class="sidebar__menu-text"><?php esc_html_e( 'Messages', 'id-basica' ); ?></span>
+				<span class="sidebar__menu-text"><?php esc_html_e( 'Messages', ID_BASICA_DOMAIN ); ?></span>
 			</a>
 		</li>
 		<li>
 			<a href="<?php echo esc_url( home_url( '/calendar/' ) ); ?>">
-				<span class="sidebar__menu-text"><?php esc_html_e( 'Calendar', 'id-basica' ); ?></span>
+				<span class="sidebar__menu-text"><?php esc_html_e( 'Calendar', ID_BASICA_DOMAIN ); ?></span>
 			</a>
 		</li>
 		<li>
 			<a href="<?php echo esc_url( home_url( '/settings/' ) ); ?>">
-				<span class="sidebar__menu-text"><?php esc_html_e( 'Settings', 'id-basica' ); ?></span>
+				<span class="sidebar__menu-text"><?php esc_html_e( 'Settings', ID_BASICA_DOMAIN ); ?></span>
 			</a>
 		</li>
 		<li>
 			<a href="<?php echo esc_url( wp_logout_url( home_url() ) ); ?>">
-				<span class="sidebar__menu-text"><?php esc_html_e( 'Logout', 'id-basica' ); ?></span>
+				<span class="sidebar__menu-text"><?php esc_html_e( 'Logout', ID_BASICA_DOMAIN ); ?></span>
 			</a>
 		</li>
 	</ul>
@@ -152,17 +152,17 @@ function id_basica_user_menu() {
 			<ul>
 				<li>
 					<a href="<?php echo esc_url( home_url( '/profile/' ) ); ?>">
-						<i class="fa fa-user"></i> <?php esc_html_e( 'Profile', 'id-basica' ); ?>
+						<i class="fa fa-user"></i> <?php esc_html_e( 'Profile', ID_BASICA_DOMAIN ); ?>
 					</a>
 				</li>
 				<li>
 					<a href="<?php echo esc_url( home_url( '/settings/' ) ); ?>">
-						<i class="fa fa-cog"></i> <?php esc_html_e( 'Settings', 'id-basica' ); ?>
+						<i class="fa fa-cog"></i> <?php esc_html_e( 'Settings', ID_BASICA_DOMAIN ); ?>
 					</a>
 				</li>
 				<li>
 					<a href="<?php echo esc_url( wp_logout_url( home_url() ) ); ?>">
-						<i class="fa fa-sign-out-alt"></i> <?php esc_html_e( 'Logout', 'id-basica' ); ?>
+						<i class="fa fa-sign-out-alt"></i> <?php esc_html_e( 'Logout', ID_BASICA_DOMAIN ); ?>
 					</a>
 				</li>
 			</ul>
@@ -185,8 +185,8 @@ function id_basica_is_dashboard() {
 
 	// Check if current page has dashboard in the slug or title
 	return strpos( $post->post_name, 'dashboard' ) !== false ||
-		   strpos( $post->post_title, 'Dashboard' ) !== false ||
-		   has_shortcode( $post->post_content, 'id_basica_dashboard' );
+			strpos( $post->post_title, 'Dashboard' ) !== false ||
+			has_shortcode( $post->post_content, 'id_basica_dashboard' );
 }
 
 /**
