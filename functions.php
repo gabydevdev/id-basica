@@ -79,7 +79,7 @@ require_once ID_BASICA_DIR . '/inc/dev-helpers.php';
 require_once ID_BASICA_DIR . '/inc/helpers.php';
 require_once ID_BASICA_DIR . '/acf/init.php';
 require_once ID_BASICA_DIR . '/acf/helpers.php';
-require_once ID_BASICA_DIR . '/inc/admin/init.php';
+require_once ID_BASICA_DIR . '/admin/init.php';
 
 /**
  * Enqueue scripts and styles.
