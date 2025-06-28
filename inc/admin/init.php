@@ -342,3 +342,4 @@ function id_basica_custom_column_styles() {
 add_action( 'admin_head', 'id_basica_custom_column_styles' );
 
 require_once ID_BASICA_DIR . '/inc/admin/login.php';
+require_once ID_BASICA_DIR . '/inc/admin/users.php';
