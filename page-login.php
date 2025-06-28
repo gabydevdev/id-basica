@@ -6,7 +6,7 @@
  */
 
 // Exit if accessed directly.
-if (! defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
@@ -15,14 +15,14 @@ if (! defined('ABSPATH')) {
 <html class="no-js" <?php language_attributes(); ?>>
 
 <head>
-	<meta charset="<?php bloginfo('charset'); ?>">
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<?php wp_head(); ?>
 	<meta name="robots" content="noindex" />
 </head>
 
-<body <?php body_class('bg-primary'); ?>>
+<body <?php body_class( 'bg-primary' ); ?>>
 	<?php wp_body_open(); ?>
 	<!-- Login Content -->
 	<div class="login" style="--bg-image: url('<?php echo get_template_directory_uri(); ?>/images/login-bg.jpg');">
@@ -36,24 +36,24 @@ if (! defined('ABSPATH')) {
 					</div>
 
 					<?php
-					if (! is_user_logged_in()) { // Display WordPress login form:
+					if ( ! is_user_logged_in() ) { // Display WordPress login form:
 						// Check if there's a redirect_to parameter
-						$redirect_to = isset($_GET['redirect_to']) ? esc_url_raw($_GET['redirect_to']) : '';
-						
+						$redirect_to = isset( $_GET['redirect_to'] ) ? esc_url_raw( $_GET['redirect_to'] ) : '';
+
 						$args = array(
 							'form_id'        => 'loginform-custom',
-							'label_username' => __('Correo electrónico'),
-							'label_password' => __('Contraseña'),
-							'label_remember' => __('Recuérdame'),
-							'label_log_in'   => __('Iniciar sesión'),
+							'label_username' => __( 'Correo electrónico' ),
+							'label_password' => __( 'Contraseña' ),
+							'label_remember' => __( 'Recuérdame' ),
+							'label_log_in'   => __( 'Iniciar sesión' ),
 							'remember'       => true,
-							'redirect'       => $redirect_to
+							'redirect'       => $redirect_to,
 						);
-						wp_login_form($args);
+						wp_login_form( $args );
 					} else { // If logged in:
-						wp_loginout(home_url()); // Display "Log Out" link.
-						echo " | ";
-						wp_register('', ''); // Display "Site Admin" link.
+						wp_loginout( home_url() ); // Display "Log Out" link.
+						echo ' | ';
+						wp_register( '', '' ); // Display "Site Admin" link.
 					}
 					?>
 

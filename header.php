@@ -64,7 +64,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<?php
 					// Check if current user has admin privileges
 					if ( current_user_can( 'administrator' ) || in_array( 'basica_admin', wp_get_current_user()->roles ) ) :
-					?>
+						?>
 						<div class="header__admin-links">
 							<a href="<?php echo admin_url(); ?>" class="header__admin-link" target="_blank">
 								<span><?php _e( 'Administración', 'id-basica' ); ?></span>

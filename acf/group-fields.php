@@ -119,9 +119,9 @@ add_filter( 'acf/load_field/name=user_id', 'id_basica_load_field_user_id' );
  * Modify the `entry_title` field on field load.
  *
  * Generate a title combining the:
- * 	- form name
- * 	- user display name
- * 	- and current date;
+ *  - form name
+ *  - user display name
+ *  - and current date;
  * set it as value, if no value is already set.
  *
  * @since 1.0.0
@@ -237,8 +237,8 @@ function id_basica_populate_jefe_inmediato_field_choices( $field ) {
 
 	// Get all users with the 'jefe_inmediato' role.
 	$args = array(
-		'role'    => 'jefe_inmediato',
-		'fields'  => array( 'ID', 'display_name' ),
+		'role'   => 'jefe_inmediato',
+		'fields' => array( 'ID', 'display_name' ),
 	);
 
 	$users = get_users( $args );
