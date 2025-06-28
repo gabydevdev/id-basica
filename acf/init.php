@@ -104,6 +104,8 @@ function id_basica_acf_json_load_point( $paths ) {
 add_filter( 'acf/settings/load_json', 'id_basica_acf_json_load_point' );
 
 function id_basica_acfe_modules() {
+	// Disable Enhanced UI
+	acfe_update_setting( 'modules/ui', false );
 
 	if ( ID_BASICA\DEV\is_dev() ) {
 		acfe_update_setting( 'dev', true ); // enable developer mode
