@@ -9,10 +9,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
 ?>
-<!DOCTYPE html>
-<html class="no-js" <?php language_attributes(); ?>>
+<!doctype html>
+<html <?php language_attributes(); ?>>
 
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
@@ -22,8 +21,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<meta name="robots" content="noindex" />
 </head>
 
-<body <?php body_class( 'bg-primary' ); ?>>
+<body <?php body_class(); ?>>
 	<?php wp_body_open(); ?>
+
 	<!-- Login Content -->
 	<div class="login" style="--bg-image: url('<?php echo get_template_directory_uri(); ?>/images/login-bg.jpg');">
 		<div class="container container--narrow">
@@ -83,5 +83,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php wp_footer(); ?>
 
 </body>
-
 </html>
