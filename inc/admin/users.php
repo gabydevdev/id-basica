@@ -27,6 +27,7 @@ function id_basica_add_user_columns($columns) {
 	$columns['puesto']         = __('Puesto', 'id-basica');
 	$columns['departamento']   = __('Departamento', 'id-basica');
 	$columns['fecha_ingreso']  = __('Fecha de Ingreso', 'id-basica');
+	$columns['jefe']           = __('Jefe', 'id-basica');
 	$columns['jefe_inmediato'] = __('Jefe Inmediato', 'id-basica');
 
 	return $columns;
@@ -69,7 +70,7 @@ function id_basica_show_user_column_content($output, $column_name, $user_id) {
 			break;
 
 		case 'jefe_inmediato':
-			$jefe_id = get_user_meta($user_id, 'jefe', true);
+			$jefe_id = get_user_meta($user_id, 'jefe_inmediato', true);
 			if ($jefe_id) {
 				$jefe   = get_userdata($jefe_id);
 				$output = $jefe ? esc_html($jefe->display_name) : '—';

@@ -157,7 +157,7 @@ function id_basica_populate_puesto_field_choices( $field ) {
 	// Reset choices.
 	$field['choices'] = array();
 
-	$field['choices'][] = '';
+	$field['choices'][''] = '';
 
 	// Path to the JSON file.
 	$json_file_path = get_template_directory() . '/puesto.json';
@@ -194,7 +194,7 @@ function id_basica_populate_departamento_field_choices( $field ) {
 	// Reset choices.
 	$field['choices'] = array();
 
-	$field['choices'][] = '';
+	$field['choices'][''] = '';
 
 	// Path to the JSON file.
 	$json_file_path = get_template_directory() . '/departamento.json';
@@ -233,7 +233,7 @@ function id_basica_populate_jefe_inmediato_field_choices( $field ) {
 	// Reset choices.
 	$field['choices'] = array();
 
-	$field['choices'][] = '';
+	$field['choices'][''] = '';
 
 	// Get all users with the 'jefe_inmediato' role.
 	$args = array(
@@ -255,13 +255,6 @@ function id_basica_populate_jefe_inmediato_field_choices( $field ) {
 		$field['choices']['no_jefe'] = __( 'No Jefe Inmediato Found', 'id-basica' );
 	}
 
-	// Set the default value to the first choice if available.
-	if ( empty( $field['value'] ) && ! empty( $field['choices'] ) ) {
-		$field['value'] = key( $field['choices'] );
-	}
-
 	return $field;
 }
 add_filter( 'acf/load_field/name=jefe_inmediato', 'id_basica_populate_jefe_inmediato_field_choices' );
-add_filter( 'acf/load_field/name=jefe', 'id_basica_populate_jefe_inmediato_field_choices' );
-
