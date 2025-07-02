@@ -35,7 +35,12 @@ function is_dev() {
 }
 
 /**
- * Prints the formatted debug styles.
+ * Output CSS styles for debug display elements.
+ *
+ * Prints the CSS styles needed for the debug output elements.
+ * Only outputs once per page load using static variable.
+ *
+ * @since 1.0.0
  */
 function debug_styles() {
 	static $first_time = true;
@@ -89,9 +94,13 @@ function debug_styles() {
 }
 
 /**
- * Prints a value or a group of values in a formatted way.
+ * Print values in a formatted, styled debug output.
  *
- * @param mixed ...$args The value or values to be printed.
+ * Displays variables in a nicely formatted debug container with syntax highlighting.
+ * Only works in development environments. Supports multiple arguments for grouped output.
+ *
+ * @since 1.0.0
+ * @param mixed ...$args One or more values to be printed and debugged.
  */
 function print_log( ...$args ) {
 	if ( ! is_dev() || empty( $args ) ) {
@@ -114,8 +123,13 @@ function print_log( ...$args ) {
 }
 
 /**
- * Alias for print_log
+ * Alias function for print_log.
  *
+ * Provides a shorter function name for debugging purposes.
+ * Accepts the same parameters as print_log().
+ *
+ * @since 1.0.0
+ * @param mixed ...$args One or more values to be printed and debugged.
  * @see print_log()
  */
 function debug( ...$args ) {
@@ -123,9 +137,13 @@ function debug( ...$args ) {
 }
 
 /**
- * Log data to the browser console.
+ * Log data to the browser console via JavaScript.
  *
- * @param mixed $data The data to log.
+ * Outputs JavaScript console.log() statements with the provided data.
+ * Only works in development environments. Data is JSON-encoded for safety.
+ *
+ * @since 1.0.0
+ * @param mixed $data The data to log to browser console.
  */
 function console_log( $data ) {
 	if ( ! is_dev() || empty( $data ) ) {

@@ -1,8 +1,13 @@
 <?php
 /**
- * WordPress Admin Modifications
+ * WordPress Admin area modifications and customizations.
+ *
+ * This file contains all admin-specific modifications including
+ * custom styles, scripts, dashboard widgets, and admin interface
+ * customizations for the ID Basica theme.
  *
  * @package ID_Basica
+ * @since   1.0.0
  */
 
 // Exit if accessed directly.
@@ -10,8 +15,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+add_filter( 'admin_email_check_interval', '__return_false' );
+
 /**
  * Enqueue custom admin styles and scripts.
+ *
+ * Loads the theme's custom admin stylesheet and JavaScript files
+ * for WordPress admin area customizations.
+ *
+ * @since 1.0.0
  */
 function id_basica_admin_styles_and_scripts() {
 	wp_enqueue_style(
@@ -32,15 +44,26 @@ function id_basica_admin_styles_and_scripts() {
 add_action( 'admin_enqueue_scripts', 'id_basica_admin_styles_and_scripts' );
 
 /**
- * Customize admin footer text
+ * Customize admin footer text.
+ *
+ * Replaces the default WordPress admin footer text with
+ * custom branding for the ID Basica theme.
+ *
+ * @since 1.0.0
+ * @return string Custom footer text with links.
  */
 function id_basica_admin_footer_text() {
-	echo 'Powered by <a href="https://wordpress.org">WordPress</a> | <a href="https://github.com/gabydevdev/id-basica">ID Basica</a>';
+	return 'Powered by <a href="https://wordpress.org">WordPress</a> | <a href="https://github.com/gabydevdev/id-basica">ID Basica</a>';
 }
 add_filter( 'admin_footer_text', 'id_basica_admin_footer_text' );
 
 /**
- * Add custom dashboard widget
+ * Add custom dashboard widget for theme information.
+ *
+ * Registers a custom dashboard widget that displays information
+ * about the ID Basica theme and its features.
+ *
+ * @since 1.0.0
  */
 function id_basica_add_dashboard_widgets() {
 	wp_add_dashboard_widget(

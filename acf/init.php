@@ -1,8 +1,13 @@
 <?php
 /**
- * Advanced Custom Fields configuration.
+ * Advanced Custom Fields (ACF) configuration and initialization.
+ *
+ * Handles ACF Pro plugin dependency checking, field group loading,
+ * and theme-specific ACF configurations. Ensures ACF Pro is available
+ * and properly configured for the theme's requirements.
  *
  * @package ID_Basica
+ * @since   1.0.0
  */
 
 // Exit if accessed directly.

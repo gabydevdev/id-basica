@@ -1,10 +1,13 @@
 <?php
 /**
- * The template for displaying the footer
+ * The template for displaying the footer.
  *
- * Contains the closing of the #content div and all content after.
+ * Contains the footer content and closes the dashboard layout structure.
+ * Includes copyright information and closes all necessary HTML containers.
  *
- * @package IDBasica
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ * @package ID_Basica
+ * @since   1.0.0
  */
 
 // Exit if accessed directly.

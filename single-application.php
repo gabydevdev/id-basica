@@ -1,8 +1,14 @@
 <?php
 /**
- * Template Name: Single Application
+ * Template for displaying single application posts.
  *
+ * This template displays individual application posts with
+ * a custom layout featuring invoice-style formatting and
+ * ACF field integration for application data.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  * @package ID_Basica
+ * @since   1.0.0
  */
 
 // Exit if accessed directly.

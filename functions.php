@@ -17,7 +17,13 @@ define( 'ID_BASICA_DIR', get_template_directory() );
 define( 'ID_BASICA_URI', get_template_directory_uri() );
 
 /**
- * Theme setup function
+ * Sets up theme defaults and registers support for various WordPress features.
+ *
+ * Note that this function is hooked into the after_setup_theme hook, which
+ * runs before the init hook. The init hook is too late for some features, such
+ * as indicating support for post thumbnails.
+ *
+ * @since 1.0.0
  */
 function id_basica_theme_setup() {
 	// Add default posts feed links to head (comments feed links are removed)
@@ -67,7 +73,12 @@ function id_basica_theme_setup() {
 add_action( 'after_setup_theme', 'id_basica_theme_setup' );
 
 /**
- * Custom feed links without comments
+ * Custom feed links without comments feed.
+ *
+ * Generates RSS feed link for posts only, excluding comments feed.
+ * This is used as a replacement for default wp_head feed links.
+ *
+ * @since 1.0.0
  */
 function id_basica_custom_feed_links() {
 	// Only add the posts feed, skip comments feed
@@ -82,7 +93,12 @@ require_once ID_BASICA_DIR . '/acf/helpers.php';
 require_once ID_BASICA_DIR . '/admin/init.php';
 
 /**
- * Enqueue scripts and styles.
+ * Enqueue styles for the theme.
+ *
+ * Registers and enqueues stylesheets for the theme including
+ * Font Awesome icons and main theme styles.
+ *
+ * @since 1.0.0
  */
 function id_basica_styles() {
 	$main_css_asset_file = include ID_BASICA_DIR . '/build/css/main.asset.php';
@@ -106,7 +122,11 @@ function id_basica_styles() {
 add_action( 'wp_enqueue_scripts', 'id_basica_styles', 9998 );
 
 /**
- * Enqueue scripts and styles.
+ * Enqueue scripts for the theme.
+ *
+ * Registers and enqueues JavaScript files for the theme.
+ *
+ * @since 1.0.0
  */
 function id_basica_scripts() {
 	$main_js_asset_file = include ID_BASICA_DIR . '/build/js/main.asset.php';
@@ -125,7 +145,12 @@ add_action( 'wp_enqueue_scripts', 'id_basica_scripts', 9998 );
 require_once ID_BASICA_DIR . '/inc/post-types.php';
 
 /**
- * Register widget areas
+ * Register widget areas.
+ *
+ * Registers sidebar widget areas for the theme dashboard.
+ *
+ * @since 1.0.0
+ * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 function id_basica_widgets_init() {
 	register_sidebar(
@@ -143,7 +168,13 @@ function id_basica_widgets_init() {
 add_action( 'widgets_init', 'id_basica_widgets_init' );
 
 /**
- * Dashboard functions
+ * Check if current user should have dashboard access.
+ *
+ * Determines if the current user should be able to access
+ * the dashboard interface. Currently checks for logged-in status.
+ *
+ * @since 1.0.0
+ * @return bool True if user should have dashboard access, false otherwise.
  */
 function id_basica_is_dashboard_user() {
 	// By default, only check if user is logged in
@@ -152,7 +183,13 @@ function id_basica_is_dashboard_user() {
 }
 
 /**
- * Redirect non-admin users to the dashboard
+ * Redirect non-admin users to the dashboard.
+ *
+ * Redirects logged-in users without admin capabilities to the
+ * dashboard page, preventing access to standard WordPress pages.
+ * Allows certain pages to be accessible.
+ *
+ * @since 1.0.0
  */
 function id_basica_redirect_to_dashboard() {
 	// Only apply to non-admin users who are logged in

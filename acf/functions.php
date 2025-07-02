@@ -1,13 +1,15 @@
 <?php
+/**
+ * ACF (Advanced Custom Fields) custom functions and form handlers.
+ *
+ * This file contains custom filters and functions for handling
+ * ACF forms and field modifications within the theme.
+ *
+ * @package ID_Basica
+ * @since   1.0.0
+ */
 
-add_filter(
-	'acfe/form/load_form/form=movimiento-de-personal',
-	function () {
-
-		$solicitud_id = (int) $_GET['solicitud_id'];
-
-		$form['solicitud_id'] = $solicitud_id;
-
-		return $form;
-	}
-);
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}

@@ -11,9 +11,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Gets the user's display name or username if display name is not set
+ * Gets the user's display name or username if display name is not set.
  *
- * @return string User's name
+ * Retrieves the current user's display name, falling back to the username
+ * if no display name is set. Returns empty string for non-logged-in users.
+ *
+ * @since 1.0.0
+ * @return string User's display name or username, empty string if not logged in.
  */
 function id_basica_get_user_name() {
 	$current_user = wp_get_current_user();
@@ -30,11 +34,15 @@ function id_basica_get_user_name() {
 }
 
 /**
- * Gets the user's avatar
+ * Gets the user's avatar.
  *
- * @param int    $size Avatar size in pixels
- * @param string $default Default avatar URL
- * @return string Avatar HTML
+ * Retrieves the current user's avatar image using WordPress get_avatar function.
+ * Returns empty string for non-logged-in users.
+ *
+ * @since 1.0.0
+ * @param int    $size    Avatar size in pixels. Default 40.
+ * @param string $default Default avatar URL. Default empty.
+ * @return string Avatar HTML markup, empty string if not logged in.
  */
 function id_basica_get_user_avatar( $size = 40, $default = '' ) {
 	$current_user = wp_get_current_user();
@@ -47,10 +55,14 @@ function id_basica_get_user_avatar( $size = 40, $default = '' ) {
 }
 
 /**
- * Check if the current user has the specified capability
+ * Check if the current user has the specified capability.
  *
- * @param string $capability Capability to check
- * @return bool True if user has capability, false otherwise
+ * Verifies if the currently logged-in user has the specified WordPress capability.
+ * Returns false for non-logged-in users.
+ *
+ * @since 1.0.0
+ * @param string $capability Capability to check.
+ * @return bool True if user has capability, false otherwise.
  */
 function id_basica_user_can( $capability ) {
 	$current_user = wp_get_current_user();
@@ -63,9 +75,13 @@ function id_basica_user_can( $capability ) {
 }
 
 /**
- * Generate dashboard navigation menu
+ * Generate and display dashboard navigation menu.
  *
- * @return string HTML markup for the dashboard navigation
+ * Outputs the dashboard navigation menu HTML. If a custom menu is assigned
+ * to the 'dashboard-menu' location, it will be displayed. Otherwise,
+ * falls back to a default menu structure.
+ *
+ * @since 1.0.0
  */
 function id_basica_dashboard_menu() {
 	// Check if menu exists
@@ -86,7 +102,12 @@ function id_basica_dashboard_menu() {
 }
 
 /**
- * Default dashboard menu items when no menu is set
+ * Display default dashboard menu items when no menu is set.
+ *
+ * Outputs a default navigation menu structure for the dashboard
+ * when no custom menu has been assigned to the dashboard-menu location.
+ *
+ * @since 1.0.0
  */
 function id_basica_default_menu() {
 	?>
@@ -131,7 +152,13 @@ function id_basica_default_menu() {
 }
 
 /**
- * Generate user menu for the dashboard header
+ * Generate and display user menu for the dashboard header.
+ *
+ * Outputs the user menu dropdown in the dashboard header, including
+ * user avatar, name, and menu items for profile, settings, and logout.
+ * Returns early if no user is logged in.
+ *
+ * @since 1.0.0
  */
 function id_basica_user_menu() {
 	// Get current user info
@@ -172,9 +199,13 @@ function id_basica_user_menu() {
 }
 
 /**
- * Check if user is on the dashboard
+ * Check if user is currently viewing the dashboard page.
  *
- * @return bool True if on dashboard, false otherwise
+ * Determines if the current page is the main dashboard by checking
+ * if it's the front page or home page.
+ *
+ * @since 1.0.0
+ * @return bool True if on dashboard page, false otherwise.
  */
 function id_basica_is_dashboard() {
 	global $post;
@@ -190,9 +221,13 @@ function id_basica_is_dashboard() {
 }
 
 /**
- * Get current page title
+ * Get the title of the current page.
  *
- * @return string Page title
+ * Retrieves the title of the current post/page being viewed.
+ * Returns empty string if no post is available.
+ *
+ * @since 1.0.0
+ * @return string The page title, empty string if no post available.
  */
 function id_basica_get_page_title() {
 	global $post;
@@ -205,11 +240,22 @@ function id_basica_get_page_title() {
 }
 
 /**
- * Display a dashboard card
+ * Display a dashboard card component.
  *
- * @param string $title Card title
- * @param string $content Card content
- * @param array  $args Additional arguments
+ * Outputs a styled card component with header, content, and optional footer.
+ * Supports optional icon, custom CSS classes, and collapsible functionality.
+ *
+ * @since 1.0.0
+ * @param string $title   The card title text.
+ * @param string $content The main card content (HTML allowed).
+ * @param array  $args {
+ *     Optional. Additional arguments for customizing the card.
+ *
+ *     @type string $footer      Optional footer content. Default empty.
+ *     @type string $class       Additional CSS classes for the card. Default empty.
+ *     @type bool   $collapsible Whether the card should be collapsible. Default false.
+ *     @type string $icon        FontAwesome icon class for the title. Default empty.
+ * }
  */
 function id_basica_card( $title, $content, $args = array() ) {
 	// Default arguments

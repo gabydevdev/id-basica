@@ -11,7 +11,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Register custom post types
+ * Register custom post types for the theme.
+ *
+ * Registers the 'Application' custom post type for handling
+ * user applications within the dashboard system.
+ *
+ * @since 1.0.0
  */
 function id_basica_register_post_types() {
 	// Application post type
@@ -52,7 +57,12 @@ function id_basica_register_post_types() {
 add_action( 'init', 'id_basica_register_post_types' );
 
 /**
- * Register custom taxonomy for Application post type
+ * Register custom taxonomy for Application post type.
+ *
+ * Creates the 'Application Types' taxonomy to categorize
+ * different types of applications within the system.
+ *
+ * @since 1.0.0
  */
 function id_basica_register_application_taxonomy() {
 	$labels = array(

@@ -1,8 +1,13 @@
 <?php
 /**
- * The template for displaying 404 pages (not found)
+ * The template for displaying 404 pages (not found).
  *
- * @package IDBasica
+ * Displays a user-friendly 404 error page with dashboard styling
+ * and navigation back to the main dashboard.
+ *
+ * @link https://codex.wordpress.org/Creating_an_Error_404_Page
+ * @package ID_Basica
+ * @since   1.0.0
  */
 
 // Exit if accessed directly.
