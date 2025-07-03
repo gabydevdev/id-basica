@@ -3,9 +3,9 @@
 Thumbs.db
 
 # Ignore IDE and editor files
-*.code-workspace
-.idea/
-.vscode/
+# *.code-workspace
+# .idea/
+# .vscode/
 
 # Ignore logs and temporary files
 *.log

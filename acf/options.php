@@ -61,6 +61,15 @@ function id_basica_register_acf_options_pages() {
 				'menu_slug'   => 'intranet-widget-settings',
 			)
 		);
+
+		acf_add_options_sub_page(
+			array(
+				'page_title'  => __( 'Email Notifications', ID_BASICA_DOMAIN ),
+				'menu_title'  => __( 'Email Notifications', ID_BASICA_DOMAIN ),
+				'parent_slug' => 'intranet-settings',
+				'menu_slug'   => 'intranet-email-notifications',
+			)
+		);
 	}
 }
 add_action( 'acf/init', 'id_basica_register_acf_options_pages' );
@@ -316,6 +325,52 @@ function id_basica_register_acf_fields() {
 							'param'    => 'options_page',
 							'operator' => '==',
 							'value'    => 'intranet-widget-settings',
+						),
+					),
+				),
+			)
+		);
+
+		// Email Notification Settings Fields
+		acf_add_local_field_group(
+			array(
+				'key'      => 'group_email_notification_settings',
+				'title'    => 'Email Notification Settings',
+				'fields'   => array(
+					array(
+						'key'           => 'field_director_de_administracion_email',
+						'label'         => 'Director de Administración Email',
+						'name'          => 'director_de_administracion_email',
+						'type'          => 'email',
+						'instructions'  => 'Email address for the Director de Administración (Ana Beatriz Juncal Tapia).',
+						'required'      => 1,
+						'default_value' => '',
+					),
+					array(
+						'key'           => 'field_capital_humano_email',
+						'label'         => 'Capital Humano Email',
+						'name'          => 'capital_humano_email',
+						'type'          => 'email',
+						'instructions'  => 'Email address for Capital Humano department.',
+						'required'      => 1,
+						'default_value' => '',
+					),
+					array(
+						'key'           => 'field_coordinador_fiscal_email',
+						'label'         => 'Coordinador Fiscal Email',
+						'name'          => 'coordinador_fiscal_email',
+						'type'          => 'email',
+						'instructions'  => 'Email address for the Coordinador Fiscal (Vianey Bahena Ramírez).',
+						'required'      => 1,
+						'default_value' => '',
+					),
+				),
+				'location' => array(
+					array(
+						array(
+							'param'    => 'options_page',
+							'operator' => '==',
+							'value'    => 'intranet-email-notifications',
 						),
 					),
 				),

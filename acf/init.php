@@ -83,6 +83,7 @@ if ( $acf_pro_installed && ! $acf_pro_active ) {
 
 require_once ID_BASICA_DIR . '/acf/options.php';
 require_once ID_BASICA_DIR . '/acf/group-fields.php';
+require_once ID_BASICA_DIR . '/acf/functions.php';
 
 /**
  * Define the path where ACF field groups will be saved as JSON files.

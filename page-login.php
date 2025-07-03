@@ -37,9 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 					<?php
 					if ( ! is_user_logged_in() ) { // Display WordPress login form:
-						// Check if there's a redirect_to parameter
-						$redirect_to = isset( $_GET['redirect_to'] ) ? esc_url_raw( $_GET['redirect_to'] ) : '';
-
+						// Don't use redirect parameter here - let the filter handle it
 						$args = array(
 							'form_id'        => 'loginform-custom',
 							'label_username' => __( 'Correo electrónico' ),
@@ -47,7 +45,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 							'label_remember' => __( 'Recuérdame' ),
 							'label_log_in'   => __( 'Iniciar sesión' ),
 							'remember'       => true,
-							'redirect'       => $redirect_to,
 						);
 						wp_login_form( $args );
 					} else { // If logged in:

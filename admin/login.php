@@ -66,13 +66,20 @@ add_filter( 'login_url', 'id_basica_login_url_filter', 10, 3 );
  * @param WP_User|WP_Error $user        WP_User object on success, WP_Error object on failure.
  * @return string The modified redirect URL.
  */
-function id_basica_redirect_after_login( $redirect_to, $request, $user ) {
-	// Check if user login was successful
-	if ( isset( $user->roles ) && is_array( $user->roles ) ) {
-		return home_url();
-	} else {
-		return $redirect_to;
+function id_basica_redirect_after_login( $url, $request, $user ) {
+	// Check if user login was successful and $user is a valid WP_User object
+	if ( ! is_wp_error( $user ) && isset( $user->roles ) && is_array( $user->roles ) ) {
+		// If user is an administrator, redirect to admin dashboard
+		if ( in_array( 'administrator', $user->roles ) ) {
+			return admin_url();
+		}
+		
+		// For all other users, redirect to the inicio page
+		return home_url( '/inicio/' );
 	}
+
+	// Fallback to the original URL if something went wrong
+	return $url;
 }
 add_filter( 'login_redirect', 'id_basica_redirect_after_login', 10, 3 );
 

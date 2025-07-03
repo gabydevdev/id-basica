@@ -95,28 +95,17 @@ require_once ID_BASICA_DIR . '/admin/init.php';
 /**
  * Enqueue styles for the theme.
  *
- * Registers and enqueues stylesheets for the theme including
- * Font Awesome icons and main theme styles.
- *
  * @since 1.0.0
  */
 function id_basica_styles() {
-	$main_css_asset_file = include ID_BASICA_DIR . '/build/css/main.asset.php';
-
-	// Enqueue Font Awesome for icons
-	wp_enqueue_style(
-		'font-awesome',
-		'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
-		array(),
-		'6.4.0'
-	);
+	// $main_css_asset_file = include ID_BASICA_DIR . '/build/css/main.asset.php';
 
 	// Enqueue main stylesheet
 	wp_enqueue_style(
 		'id-basica-style',
 		ID_BASICA_URI . '/build/css/main.css',
-		$main_css_asset_file['dependencies'],
-		$main_css_asset_file['version']
+		array(),
+		ID_BASICA_VERSION
 	);
 }
 add_action( 'wp_enqueue_scripts', 'id_basica_styles', 9998 );
@@ -124,19 +113,18 @@ add_action( 'wp_enqueue_scripts', 'id_basica_styles', 9998 );
 /**
  * Enqueue scripts for the theme.
  *
- * Registers and enqueues JavaScript files for the theme.
- *
  * @since 1.0.0
  */
 function id_basica_scripts() {
-	$main_js_asset_file = include ID_BASICA_DIR . '/build/js/main.asset.php';
+	// $main_js_asset_file = include ID_BASICA_DIR . '/build/js/main.asset.php';
 
 	// Enqueue main script
 	wp_enqueue_script(
 		'id-basica-script',
 		ID_BASICA_URI . '/build/js/main.js',
-		$main_js_asset_file['dependencies'],
-		$main_js_asset_file['version']
+		array(),
+		ID_BASICA_VERSION,
+		true
 	);
 }
 add_action( 'wp_enqueue_scripts', 'id_basica_scripts', 9998 );
@@ -181,36 +169,3 @@ function id_basica_is_dashboard_user() {
 	// You can add more specific role checks here if needed
 	return is_user_logged_in();
 }
-
-/**
- * Redirect non-admin users to the dashboard.
- *
- * Redirects logged-in users without admin capabilities to the
- * dashboard page, preventing access to standard WordPress pages.
- * Allows certain pages to be accessible.
- *
- * @since 1.0.0
- */
-function id_basica_redirect_to_dashboard() {
-	// Only apply to non-admin users who are logged in
-	if ( is_user_logged_in() && ! current_user_can( 'manage_options' ) && ! is_admin() ) {
-		// Don't redirect on the dashboard page itself or on logout
-		global $post;
-
-		// Allow certain pages to be accessible
-		$allowed_pages = array( 'dashboard', 'logout' );
-
-		// Get current page slug
-		$current_slug = $post ? $post->post_name : '';
-
-		// If not on an allowed page and not a POST request
-		if ( ! in_array( $current_slug, $allowed_pages, true ) && ! is_404() && 'POST' !== $_SERVER['REQUEST_METHOD'] ) {
-			// Get dashboard page URL (you need to create this page)
-			$dashboard_url = home_url( '/dashboard/' );
-
-			wp_redirect( $dashboard_url );
-			exit;
-		}
-	}
-}
-add_action( 'template_redirect', 'id_basica_redirect_to_dashboard' );

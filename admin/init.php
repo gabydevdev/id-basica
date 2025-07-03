@@ -276,7 +276,7 @@ add_action( 'after_setup_theme', 'id_basica_hide_posts' );
  */
 function id_basica_disable_gutenberg( $can_edit, $post_type ) {
 	// Specify post types where Gutenberg should be disabled
-	$disabled_post_types = array( 'application' ); // Replace with your post types
+	$disabled_post_types = array( 'application', 'page' ); // Replace with your post types
 
 	// Disable Gutenberg for specific post types
 	if ( in_array( $post_type, $disabled_post_types, true ) ) {
@@ -284,12 +284,12 @@ function id_basica_disable_gutenberg( $can_edit, $post_type ) {
 	}
 
 	// Disable Gutenberg for specific pages by ID
-	if ( isset( $_GET['post'] ) ) {
-		$disabled_pages = array( 42, 123 ); // Replace with your page IDs
-		if ( in_array( (int) $_GET['post'], $disabled_pages, true ) ) {
-			return false;
-		}
-	}
+	// if ( isset( $_GET['post'] ) ) {
+	// 	$disabled_pages = array( 42, 123 ); // Replace with your page IDs
+	// 	if ( in_array( (int) $_GET['post'], $disabled_pages, true ) ) {
+	// 		return false;
+	// 	}
+	// }
 
 	return $can_edit;
 }

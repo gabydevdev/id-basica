@@ -4,7 +4,7 @@
  * Custom styles for Advanced Custom Fields (ACF) fields.
  */
 
-@use "abstracts/mixins" as *;
+@use "../mixins" as *;
 
 .acf-field {
 	input[type="text"],

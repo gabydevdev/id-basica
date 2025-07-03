@@ -1,20 +1,15 @@
 <?php
+
+use function ID_BASICA\DEV\console_log;
 /**
- * ACF field group for Movimiento de personal (Personal Movement)
+ * Functions for ACF field groups in ID Basica theme.
  *
  * @package ID_Basica
  */
 
-use function ID_BASICA\DEV\console_log;
-
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
-}
-
-// Check if ACF is active
-if ( ! class_exists( 'ACF' ) ) {
-	return;
 }
 
 /**
@@ -25,42 +20,26 @@ if ( ! class_exists( 'ACF' ) ) {
  *
  * @since 1.0.0
  */
-function id_basica_acf_frontend_styles_and_scripts() {
+function id_basica_acf_frontend_scripts() {
 	if ( ! is_admin() ) {
 		$acf_fields_js_asset_file  = include ID_BASICA_DIR . '/build/js/acf-fields.asset.php';
-		$acf_fields_css_asset_file = include ID_BASICA_DIR . '/build/css/acf-fields.asset.php';
 
 		wp_enqueue_script(
 			'id-basica-acf-fields',
 			ID_BASICA_URI . '/build/js/acf-fields.js',
 			array( 'jquery', 'acf-input' ),
-			$acf_fields_js_asset_file['version'],
+			ID_BASICA_VERSION,
 			true
 		);
 
-		wp_enqueue_style(
-			'id-basica-acf-fields',
-			ID_BASICA_URI . '/build/css/acf-fields.css',
-			array(),
-			$acf_fields_css_asset_file['version']
-		);
+		wp_localize_script( 'id-basica-acf-fields', 'id_basica_acf_ajax_object', array(
+			'current_user_id' => get_current_user_id()
+		) );
 	}
 }
-add_action( 'acf/input/admin_enqueue_scripts', 'id_basica_acf_frontend_styles_and_scripts', 9999 );
+add_action( 'acf/input/admin_enqueue_scripts', 'id_basica_acf_frontend_scripts', 9999 );
 
-/**
- * Modify the `fecha_de_formato` field on field load.
- *
- * - Set the field as disabled.
- * - Set the current date in in d/m/Y format as value, if no value is already set.
- *
- * @since 1.0.0
- * @param array $field The ACF field array.
- * @return array Modified field array.
- */
-function id_basica_load_field_fecha_de_formato( $field ) {
-	$field['disabled'] = true;
-
+function id_basica_populate_field_fecha_de_formato( $field ) {
 	// Set default value to current date if not already set.
 	if ( empty( $field['value'] ) ) {
 		$field['value'] = date( 'd/m/Y' );
@@ -68,83 +47,130 @@ function id_basica_load_field_fecha_de_formato( $field ) {
 
 	return $field;
 }
-add_filter( 'acf/load_field/name=fecha_de_formato', 'id_basica_load_field_fecha_de_formato' );
+add_filter( 'acf/prepare_field/name=fecha_de_formato', 'id_basica_populate_field_fecha_de_formato' );
 
-/**
- * Modify the `nombre_de_empleado` field on field load.
- *
- * - Set the field as disabled.
- * - Set the current user's display name as value, if no value is already set.
- *
- * @since 1.0.0
- * @param array $field The ACF field array.
- * @return array Modified field array.
- */
-function id_basica_load_field_nombre_de_empleado( $field ) {
-	$field['disabled'] = true;
-
+function id_basica_populate_field_nombre_de_empleado( $field ) {
 	// Get current user.
 	$current_user = wp_get_current_user();
 
-	if ( empty( $field['value'] ) && $current_user->exists() ) {
-		$field['value'] = sanitize_text_field( $current_user->display_name );
-	}
+	if ( empty( $field['value'] ) && $current_user && $current_user->exists() ) {
+		// Get the user's display name.
+		$nombre_de_empleado = $current_user->display_name;
 
-	return $field;
-}
-add_filter( 'acf/load_field/name=nombre_de_empleado', 'id_basica_load_field_nombre_de_empleado' );
-
-/**
- * Modify the `user_id` field on field load.
- *
- * Set the current user's ID as value, if no value is already set.
- *
- * @since 1.0.0
- * @param array $field The ACF field array.
- * @return array Modified field array.
- */
-function id_basica_load_field_user_id( $field ) {
-	// Set the value to the current user's ID.
-	$current_user = wp_get_current_user();
-
-	if ( empty( $field['value'] ) && $current_user->exists() ) {
-		$field['value'] = absint( $current_user->ID );
-	}
-
-	return $field;
-}
-add_filter( 'acf/load_field/name=user_id', 'id_basica_load_field_user_id' );
-
-/**
- * Modify the `entry_title` field on field load.
- *
- * Generate a title combining the:
- *  - form name
- *  - user display name
- *  - and current date;
- * set it as value, if no value is already set.
- *
- * @since 1.0.0
- * @param array $field The ACF field array.
- * @return array Modified field array.
- */
-function id_basica_load_field_entry_title( $field ) {
-	if ( empty( $field['value'] ) ) {
-		$current_entry = get_post( get_the_ID() );
-		$current_user  = wp_get_current_user();
-		$current_date  = date( 'Y-m-d' );
-
-		// Only proceed if we have valid data.
-		if ( $current_entry && $current_user->exists() ) {
-			$field['value'] = sanitize_text_field(
-				$current_entry->post_title . ' - ' . $current_user->display_name . ' - ' . $current_date
-			);
+		if ( $nombre_de_empleado ) {
+			// Set the value to the user's display name.
+			$field['value'] = sanitize_text_field( $nombre_de_empleado );
 		}
 	}
 
 	return $field;
 }
-add_filter( 'acf/load_field/name=entry_title', 'id_basica_load_field_entry_title' );
+add_filter( 'acf/prepare_field/name=nombre_de_empleado', 'id_basica_populate_field_nombre_de_empleado' );
+
+function id_basica_populate_field_puesto( $field ) {
+	// Get current user.
+	$current_user = wp_get_current_user();
+
+	// Set default value to current user's puesto if not already set.
+	if ( empty( $field['value'] ) && $current_user && $current_user->exists() ) {
+		$puesto = get_user_meta( $current_user->ID, 'puesto', true );
+
+		if ( $puesto ) {
+			$field['value'] = sanitize_text_field( $puesto );
+		}
+	}
+
+	return $field;
+}
+add_filter( 'acf/prepare_field/name=puesto', 'id_basica_populate_field_puesto' );
+
+function id_basica_populate_field_departamento( $field ) {
+	// Get current user.
+	$current_user = wp_get_current_user();
+
+	// Set default value to current user's department if not already set.
+	if ( empty( $field['value'] ) && $current_user && $current_user->exists() ) {
+		$departamento = get_user_meta( $current_user->ID, 'departamento', true );
+
+		if ( $departamento ) {
+			$field['value'] = sanitize_text_field( $departamento );
+		}
+	}
+
+	return $field;
+}
+add_filter( 'acf/prepare_field/name=departamento', 'id_basica_populate_field_departamento' );
+
+function id_basica_populate_field_user_id( $field ) {
+	// Get current user.
+	$current_user = wp_get_current_user();
+	
+	// Set default value to current user ID if not already set.
+	if ( empty( $field['value'] ) && $current_user && $current_user->exists() ) {
+		$field['value'] = absint( $current_user->ID );
+	}
+
+	return $field;
+}
+add_filter( 'acf/prepare_field/name=user_id', 'id_basica_populate_field_user_id' );
+
+function id_basica_populate_field_jefe_inmediato_id( $field ) {
+	// Get current user.
+	$current_user = wp_get_current_user();
+
+	// Set default value to the jefe inmediato ID from user meta if not already set.
+	if ( empty( $field['value'] ) && $current_user && $current_user->exists() ) {
+		$jefe_inmediato_id = get_user_meta( $current_user->ID, 'jefe_inmediato', true );
+
+		if ( $jefe_inmediato_id ) {
+			$field['value'] = $jefe_inmediato_id;
+		}
+	}
+
+	return $field;
+}
+add_filter( 'acf/prepare_field/name=jefe_inmediato_id', 'id_basica_populate_field_jefe_inmediato_id' );
+
+function id_basica_populate_field_entry_title( $field ) {
+	// Get current user.
+	$current_user = wp_get_current_user();
+
+	if ( empty( $field['value'] ) && $current_user && $current_user->exists() ) {
+		$current_date = date( 'd/m/Y' );
+
+		$form_name = 'Solicitud';
+
+		// Generate title: "Form Name - User Name - Date"
+		$field['value'] = sanitize_text_field(
+			$form_name . ' - ' . $current_user->display_name . ' - ' . $current_date
+		);
+	}
+
+	return $field;
+}
+add_filter( 'acf/prepare_field/name=entry_title', 'id_basica_populate_field_entry_title' );
+
+function id_basica_field_firma_de_jefe_inmediato( $field ) {
+	$current_user      = wp_get_current_user();
+	$jefe_inmediato_id = get_user_meta( $current_user->ID, 'jefe_inmediato', true );
+
+	ID_BASICA\DEV\console_log( get_field( 'jefe_inmediato_id' ) );
+
+	if ( get_field( 'jefe_inmediato_id' ) ) {
+		$jefe_inmediato_id = get_field( 'jefe_inmediato_id' );
+	}
+
+	$jefe_inmediato_user = get_user_by( 'id', $jefe_inmediato_id );
+
+	if ( $jefe_inmediato_user ) {
+		// Set the value to the jefe inmediato's display name.
+		$jefe_inmediato_name   = sanitize_text_field( $jefe_inmediato_user->display_name );
+		$field['instructions'] = $jefe_inmediato_name . "<br>\r\nJefe Inmediato<br>\r\nSolicita";
+	}
+
+	return $field;
+}
+add_filter( 'acf/prepare_field/name=firma_de_jefe_inmediato', 'id_basica_field_firma_de_jefe_inmediato' );
 
 /**
  * Populate `puesto` field choices from JSON file.
@@ -228,8 +254,6 @@ add_filter( 'acf/load_field/name=departamento', 'id_basica_populate_departamento
  * @return array Modified field array.
  */
 function id_basica_populate_jefe_inmediato_field_choices( $field ) {
-	console_log( $field );
-
 	// Reset choices.
 	$field['choices'] = array();
 
@@ -258,3 +282,35 @@ function id_basica_populate_jefe_inmediato_field_choices( $field ) {
 	return $field;
 }
 add_filter( 'acf/load_field/name=jefe_inmediato', 'id_basica_populate_jefe_inmediato_field_choices' );
+
+/**
+ * Populate `group_field` field choices.
+ *
+ * @since 1.0.0
+ * @param array $field The ACF field array.
+ * @return array Modified field array.
+ */
+function id_basica_populate_group_field_choices( $field ) {
+	// Reset choices.
+	$field['choices'] = array();
+
+	$field['choices'][''] = '';
+
+	// Get all ACF field groups.
+	$groups = function_exists( 'acf_get_field_groups' ) ? acf_get_field_groups() : array();
+
+	// Populate the choices with group data.
+	if ( ! empty( $groups ) ) {
+		foreach ( $groups as $group ) {
+			$field['choices'][ $group['ID'] ] = sanitize_text_field( $group['title'] );
+		}
+	}
+
+	// If no groups found, add a default option.
+	if ( empty( $field['choices'] ) ) {
+		$field['choices']['no_group'] = __( 'No Group Found', 'id-basica' );
+	}
+
+	return $field;
+}
+add_filter( 'acf/load_field/name=group_field', 'id_basica_populate_group_field_choices' );
