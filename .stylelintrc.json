@@ -2,6 +2,7 @@
 	"extends": ["@wordpress/stylelint-config/scss-stylistic"],
 	"customSyntax": "postcss-scss",
 	"rules": {
+		"@stylistic/max-line-length": null,
 		"selector-class-pattern": null,
 		"custom-property-pattern": null,
 		"at-rule-empty-line-before": null,

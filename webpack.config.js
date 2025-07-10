@@ -20,6 +20,7 @@ module.exports = {
 	...defaultConfig,
 	entry: {
 		'js/main': path.resolve( process.cwd(), 'src/js/main.js' ),
+		'js/navigation': path.resolve( process.cwd(), 'src/js/navigation.js' ),
 		'js/acf-fields': path.resolve( process.cwd(), 'src/js/acf-fields.js' ),
 		'css/main': path.resolve( process.cwd(), 'src/scss/main.scss' ),
 	},
