@@ -30,7 +30,7 @@ if ( have_posts() ) {
 		?>
 
 		<div class="container">
-			<div class="content-area">
+			<div class="content__main">
 
 				<!-- Printable Page -->
 				<div class="invoice">

@@ -21,7 +21,7 @@ if ( have_posts() ) {
 		the_post();
 		?>
 		<div class="container">
-			<div class="content-area">
+			<div class="content__main">
 				<?php the_content(); ?>
 			</div>
 		</div>

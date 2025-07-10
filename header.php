@@ -38,5 +38,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php get_template_part( 'template-parts/layout/header' ); ?>
 
 			<!-- Content -->
-			<div class="dashboard__content">
+			<div class="content dashboard__content">
 
