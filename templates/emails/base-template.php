@@ -28,99 +28,180 @@ if ( ! defined( 'ABSPATH' ) ) {
     <title><?php echo esc_html( $title ); ?></title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            line-height: 1.5;
+            color: #202021;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #fcfcfc;
         }
         .email-container {
             max-width: 600px;
             margin: 0 auto;
             background-color: #ffffff;
-            padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .email-header {
+            background: linear-gradient(135deg, #d22 0%, #cd1d1d 100%);
+            color: #ffffff;
+            padding: 24px;
+            text-align: center;
+        }
+        .logo-container {
+            margin-bottom: 16px;
+        }
+        .logo {
+            max-width: 150px;
+            height: auto;
+            filter: brightness(0) invert(1);
+        }
+        .email-content {
+            padding: 24px;
         }
         .header {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
+            color: #202021;
             margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 1.25;
         }
         .content {
             margin-bottom: 20px;
+            color: #434445;
+            font-size: 16px;
         }
         .details-box {
-            background-color: #f8f9fa;
-            padding: 15px;
-            border-left: 4px solid #3498db;
-            margin: 20px 0;
+            background-color: #fcfcfc;
+            padding: 20px;
+            border-left: 4px solid #d22;
+            margin: 24px 0;
             border-radius: 4px;
+            border: 1px solid #ececed;
         }
         .details-box h3 {
             margin-top: 0;
-            color: #2c3e50;
-            font-size: 16px;
+            color: #202021;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
         }
         .details-box ul {
             margin: 0;
-            padding-left: 20px;
+            padding-left: 0;
+            list-style: none;
         }
         .details-box li {
             margin-bottom: 8px;
+            padding: 8px 0;
+            border-bottom: 1px solid #ececed;
+            color: #434445;
+        }
+        .details-box li:last-child {
+            border-bottom: none;
+        }
+        .details-box li strong {
+            color: #202021;
+            font-weight: 600;
         }
         .cta-button {
             text-align: center;
-            margin: 30px 0;
+            margin: 32px 0;
         }
         .cta-button a {
-            background-color: #3498db;
-            color: white;
-            padding: 12px 24px;
+            background: linear-gradient(135deg, #d22 0%, #cd1d1d 100%);
+            color: #ffffff;
+            padding: 16px 32px;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 8px;
             display: inline-block;
-            font-weight: bold;
-            transition: background-color 0.3s;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(221, 34, 34, 0.2);
         }
         .cta-button a:hover {
-            background-color: #2980b9;
+            background: linear-gradient(135deg, #cd1d1d 0%, #b81919 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(221, 34, 34, 0.3);
         }
         .footer {
-            border-top: 1px solid #ddd;
-            margin-top: 30px;
-            padding-top: 20px;
-            font-size: 12px;
-            color: #666;
+            background-color: #fcfcfc;
+            border-top: 1px solid #ececed;
+            padding: 20px 24px;
+            font-size: 14px;
+            color: #6b6d6f;
             text-align: center;
         }
         .stage-indicator {
-            background-color: #e8f4fd;
-            border: 1px solid #3498db;
-            border-radius: 4px;
-            padding: 10px;
+            background: linear-gradient(135deg, #e33b3b 0%, #d22 100%);
+            background: linear-gradient(135deg, #e33b3b 0%, #d22 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 16px;
             margin-bottom: 20px;
             text-align: center;
-            font-weight: bold;
-            color: #2c3e50;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        /* Mobile responsive */
+        @media only screen and (max-width: 600px) {
+            .email-container {
+                margin: 0 16px;
+                border-radius: 4px;
+            }
+            .email-header, .email-content, .footer {
+                padding: 16px;
+            }
+            .header {
+                font-size: 20px;
+            }
+            .cta-button a {
+                padding: 14px 24px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="email-container">
-        <h2 class="header"><?php echo esc_html( $title ); ?></h2>
-        
-        <?php if ( ! empty( $stage_indicator ) ) : ?>
-        <div class="stage-indicator">
-            <?php echo esc_html( $stage_indicator ); ?>
+        <div class="email-header">
+            <div class="logo-container">
+                <?php
+                $logo_path = get_template_directory() . '/images/id-basica-logo.svg';
+                $logo_url = get_template_directory_uri() . '/images/id-basica-logo.svg';
+                
+                // If SVG exists, display it inline for better email compatibility
+                if ( file_exists( $logo_path ) ) {
+                    $logo_svg = file_get_contents( $logo_path );
+                    // Remove the xmlns and viewBox for inline use and add white fill
+                    $logo_svg = str_replace( 'fill="currentColor"', 'fill="#ffffff"', $logo_svg );
+                    $logo_svg = str_replace( '<svg ', '<svg class="logo" ', $logo_svg );
+                    echo $logo_svg;
+                } else {
+                    // Fallback to image tag if SVG not found
+                    echo '<img src="' . esc_url( $logo_url ) . '" alt="ID Básica" class="logo" />';
+                }
+                ?>
+            </div>
         </div>
-        <?php endif; ?>
         
-        <div class="content">
-            <p><?php echo esc_html( $body ); ?></p>
-        </div>
+        <div class="email-content">
+            <?php if ( ! empty( $stage_indicator ) ) : ?>
+            <div class="stage-indicator">
+                <?php echo esc_html( $stage_indicator ); ?>
+            </div>
+            <?php endif; ?>
+            
+            <h2 class="header"><?php echo esc_html( $title ); ?></h2>
+            
+            <div class="content">
+                <p><?php echo esc_html( $body ); ?></p>
+            </div>
         
         <div class="details-box">
             <h3>Detalles de la Solicitud:</h3>
@@ -135,16 +216,20 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <?php endif; ?>
             </ul>
         </div>
-        
-        <div class="cta-button">
-            <a href="<?php echo esc_url( $application_url ); ?>">
-                Ver Solicitud Completa
-            </a>
+            
+            <div class="cta-button">
+                <a href="<?php echo esc_url( $application_url ); ?>">
+                    Ver Solicitud Completa
+                </a>
+            </div>
         </div>
         
         <div class="footer">
-            Este es un mensaje automático del sistema ID Básica.<br>
-            Por favor, no responda a este correo electrónico.
+            <p style="margin: 0;">
+                <strong>ID Básica</strong> - Sistema de Gestión de Solicitudes<br>
+                Este es un mensaje automático del sistema.<br>
+                Por favor, no responda a este correo electrónico.
+            </p>
         </div>
     </div>
 </body>

@@ -11,15 +11,30 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Define template variables
-$title = 'Nueva Solicitud de Movimiento de Personal';
-$body = 'Se ha creado una nueva solicitud de movimiento de personal que requiere su atención.';
-$stage_indicator = 'NUEVA SOLICITUD - Requiere Firma de Jefe Inmediato';
+// Define template variables based on recipient type
+if ( $recipient_type === 'author' ) {
+	// Message for the form author
+	$title = 'Su solicitud de Movimiento de Personal ha sido creada';
+	$body = 'Su solicitud de movimiento de personal ha sido creada exitosamente y está en proceso de aprobación. Puede verificar el estado de su solicitud en cualquier momento utilizando el enlace a continuación.';
+	$stage_indicator = '🟡 SOLICITUD CREADA - En espera de aprobación del Jefe Inmediato';
+} else {
+	// Message for jefe inmediato
+	$title = 'Nueva solicitud de Movimiento de Personal requiere su firma';
+	$body = 'Se ha creado una nueva solicitud de movimiento de personal por ' . esc_html( $author->display_name ) . ' que requiere su firma como Jefe Inmediato. Por favor, revise la solicitud y firme si está conforme.';
+	$stage_indicator = '🔴 ACCIÓN REQUERIDA - Firme como Jefe Inmediato';
+}
 
 // Additional details specific to creation stage
 $additional_details = array();
-$additional_details[] = '<strong>Estado:</strong> Pendiente de firma del Jefe Inmediato';
-$additional_details[] = '<strong>Siguiente paso:</strong> Firma del Jefe Inmediato';
+if ( $recipient_type === 'author' ) {
+	$additional_details[] = '<strong>Estado:</strong> <span style="color: #ffc107;">⏳ Pendiente de firma del Jefe Inmediato</span>';
+	$additional_details[] = '<strong>Siguiente paso:</strong> Esperando firma del Jefe Inmediato';
+	$additional_details[] = '<strong>Progreso:</strong> <span style="color: #d22;">0 de 4 firmas completadas</span>';
+} else {
+	$additional_details[] = '<strong>Estado:</strong> <span style="color: #ffc107;">⏳ Pendiente de su firma</span>';
+	$additional_details[] = '<strong>Acción requerida:</strong> <span style="color: #d22;">Firmar como Jefe Inmediato</span>';
+	$additional_details[] = '<strong>Prioridad:</strong> <span style="color: #dc3545;">🔴 Alta - Primera firma requerida</span>';
+}
 
 // Add movement details if available
 if ( ! empty( $tipo_movimiento ) ) {

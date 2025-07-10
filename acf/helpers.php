@@ -152,6 +152,100 @@ function id_basica_acf_form_shortcode( $atts ) {
 	$args['instruction_placement'] = 'field';
 	$args['uploader']              = 'basic';
 	$args['html_submit_button']    = '<input type="submit" class="acf-button button button-primary button-large" value="%s" />';
+	$args['return']                = '%post_url%'; // Redirect to the post URL after submission
+
+	// If editing an existing post, set the return URL to the post's permalink
+	if ( $post_id !== 'new_post' ) {
+		$args['return'] = get_permalink( $post_id );
+	}
+
+	// // Set the form to display in a specific location
+	// $args['html_before_fields'] = '<div class="acf-form-fields">';
+	// $args['html_after_fields']  = '</div>';
+
+	// // Add custom CSS classes for styling
+	// $args['html_class'] = 'acf-form acf-form--application';
+
+	// // Ensure ACF form head is called before rendering the form
+	// if ( ! function_exists( 'acf_form_head' ) ) {
+	// 	return '<p>' . esc_html__( 'ACF plugin is not active or acf_form_head function is not available', ID_BASICA_DOMAIN ) . '</p>';
+	// }
+	// acf_form_head();
+
+	// // Ensure ACF form function exists
+	// if ( ! function_exists( 'acf_form' ) ) {
+	// 	return '<p>' . esc_html__( 'ACF plugin is not active or acf_form function is not available', ID_BASICA_DOMAIN ) . '</p>';
+	// }
+
+	// // If the user is not logged in, show a message
+	// if ( ! is_user_logged_in() ) {
+	// 	return '<p>' . esc_html__( 'You must be logged in to submit this form.', ID_BASICA_DOMAIN ) . '</p>';
+	// }
+
+	// // If no field groups are specified and no group_field is available, show an error
+	// if ( empty( $args['field_groups'] ) ) {
+	// 	return '<p>' . esc_html__( 'No field groups specified for this form.', ID_BASICA_DOMAIN ) . '</p>';
+	// }
+
+	// // Ensure the post type is valid for ACF forms
+	// if ( ! post_type_exists( 'application' ) ) {
+	// 	return '<p>' . esc_html__( 'Invalid post type for ACF form.', ID_BASICA_DOMAIN ) . '</p>';
+	// }
+
+	// // Ensure the post ID is valid
+	// if ( $post_id !== 'new_post' && ! get_post( $post_id ) ) {
+	// 	return '<p>' . esc_html__( 'The specified post does not exist.', ID_BASICA_DOMAIN ) . '</p>';
+	// }
+
+	// // Set the form's action URL to the current page
+	// $args['action'] = esc_url( get_permalink() );
+
+	// // Add nonce field for security
+	// $args['nonce'] = wp_create_nonce( 'acf_form_nonce' );
+
+	// // Set the form's method to POST
+	// $args['method'] = 'post';
+
+	// // Add custom CSS classes for styling
+	// $args['html_class'] .= ' acf-form--shortcode';
+
+	// // If the user is not allowed to edit posts, show an error
+	// if ( ! current_user_can( 'edit_posts' ) ) {
+	// 	return '<p>' . esc_html__( 'You do not have permission to submit this form.', ID_BASICA_DOMAIN ) . '</p>';
+	// }
+
+	// // Ensure the ACF form function is available
+	// if ( ! function_exists( 'acf_form' ) ) {
+	// 	return '<p>' . esc_html__( 'ACF form function is not available.', ID_BASICA_DOMAIN ) . '</p>';
+	// }
+
+	// // If the post ID is 'new_post', set the post type to 'application'
+	// if ( $post_id === 'new_post' ) {
+	// 	$args['post_type'] = 'application';
+	// }
+
+	// // If the post ID is not 'new_post', set the post type to the current post's type
+	// if ( $post_id !== 'new_post' ) {
+	// 	$post = get_post( $post_id );
+	// 	if ( $post ) {
+	// 		$args['post_type'] = $post->post_type;
+	// 	}
+	// }
+
+	// // Set the form's enctype for file uploads
+	// if ( ! empty( $args['field_groups'] ) && is_array( $args['field_groups'] ) && in_array( 'file', wp_list_pluck( $args['field_groups'], 'type' ), true ) ) {
+	// 	$args['enctype'] = 'multipart/form-data';
+	// }
+
+	// // Set the form's ID and name attributes
+	// $args['id']   = 'acf-form-' . uniqid();
+	// $args['name'] = 'acf-form';
+
+	// // Set the form's action URL to the current page
+	// $args['action'] = esc_url( get_permalink() );
+
+	// // Add custom CSS classes for styling
+	// $args['html_class'] .= ' acf-form--shortcode';
 
 	// Debug output for development environment only
 	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
