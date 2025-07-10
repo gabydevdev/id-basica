@@ -18,60 +18,66 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header();
 
-$fields = id_basica_get_acf_fields();
-?>
+if ( have_posts() ) {
+	while ( have_posts() ) {
+		the_post();
 
-<!-- Dashboard Content -->
-<div class="content mt-6">
+		$acf_fields = id_basica_get_acf_fields();
 
-	<?php
-	if ( have_posts() ) :
-		while ( have_posts() ) :
-			the_post();
-			?>
-	<div class="container">
-		<div class="content__main">
-			<?php // the_content(); ?>
-			<div class="invoice">
-				<div class="invoice__header">
-					<a href="#">
-						<img class="invoice__logo" src="<?php echo ID_BASICA_URI; ?>/images/id-basica-logo.png" alt="<?php bloginfo( 'name' ); ?>" height="188" width="44"/>
-					</a>
-					<h1 class="invoice__title">
-						<?php echo esc_html( $field_form_name ); ?>
-					</h1>
-					<div class="invoice__actions">
+		$form_name = isset( $acf_fields['form_name'] ) ? $acf_fields['form_name'] : '';
+		$form_type = !empty($form_name) ? strtolower( str_replace( ' ', '_', $form_name ) ) : '';
 
-						<a href="<?php echo esc_url( $edit_url ); ?>" class="button button--primary" aria-label="Editar esta solicitud">
-							<?php _e( 'Edit', ID_BASICA_DOMAIN ); ?>
-						</a>
+		?>
 
-						<?php
-						// if ( current_user_can( 'edit_post', get_the_ID() ) ) {
-						// printf(
-						// '<p><a href="%1$s" class="btn btn-secondary" aria-label="Editar esta solicitud">✏️ Editar solicitud</a></p>',
-						// esc_url( get_edit_post_link( get_the_ID() ) )
-						// );
-						// }
-						?>
+		<div class="container">
+			<div class="content-area">
 
-						<button type="button" class="button button--outline-secondary" id="print-invoice-btn" onclick="window.print();">Print</button>
+				<!-- Printable Page -->
+				<div class="invoice">
+
+					<div class="invoice__header">
+						<div class="invoice__logo">
+							<img src="<?php echo ID_BASICA_URI; ?>/images/id-basica-logo.png" alt="<?php bloginfo( 'name' ); ?>" height="188" width="44"/>
+						</div>
+
+						<h1 class="invoice__title">
+							<?php echo esc_html( $form_name ); ?>
+						</h1>
+
+						<div class="invoice__actions">
+							<a href="<?php echo esc_url( $edit_url ); ?>" class="button button--primary" aria-label="<?php echo esc_html( 'Editar esta solicitud', ID_BASICA_DOMAIN ); ?>">
+								<?php _e( 'Edit', ID_BASICA_DOMAIN ); ?>
+							</a>
+
+							<?php
+							// if ( current_user_can( 'edit_post', get_the_ID() ) ) {
+							// printf(
+							// '<p><a href="%1$s" class="btn btn-secondary" aria-label="Editar esta solicitud">✏️ Editar solicitud</a></p>',
+							// esc_url( get_edit_post_link( get_the_ID() ) )
+							// );
+							// }
+							?>
+
+							<button type="button" class="button button--outline-secondary" id="print-invoice-btn" onclick="window.print();">
+								<?php esc_attr_e( 'Print', ID_BASICA_DOMAIN ); ?>
+							</button>
+						</div>
+
+						<div class="invoice__date">
+							<?php echo esc_html( $acf_fields['fecha_de_formato'] ); ?>
+						</div>
 					</div>
-					<div class="invoice__date">
-						<?php echo esc_html( get_the_date() ); ?>
-					</div>
+
+					<?php get_template_part( 'template-parts/application/form', $form_type ); ?>
 
 				</div>
 
-				<div class="invoice__body">
-				</div>
 			</div>
 		</div>
-	</div>
-			<?php endwhile; ?>
-	<?php endif; ?>
 
-</div>
+		<?php
 
-<?php
+	}
+}
+
 get_footer();
